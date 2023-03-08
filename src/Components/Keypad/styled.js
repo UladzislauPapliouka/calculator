@@ -1,13 +1,11 @@
 import styled from "styled-components";
 
 export const KeypadWrapper = styled.div`
+  margin: auto;
   display: grid;
-  grid-auto-columns: 100px;
-  grid-template-columns: repeat(5,150px);
+  grid-template-columns: repeat(5,minmax(100px, 150px));
   column-gap: 128px;
-  row-gap: 45px;
-  width: fit-content;
-  height: fit-content;
+  row-gap: 20px;
   grid-area: keyp;
 `
 export const Key = styled.div`
