@@ -20,6 +20,7 @@ export const Link = styled.div`
         default :
             return  css`
               font-size: 3.2em;
+              text-decoration: none;
               cursor: pointer;
               position: relative;
               opacity:  0.7;
@@ -37,6 +38,10 @@ export const HeaderWrapper = styled.header`
   align-items: center;
   font-family: HelveticaNeueCyr;
   font-weight: 100;
+  & a {
+    text-decoration: none;
+    color: inherit;
+  }
   & span  {
     font-size: 3.2em;
   }

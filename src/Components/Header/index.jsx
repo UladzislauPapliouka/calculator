@@ -1,5 +1,6 @@
 import React from "react";
 import {HeaderWrapper, Link, NavigationWrapper} from "./styled";
+import {NavLink} from "react-router-dom";
 
 
 const Header = () => {
@@ -7,8 +8,8 @@ const Header = () => {
         <HeaderWrapper>
             <span>Calculator App</span>
             <NavigationWrapper >
-                <Link active>Home</Link>
-                <Link >Settings</Link>
+                <NavLink to={'home'}>{({isActive})=><Link active={isActive}>Home</Link>}</NavLink>
+                <NavLink to={'settings'}>{({isActive})=><Link active={isActive}>Settings</Link>}</NavLink>
             </NavigationWrapper>
         </HeaderWrapper>
     )
