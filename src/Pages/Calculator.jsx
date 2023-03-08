@@ -1,8 +1,11 @@
 import React from "react";
+import Keypad from "../Components/Keypad";
 
 const Calculator = () => {
     return(
-        <div>Calculator</div>
+        <div>Calculator
+        <Keypad/>
+        </div>
     )
 }
 
