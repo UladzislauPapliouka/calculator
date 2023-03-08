@@ -6,11 +6,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-family: HelveticaNeueCyr;
+    font-weight: 100;
+
 }
 
 .headerBlock span {
-    font-size: 3.2rem;
-    line-height: 3.8rem;
+    font-size: 3.2em;
 }
 
 .navigation {
