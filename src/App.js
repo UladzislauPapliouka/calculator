@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import Calculator from "./Pages/Calculator";
+import Settings from "./Pages/Settings";
 
 function App() {
   return (
