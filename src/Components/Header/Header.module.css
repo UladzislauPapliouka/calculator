@@ -1,0 +1,40 @@
+.headerBlock {
+    height: 11vh;
+    background-color: #434343;
+    color: #FFFFFF;
+    padding: 0 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerBlock span {
+    font-size: 3.2rem;
+    line-height: 3.8rem;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 32px;
+}
+
+.navigation_item {
+    cursor: pointer;
+    position: relative;
+    opacity: 0.7;
+}
+
+.active {
+    opacity: 1;
+}
+
+.active:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    background-color: #FFFFFF;
+}
