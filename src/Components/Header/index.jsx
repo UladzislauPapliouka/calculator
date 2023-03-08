@@ -8,7 +8,7 @@ const Header = () => {
         <HeaderWrapper>
             <span>Calculator App</span>
             <NavigationWrapper >
-                <NavLink to={'home'}>{({isActive})=><Link active={isActive}>Home</Link>}</NavLink>
+                <NavLink to={'/'}>{({isActive})=><Link active={isActive}>Home</Link>}</NavLink>
                 <NavLink to={'settings'}>{({isActive})=><Link active={isActive}>Settings</Link>}</NavLink>
             </NavigationWrapper>
         </HeaderWrapper>
