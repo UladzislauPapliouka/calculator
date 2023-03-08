@@ -6,6 +6,7 @@ export const StyledHistory = styled.div`
   align-items: flex-start;
   gap: 3.6em;
   padding: 0 54px;
+  grid-area: his;
 `
 export const HistoryOperation = styled.span`
   font-size: 3em;

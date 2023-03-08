@@ -7,4 +7,5 @@ export const StyledDisplay = styled.span`
   text-align: right;
   width: 100%;
   padding: 30px;
+  grid-area: disp;
 `

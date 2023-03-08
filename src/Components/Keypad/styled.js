@@ -8,6 +8,7 @@ export const KeypadWrapper = styled.div`
   row-gap: 45px;
   width: fit-content;
   height: fit-content;
+  grid-area: keyp;
 `
 export const Key = styled.div`
   aspect-ratio: 1;
