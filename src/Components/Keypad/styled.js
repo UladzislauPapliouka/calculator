@@ -7,6 +7,11 @@ export const KeypadWrapper = styled.div`
   column-gap: 128px;
   row-gap: 20px;
   grid-area: keyp;
+  @media screen and (max-width:768px ){
+    grid-template-columns: repeat(5,minmax(2em, 150px));
+    column-gap: 2% ;
+    row-gap: 20px;
+  }
 `
 export const Key = styled.div`
   aspect-ratio: 1;
@@ -15,7 +20,8 @@ export const Key = styled.div`
   justify-content: center;
   background-color: #F2F2F2;
   border: 1px solid #707070;
-  border-radius: 32px;
+  border-radius: 25% 25% 25% 25%;
+  vertical-align: center;
   font-size: 6.4em;
   cursor: pointer;
 
