@@ -3,10 +3,10 @@ import Keypad from "../../Components/Keypad";
 import Display from "../../Components/Display";
 import History from "../../Components/History";
 import {StyleCalculator} from "./styled";
-const Calculator = () => {
+const Calculator = ({displayValue}) => {
     return(
         <StyleCalculator>
-            <Display value={"5+3"}/>
+            <Display value={displayValue}/>
             <Keypad/>
             <History/>
         </StyleCalculator>
