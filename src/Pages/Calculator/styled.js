@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyleCalculator =styled.div`
+    position: relative;
     display: grid;
     grid-template-rows: 150px 1fr;
     grid-template-columns:1fr 400px;
@@ -9,4 +10,11 @@ export const StyleCalculator =styled.div`
     height: 89vh;
     overflow: hidden;
     position: relative;
+  @media screen and (max-width:768px ){
+    grid-template-rows: auto;
+    grid-template-columns:100%;
+    grid-template-areas: "his"
+                        "disp"
+                        "keyp";
+  }
 `
