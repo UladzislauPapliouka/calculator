@@ -14,6 +14,12 @@ const History = () =>{
             <HistoryOperation>6+5</HistoryOperation>
             <HistoryOperation>6+5</HistoryOperation>
             <HistoryOperation>6+5</HistoryOperation>
+            <HistoryOperation>6+5</HistoryOperation>
+            <HistoryOperation>6+5</HistoryOperation>
+            <HistoryOperation>6+5</HistoryOperation>
+            <HistoryOperation>6+5</HistoryOperation>
+            <HistoryOperation>6+5</HistoryOperation>
+            <HistoryOperation>6+5</HistoryOperation>
         </StyledHistory>
     )
 }
