@@ -25,6 +25,13 @@ export const StyledHistory = styled.div`
 `
 export const HistoryOperation = styled.span`
   font-size: 3em;
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  &:hover{
+    background: #e2e2e2;
+  }
 `
 export const StyledH2 = styled.h2`
   font-size: 3em;
