@@ -38,6 +38,7 @@ export const HeaderWrapper = styled.header`
   align-items: center;
   font-family: HelveticaNeueCyr;
   font-weight: 100;
+ 
   & a {
     text-decoration: none;
     color: inherit;
@@ -50,4 +51,18 @@ export const NavigationWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 32px;`
+    gap: 32px;
+      @media screen and (max-width:768px ){
+        display: none;
+      }
+`
+export const MobileNavigation = styled.div`
+  
+  align-items: center;
+  justify-content: center;
+  display: none;
+  font-size: 4em;
+  @media screen and (max-width:768px ){
+    display: flex;
+  }
+`

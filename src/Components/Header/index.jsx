@@ -1,7 +1,7 @@
 import React from "react";
-import {HeaderWrapper, Link, NavigationWrapper} from "./styled";
+import {HeaderWrapper, Link, MobileNavigation, NavigationWrapper} from "./styled";
 import {NavLink} from "react-router-dom";
-
+import {BiMenu} from 'react-icons/bi'
 
 const Header = () => {
     return (
@@ -11,6 +11,7 @@ const Header = () => {
                 <NavLink to={'/'}>{({isActive})=><Link active={isActive}>Home</Link>}</NavLink>
                 <NavLink to={'settings'}>{({isActive})=><Link active={isActive}>Settings</Link>}</NavLink>
             </NavigationWrapper>
+            <MobileNavigation><BiMenu/></MobileNavigation>
         </HeaderWrapper>
     )
 }
