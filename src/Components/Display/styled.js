@@ -8,4 +8,7 @@ export const StyledDisplay = styled.span`
   width: 100%;
   padding: 30px;
   grid-area: disp;
+  @media screen and (max-width:1000px ){
+    padding: 16px;
+  }
 `

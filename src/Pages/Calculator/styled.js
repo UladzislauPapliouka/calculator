@@ -10,7 +10,7 @@ export const StyleCalculator =styled.div`
     height: 89vh;
     overflow: hidden;
     position: relative;
-  @media screen and (max-width:768px ){
+  @media screen and (max-width:1000px ){
     grid-template-rows: auto;
     grid-template-columns:100%;
     grid-template-areas: "his"

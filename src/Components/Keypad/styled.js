@@ -1,16 +1,23 @@
 import styled from "styled-components";
 
 export const KeypadWrapper = styled.div`
-  margin: auto;
+  width: 90%;
+  margin:auto;
   display: grid;
   grid-template-columns: repeat(5,minmax(100px, 150px));
   column-gap: 128px;
   row-gap: 20px;
   grid-area: keyp;
-  @media screen and (max-width:768px ){
-    grid-template-columns: repeat(5,minmax(2em, 150px));
-    column-gap: 2% ;
-    row-gap: 20px;
+  align-content: center;
+  justify-content: center;
+  @media screen and (max-width:1400px ){
+    grid-template-columns: repeat(5,minmax(2em, 120px));
+    row-gap: 10px;
+    column-gap: 6% ;
+  }
+  @media screen and (max-width:1000px ){
+    grid-template-columns: repeat(5,minmax(2em, 80px));
+    row-gap: 10px;
   }
 `
 export const Key = styled.div`
@@ -24,7 +31,9 @@ export const Key = styled.div`
   vertical-align: center;
   font-size: 6.4em;
   cursor: pointer;
-
+  @media screen and (max-width:1000px ){
+    font-size: 5.4em;
+  }
   &:hover {
     background: #d5d5d5;
   }
