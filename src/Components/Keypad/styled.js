@@ -17,4 +17,13 @@ export const Key = styled.div`
   border: 1px solid #707070;
   border-radius: 32px;
   font-size: 6.4em;
+  cursor: pointer;
+
+  &:hover {
+    background: #d5d5d5;
+  }
+
+  &:active {
+    background: #c9c9c9;
+  }
 `
