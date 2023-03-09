@@ -1,28 +1,28 @@
-export class CalculatorClass {
+export class ArithmeticUnit {
     constructor() {
         this.result =0
     }
-    add = (value)=>{
+    Add = (value)=>{
         this.result += value
         console.log(this.result.toFixed(3))
         return this.result
     }
-    sub = (value)=>{
+    Substruct = (value)=>{
         this.result-=value
         console.log(this.result.toFixed(3))
         return this.result
     }
-    mul = (value) => {
+    Multiply = (value) => {
         this.result*=value
         console.log(this.result.toFixed(3))
         return this.result
     }
-    div = (value) => {
+    Divide = (value) => {
         this.result/=value
         console.log(this.result.toFixed(3))
         return this.result
     }
-    reversSign = () => {
+    ReversSign = () => {
         this.result = -this.result
         console.log(this.result.toFixed(3))
         return this.result

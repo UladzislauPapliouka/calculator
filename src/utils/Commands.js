@@ -1,31 +1,50 @@
 class Command {
-    constructor(unit, operand) {
-        this.unit =unit
-        this.operand =operand
-    }
+    unit = null
+    operand =null
     execute = () =>{}
     unExecute = () => {}
 }
 export class AddCommand extends  Command {
-    execute = () => {return this.unit.add(this.operand)}
-    unExecute = () =>{return this.unit.sub(this.operand)}
+    constructor(unit, operand) {
+        super();
+        this.unit = unit
+        this.operand = operand
+    }
+    execute = () => this.unit.Add(this.operand)
+    unExecute = () =>this.unit.Substruct(this.operand)
 }
 export class SubCommand extends  Command {
-    execute = () =>{ return this.unit.sub(this.operand)}
-    unExecute = () => {return this.unit.add(this.operand)}
-}
-export class mulCommand extends  Command {
-    execute = () => {return this.unit.mul(this.operand)}
-    unExecute = () =>{return this.unit.div(this.operand)}
-}
-export class divCommand extends  Command {
-    execute = () =>{return this.unit.div(this.operand)}
-    unExecute = () => {return this.unit.mul(this.operand)}
-}
-export class reversSingCommand extends  Command {
-    constructor(unit) {
-        super(unit,0);
+    constructor(unit, operand) {
+        super();
+        this.unit = unit
+        this.operand = operand
     }
-    execute = () =>{return this.unit.reversSign()}
-    unExecute = () => {return this.unit.reversSign()}
+    execute = () =>this.unit.Substruct(this.operand)
+    unExecute = () => this.unit.Add(this.operand)
+}
+export class MulCommand extends  Command {
+    constructor(unit, operand) {
+        super();
+        this.unit = unit
+        this.operand = operand
+    }
+    execute = () => this.unit.Multiply(this.operand)
+    unExecute = () =>this.unit.Divide(this.operand)
+}
+export class DivCommand extends  Command {
+    constructor(unit, operand) {
+        super();
+        this.unit = unit
+        this.operand = operand
+    }
+    execute = () =>this.unit.Divide(this.operand)
+    unExecute = () => this.unit.Multiply(this.operand)
+}
+export class ReversSingCommand extends  Command {
+    constructor(unit) {
+        super();
+        this.unit =unit
+    }
+    execute = () =>{return this.unit.ReversSign()}
+    unExecute = () => {return this.unit.ReversSign()}
 }
