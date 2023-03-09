@@ -61,6 +61,7 @@ export const MobileNavigation = styled.div`
   align-items: center;
   justify-content: center;
   display: none;
+  font-size: 4em;
   @media screen and (max-width:768px ){
     display: flex;
   }
