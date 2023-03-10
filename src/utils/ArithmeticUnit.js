@@ -1,30 +1,18 @@
 export class ArithmeticUnit {
-    constructor() {
-        this.result =0
+    constructor() {}
+    Add = (value1, value2)=>{
+        return (value1 + value2).toFixed(3)
     }
-    Add = (value)=>{
-        this.result += value
-        console.log(this.result.toFixed(3))
-        return this.result
+    Substruct = (value1, value2)=>{
+        return (value1 - value2).toFixed(3)
     }
-    Substruct = (value)=>{
-        this.result-=value
-        console.log(this.result.toFixed(3))
-        return this.result
+    Multiply = (value1, value2) => {
+        return (value1 * value2).toFixed(3)
     }
-    Multiply = (value) => {
-        this.result*=value
-        console.log(this.result.toFixed(3))
-        return this.result
+    Divide = (value1, value2) => {
+        return (value1 / value2).toFixed(3)
     }
-    Divide = (value) => {
-        this.result/=value
-        console.log(this.result.toFixed(3))
-        return this.result
-    }
-    ReversSign = () => {
-        this.result = -this.result
-        console.log(this.result.toFixed(3))
-        return this.result
+    ReversSign = (value) => {
+        return -value.toFixed(3)
     }
 }

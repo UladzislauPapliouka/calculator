@@ -9,8 +9,7 @@ export class ControlUnit {
 
     }
     ExecuteCommand = () => {
-        this.commandList[this.currentCommand].execute()
-        this.currentCommand++
+        return this.commandList[this.currentCommand++].execute()
     }
     Undo = (level) => {
         let result ;

@@ -2,7 +2,7 @@ import {ArithmeticUnit} from "./ArithmeticUnit";
 import {ControlUnit} from "./ControlUnit";
 import {AddCommand, DivCommand, MulCommand, ReversSingCommand, SubCommand} from "./Commands";
 import {Operation} from "../Constants/KeypadConstansts";
-import {getLastNumber, isOperationLast} from "./utilities";
+import {getExpressionValue, getLastNumber, isOperationLast} from "./utilities";
 import display from "../Components/Display";
 
 export class Calculator {
@@ -55,7 +55,9 @@ export class Calculator {
                 }
                 break;
             case Operation.Equal :
-                this.displayValue = Number.parseFloat(eval(this.displayValue)).toFixed(3)
+
+                this.displayValue = getExpressionValue(this.displayValue,this.Run, this.arithmeticUnit)
+
                 break;
             default :
                 if(lastNumber && lastNumber[lastNumber.length-4] === '.' ){
@@ -69,8 +71,7 @@ export class Calculator {
     }
     Run = (command) =>{
         this.controlUnit.StoreCommand(command)
-        this.controlUnit.ExecuteCommand()
-        return this.arithmeticUnit.result
+        return this.controlUnit.ExecuteCommand()
     }
     Add = (operand) => {
         return this.Run(new AddCommand(this.arithmeticUnit, operand))
