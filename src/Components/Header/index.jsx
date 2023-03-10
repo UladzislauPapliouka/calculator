@@ -5,7 +5,7 @@ import {BiMenu} from 'react-icons/bi'
 import {Modal} from "../Modal";
 
 const Header = () => {
-    const [isModalOpen, setIsModalOpen] = useState(true)
+    const [isModalOpen, setIsModalOpen] = useState(false)
     return (
         <HeaderWrapper>
             <span>Calculator App</span>
