@@ -20,6 +20,11 @@ const isBracketCorrect = (expression) =>{
     return false
 }
 
+const isNumber = (value)=>{
+    return !Number.isNaN(parseFloat(value))
+}
+
 export {
-    isBracketCountCorrect
+    isBracketCorrect,
+    isNumber
 }
