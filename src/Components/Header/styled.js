@@ -54,7 +54,32 @@ export const NavigationWrapper = styled.div`
     gap: 32px;
       @media screen and (max-width:768px ){
         display: none;
-      }
+      }& a {
+  text-decoration: none;
+  color: inherit;
+}
+  
+`
+export const  MobileNavigationWrapper =styled.div`
+  display: none;
+  align-items: center;
+  justify-content: center ;
+  flex-direction: column;
+  gap: 32px;
+  color: black;
+  padding: 16px;
+  border-radius: 8px;
+  background: aliceblue;
+  & div:before{
+    background-color: black;
+  }
+  @media screen and (max-width:768px ){
+    display: flex;
+  }
+  & a {
+    text-decoration: none;
+    color: inherit;
+  }
 `
 export const MobileNavigation = styled.div`
   
