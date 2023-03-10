@@ -54,10 +54,16 @@ export class Calculator {
                     this.displayValue+=symbol
                 }
                 break;
+            case Operation.LeftBracket : {
+                if(isOperationLast(this.displayValue)){
+                    this.displayValue+=symbol
+                } else {
+                    this.displayValue += '*'+symbol
+                }
+            }
+            break
             case Operation.Equal :
-
                 this.displayValue = getExpressionValue(this.displayValue,this.Run, this.arithmeticUnit)
-
                 break;
             default :
                 if(lastNumber && lastNumber[lastNumber.length-4] === '.' ){
