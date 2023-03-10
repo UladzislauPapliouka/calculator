@@ -1,13 +1,72 @@
 import {ArithmeticUnit} from "./ArithmeticUnit";
 import {ControlUnit} from "./ControlUnit";
 import {AddCommand, DivCommand, MulCommand, ReversSingCommand, SubCommand} from "./Commands";
+import {Operation} from "../Constants/KeypadConstansts";
+import {getLastNumber, isOperationLast} from "./utilities";
+import display from "../Components/Display";
 
 export class Calculator {
     constructor() {
         this.arithmeticUnit = new ArithmeticUnit()
         this.controlUnit = new ControlUnit()
+        this.displayValue = ''
     }
+    EnterSymbol =(symbol)=>{
+        const lastNumber = getLastNumber(this.displayValue)
+        switch (symbol) {
+            case Operation.Clear:
+                this.displayValue = ''
+                break;
+            case Operation.Dot:
+                if(lastNumber && lastNumber.indexOf(Operation.Dot)===-1){
+                    this.displayValue +=symbol
+                    break;
+                } else {
+                    console.log("That number already  has dot...")
+                    break
+                }
+            case Operation.Add :
+                if(isOperationLast(this.displayValue)){
+                    this.displayValue = this.displayValue.slice(0,this.displayValue.length -1) + symbol
+                } else {
+                    this.displayValue+=symbol
+                }
+                    break;
 
+            case Operation.Subtract :
+                if(isOperationLast(this.displayValue)){
+                    this.displayValue = this.displayValue.slice(0,this.displayValue.length -1) + symbol
+                }else {
+                    this.displayValue+=symbol
+                }
+                    break;
+            case Operation.Myltiply :
+                if(isOperationLast(this.displayValue)){
+                    this.displayValue = this.displayValue.slice(0,this.displayValue.length -1) + symbol
+                }else {
+                    this.displayValue+=symbol
+                }
+                break;
+            case Operation.Devide :
+                if(isOperationLast(this.displayValue)){
+                    this.displayValue = this.displayValue.slice(0,this.displayValue.length -1) + symbol
+                }else {
+                    this.displayValue+=symbol
+                }
+                break;
+            case Operation.Equal :
+                this.displayValue = Number.parseFloat(eval(this.displayValue)).toFixed(3)
+                break;
+            default :
+                if(lastNumber && lastNumber[lastNumber.length-4] === '.' ){
+                    console.log("Too much symbols after dot")
+                }else {
+                    this.displayValue +=symbol
+                }
+
+        }
+        return this.displayValue
+    }
     Run = (command) =>{
         this.controlUnit.StoreCommand(command)
         this.controlUnit.ExecuteCommand()
