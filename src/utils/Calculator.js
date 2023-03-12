@@ -16,6 +16,7 @@ export class Calculator {
         const lastNumber = getLastNumber(this.displayValue)
         switch (symbol) {
             case Operation.Clear:
+                this.clearHistory()
                 this.displayValue = ''
                 break;
             case Operation.Dot:
@@ -81,6 +82,9 @@ export class Calculator {
                         break
                     }
                     break
+            case Operation.CleanEntry:
+                this.displayValue = ''
+                break;
             case Operation.Equal :
                 this.operationHistory.push(this.displayValue)
                 this.displayValue = getExpressionValue(this.displayValue,this.Run, this.arithmeticUnit)
@@ -94,6 +98,9 @@ export class Calculator {
 
         }
         return this.displayValue
+    }
+    clearHistory = () => {
+        this.operationHistory = []
     }
     getHistory = ()=>this.operationHistory
     Run = (command) =>{
