@@ -25,7 +25,7 @@ export const Key = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #F2F2F2;
+  background-color: ${props => props.theme.bg};
   border: 1px solid #707070;
   border-radius: 25% 25% 25% 25%;
   vertical-align: center;
