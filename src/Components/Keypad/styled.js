@@ -25,8 +25,9 @@ export const Key = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #F2F2F2;
-  border: 1px solid #707070;
+  background-color: ${props => props.theme.keysBackground};
+  border: 1px solid ${props => props.theme.bordersColor};
+  color: ${props => props.theme.mainColor} ;
   border-radius: 25% 25% 25% 25%;
   vertical-align: center;
   font-size: 6.4em;
@@ -35,10 +36,10 @@ export const Key = styled.div`
     font-size: 5.4em;
   }
   &:hover {
-    background: #d5d5d5;
+    background: ${props => props.theme.keysHover};
   }
 
   &:active {
-    background: #c9c9c9;
+    background: ${props => props.theme.keysActive};
   }
 `

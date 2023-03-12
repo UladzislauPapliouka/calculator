@@ -7,6 +7,8 @@ import Settings from "./Pages/Settings";
 import {Calculator as calc} from './utils/Calculator'
 import {useEffect, useRef, useState} from "react";
 import {getLastNumber} from "./utils/utilities";
+import {ThemeProvider} from "styled-components";
+import {ThemeContext, themes} from "./Constants/Theme";
 
 function App() {
     const [displayValue, setDisplayValue] =useState('')
@@ -19,14 +21,22 @@ function App() {
     useEffect(()=>{
         calcRef.current = new calc()
     },[])
+    const [theme, setTheme] = useState('dark')
+    const chooseTheme = (theme) => {
+        setTheme(theme)
+    }
   return (
-    <div className="App">
-      <Header/>
-        <Routes>
-            <Route path={'/'} element={<Calculator onEnterSymbol={onEnterSymbol} history={history} displayValue={displayValue}/>}/>
-            <Route path={'settings'} element={<Settings/>}/>
-        </Routes>
-    </div>
+    <ThemeContext.Provider value={{theme, toggleTheme: chooseTheme}} >
+        <ThemeProvider theme={themes[theme]}>
+            <div className="App">
+                <Header/>
+                <Routes>
+                    <Route path={'/'} element={<Calculator onEnterSymbol={onEnterSymbol} history={history} displayValue={displayValue}/>}/>}/>
+                    <Route path={'settings'} element={<Settings/>}/>
+                </Routes>
+            </div>
+        </ThemeProvider>
+    </ThemeContext.Provider>
   );
 }
 
