@@ -16,8 +16,7 @@ export class Calculator {
         const lastNumber = getLastNumber(this.displayValue)
         switch (symbol) {
             case Operation.Clear:
-                this.clearHistory()
-                this.cleaeEntry()
+                this.clearAll()
                 break;
             case Operation.Dot:
                 if(lastNumber && lastNumber.indexOf(Operation.Dot)===-1){
@@ -104,6 +103,10 @@ export class Calculator {
     }
     cleaeEntry = () => {
         this.displayValue =''
+    }
+    clearAll = () => {
+        this.clearHistory()
+        this.cleaeEntry()
     }
     getHistory = ()=>this.operationHistory
     Run = (command) =>{
