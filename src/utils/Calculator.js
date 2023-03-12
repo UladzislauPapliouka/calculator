@@ -61,7 +61,25 @@ export class Calculator {
                     this.displayValue += '*'+symbol
                 }
             }
-            break
+            break;
+            case Operation.ChangeSign :
+                    if(this.displayValue[0] === '-' && this.displayValue.slice(1) === lastNumber){
+                        this.displayValue = this.displayValue.slice(1)
+                        break
+                    }
+                    if(this.displayValue === lastNumber){
+                        this.displayValue = -this.displayValue
+                        break
+                    }
+                    if(this.displayValue.length > lastNumber && this.displayValue[0]==='-'  && this.displayValue[1]==='(' && this.displayValue[this.displayValue.length-1]===')'){
+                        this.displayValue= this.displayValue.slice(2,-1)
+                        break
+                    }
+                    if(this.displayValue.length > lastNumber.length){
+                        this.displayValue = `-(${this.displayValue})`
+                        break
+                    }
+                    break
             case Operation.Equal :
                 this.displayValue = getExpressionValue(this.displayValue,this.Run, this.arithmeticUnit)
                 break;
