@@ -1,25 +1,11 @@
 import React from "react";
 import {HistoryOperation, StyledH2, StyledHistory} from "./styled";
 
-const History = () =>{
+const History = ({history}) =>{
     return(
         <StyledHistory>
             <StyledH2>History</StyledH2>
-            <HistoryOperation>6+5</HistoryOperation>
-            <HistoryOperation>6+5</HistoryOperation>
-            <HistoryOperation>6+5</HistoryOperation>
-            <HistoryOperation>6+5</HistoryOperation>
-            <HistoryOperation>6+5</HistoryOperation>
-            <HistoryOperation>6+5</HistoryOperation>
-            <HistoryOperation>6+5</HistoryOperation>
-            <HistoryOperation>6+5</HistoryOperation>
-            <HistoryOperation>6+5</HistoryOperation>
-            <HistoryOperation>6+5</HistoryOperation>
-            <HistoryOperation>6+5</HistoryOperation>
-            <HistoryOperation>6+5</HistoryOperation>
-            <HistoryOperation>6+5</HistoryOperation>
-            <HistoryOperation>6+5</HistoryOperation>
-            <HistoryOperation>6+5</HistoryOperation>
+                {history.map((his,i)=> <HistoryOperation key={i}>{his}</HistoryOperation>)}
         </StyledHistory>
     )
 }
