@@ -9,13 +9,14 @@ export const Link = styled.div`
               cursor: pointer;
               position: relative;
               opacity: 1;
+              color: ${props.theme.headerColor};
               &:before {
                 content: "";
                 position: absolute;
                 width: 100%;
                 height: 2px;
                 bottom: 0;
-                background-color: #FFFFFF;
+                background-color: ${props.theme.headerColor};
               }`
         default :
             return  css`
@@ -24,14 +25,15 @@ export const Link = styled.div`
               cursor: pointer;
               position: relative;
               opacity:  0.7;
+              color: ${props.theme.headerColor};
               `
       }
   }}
 `
 export const HeaderWrapper = styled.header`
   height: 11vh;
-  background-color: #434343;
-  color: #FFFFFF;
+  background-color: ${props => props.theme.headerBackground};
+  color: ${props => props.theme.headerColor};
   padding: 0 32px;
   display: flex;
   justify-content: space-between;

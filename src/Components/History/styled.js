@@ -9,6 +9,7 @@ export const StyledHistory = styled.div`
   margin: 10px 10px 10px 0;
   grid-area: his;
   overflow-y: auto;
+  color:${props => props.theme.mainColor};
   ::-webkit-scrollbar{
     width: 10px;
 
@@ -19,7 +20,7 @@ export const StyledHistory = styled.div`
   }
   ::-webkit-scrollbar-thumb{
     border-radius: 8px;
-    background-color: #434343;
+    background-color: ${props => props.theme.scrollbarColor};
 
   }
 `
@@ -29,8 +30,8 @@ export const HistoryOperation = styled.span`
   width: 100%;
   text-align: left;
   cursor: pointer;
-  &:hover{
-    background: #e2e2e2;
+  &:active {
+    background: ${props => props.theme.keysActive};
   }
 `
 export const StyledH2 = styled.h2`

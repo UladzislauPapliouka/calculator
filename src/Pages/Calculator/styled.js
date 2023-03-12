@@ -9,6 +9,7 @@ export const StyleCalculator =styled.div`
                         "keyp  his";
     height: 89vh;
     overflow: hidden;
+  background-color: ${props => props.theme.mainBackground};
     position: relative;
   @media screen and (max-width:1000px ){
     grid-template-rows: auto;
