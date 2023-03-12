@@ -4,6 +4,7 @@ import {AddCommand, DivCommand, MulCommand, ReversSingCommand, SubCommand} from 
 import {Operation} from "../Constants/KeypadConstansts";
 import {getExpressionValue, getLastNumber, isOperationLast} from "./utilities";
 import display from "../Components/Display";
+import {isBracketCorrect} from "./validation";
 
 export class Calculator {
     constructor() {
@@ -13,6 +14,7 @@ export class Calculator {
         this.operationHistory =[]
     }
     EnterSymbol =(symbol)=>{
+        if(this.displayValue === "Incorrect expression") this.cleaeEntry()
         const lastNumber = getLastNumber(this.displayValue)
         switch (symbol) {
             case Operation.Clear:
@@ -85,8 +87,12 @@ export class Calculator {
                 this.cleaeEntry()
                 break;
             case Operation.Equal :
-                this.operationHistory.push(this.displayValue)
-                this.displayValue = getExpressionValue(this.displayValue,this.Run, this.arithmeticUnit)
+                if(isBracketCorrect(this.displayValue)){
+                    this.operationHistory.push(this.displayValue)
+                    this.displayValue = getExpressionValue(this.displayValue,this.Run, this.arithmeticUnit)
+                } else {
+                    this.displayValue ="Incorrect expression"
+                }
                 break;
             default :
                 if(lastNumber && lastNumber[lastNumber.length-4] === '.' ){
