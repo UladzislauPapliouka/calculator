@@ -17,7 +17,7 @@ export class Calculator {
         switch (symbol) {
             case Operation.Clear:
                 this.clearHistory()
-                this.displayValue = ''
+                this.cleaeEntry()
                 break;
             case Operation.Dot:
                 if(lastNumber && lastNumber.indexOf(Operation.Dot)===-1){
@@ -83,7 +83,7 @@ export class Calculator {
                     }
                     break
             case Operation.CleanEntry:
-                this.displayValue = ''
+                this.cleaeEntry()
                 break;
             case Operation.Equal :
                 this.operationHistory.push(this.displayValue)
@@ -101,6 +101,9 @@ export class Calculator {
     }
     clearHistory = () => {
         this.operationHistory = []
+    }
+    cleaeEntry = () => {
+        this.displayValue =''
     }
     getHistory = ()=>this.operationHistory
     Run = (command) =>{
