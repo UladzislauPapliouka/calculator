@@ -10,6 +10,7 @@ export class Calculator {
         this.arithmeticUnit = new ArithmeticUnit()
         this.controlUnit = new ControlUnit()
         this.displayValue = ''
+        this.operationHistory =[]
     }
     EnterSymbol =(symbol)=>{
         const lastNumber = getLastNumber(this.displayValue)
@@ -81,6 +82,7 @@ export class Calculator {
                     }
                     break
             case Operation.Equal :
+                this.operationHistory.push(this.displayValue)
                 this.displayValue = getExpressionValue(this.displayValue,this.Run, this.arithmeticUnit)
                 break;
             default :
@@ -93,6 +95,7 @@ export class Calculator {
         }
         return this.displayValue
     }
+    getHistory = ()=>this.operationHistory
     Run = (command) =>{
         this.controlUnit.StoreCommand(command)
         return this.controlUnit.ExecuteCommand()

@@ -10,8 +10,12 @@ import {getLastNumber} from "./utils/utilities";
 
 function App() {
     const [displayValue, setDisplayValue] =useState('')
+    const [history, setHistory] = useState([])
     const  calcRef =useRef()
-    const onEnterSymbol = (symbol)=> setDisplayValue(calcRef.current.EnterSymbol(symbol))
+    const onEnterSymbol = (symbol)=> {
+        setDisplayValue(calcRef.current.EnterSymbol(symbol))
+        setHistory(calcRef.current.getHistory())
+    }
     useEffect(()=>{
         calcRef.current = new calc()
     },[])
@@ -19,7 +23,7 @@ function App() {
     <div className="App">
       <Header/>
         <Routes>
-            <Route path={'/'} element={<Calculator onEnterSymbol={onEnterSymbol} displayValue={displayValue}/>}/>
+            <Route path={'/'} element={<Calculator onEnterSymbol={onEnterSymbol} history={history} displayValue={displayValue}/>}/>
             <Route path={'settings'} element={<Settings/>}/>
         </Routes>
     </div>
