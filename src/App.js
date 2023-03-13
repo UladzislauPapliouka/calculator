@@ -9,7 +9,7 @@ import React, {useEffect, useRef, useState} from "react";
 import {getLastNumber} from "./utils/utilities";
 import {ThemeProvider} from "styled-components";
 import {ThemeContext, themes} from "@constants/Theme";
-import {ErrorBoundary} from "./Components/ErrorBoudaries";
+import {ErrorBoundary} from "@components/ErrorBoudaries";
 import {Error} from "@components/Error";
 
 function App() {
