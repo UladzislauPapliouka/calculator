@@ -24,4 +24,4 @@ Calculator.propTypes = {
     history: PropTypes.any
 }
 
-export default  Calculator
+export {Calculator}

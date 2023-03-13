@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import '@/App.css';
 import {FuncHeader} from "@components/Header";
 import {Navigate, Route, Routes} from "react-router-dom";
-import Calculator from "@pages/Calculator";
+import {FuncCalculator} from "@pages/Calculator";
 import Settings from "@pages/Settings";
 import {Calculator as calc} from '@utils/Calculator'
 import React, {useEffect, useRef, useState} from "react";
@@ -35,7 +35,7 @@ function App() {
                    <FuncHeader/>
                    <Routes>
                        <Route path={'/*'} element={<Navigate to={'/func/home'} replace/>}/>
-                       <Route path={'/home'} element={<Calculator onEnterSymbol={onEnterSymbol} history={history} displayValue={displayValue}/>}/>}/>
+                       <Route path={'/home'} element={<FuncCalculator onEnterSymbol={onEnterSymbol} history={history} displayValue={displayValue}/>}/>}/>
                        <Route path={'/settings'} element={<Settings/>}/>
                    </Routes>
                </div>
