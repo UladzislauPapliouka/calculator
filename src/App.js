@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react";
+import {ThemeProvider} from "styled-components";
+import {ThemeContext, themes} from "@constants/Theme";
+import {ErrorBoundary} from "@components/ErrorBoudaries";
+import {Error} from "@components/Error";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export const Decorator = ({children}) =>{
+    const [theme, setTheme] = useState('dark')
+    const chooseTheme = (theme) => {
+        setTheme(theme)
+    }
+    return(
+        <ErrorBoundary errorFallback={()=><Error/>}>
+            <ThemeContext.Provider value={{theme, toggleTheme: chooseTheme}} >
+                <ThemeProvider theme={themes[theme]}>
+                    {children}
+                </ThemeProvider>
+            </ThemeContext.Provider>
+        </ErrorBoundary>
+    )
 }
-
-export default App;

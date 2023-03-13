@@ -1,13 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import '@assets/fonts/stylesheet.css'
+import {App as FuncApp} from './FuncVersion';
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
+import {App as ClassApp} from "./ClassVersion";
+import {Decorator} from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Decorator>
+          <Routes>
+              <Route path={'/*'} element={<Navigate to={'/func/home'} replace/>}/>
+              <Route path={'/func/*'} element={<FuncApp/>}/>
+              <Route path={'/class/*'} element={<ClassApp/>}/>
+          </Routes>
+      </Decorator>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
