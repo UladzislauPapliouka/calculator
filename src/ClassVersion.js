@@ -31,7 +31,7 @@ class App extends React.Component {
     render() {
         return (
             <ErrorBoundary errorFallback={() => <Error/>}>
-                <ThemeContext.Provider value={{theme:this.state.theme, toggleTheme: this.state.setTheme}}>
+                <ThemeContext.Provider value={{theme:this.state.theme, toggleTheme: this.setTheme}}>
                     <ThemeProvider theme={themes[this.state.theme]}>
                         <div className="App">
                             <ClassHeader/>
