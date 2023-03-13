@@ -3,7 +3,7 @@ import {ControlUnit} from "@utils//ControlUnit";
 import {AddCommand, DivCommand, MulCommand, ReversSingCommand, SubCommand} from "@utils//Commands";
 import {Operation} from "@constants/KeypadConstansts";
 import {getExpressionValue, getLastNumber, isOperationLast} from "@utils/utilities";
-import display from "../Components/Display";
+import display from "../Components/Display/FuncVersion";
 import {isBracketCorrect} from "@utils/validation";
 
 export class Calculator {

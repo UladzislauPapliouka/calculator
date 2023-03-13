@@ -1,5 +1,5 @@
 import React from "react";
-import {StyledDisplay} from "@components/Display/styled";
+import {StyledDisplay} from "./styled";
 import * as PropTypes from "prop-types";
 
 class Display extends React.Component {
@@ -14,4 +14,4 @@ class Display extends React.Component {
 }
 
 Display.propTypes = {value: PropTypes.string}
-export default Display
+export {Display}
