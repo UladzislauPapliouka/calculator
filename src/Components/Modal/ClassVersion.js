@@ -1,9 +1,9 @@
-import React, { useRef} from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import * as PropTypes from "prop-types";
 
 
-export class Modal extends React.Component {
+class Modal extends React.Component {
     constructor(props) {
         super(props);
         this.backRef = React.createRef(null)
@@ -37,4 +37,7 @@ export class Modal extends React.Component {
 Modal.propTypes = {
     children: PropTypes.func,
     closeModal: PropTypes.func
+}
+export {
+    Modal
 }

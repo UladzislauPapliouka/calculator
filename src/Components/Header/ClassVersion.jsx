@@ -2,7 +2,7 @@ import React from "react";
 import {HeaderWrapper, Link, MobileNavigation, MobileNavigationWrapper, NavigationWrapper} from "./styled";
 import {NavLink} from "react-router-dom";
 import {BiMenu} from 'react-icons/bi'
-import {Modal} from "@components/Modal/indexClass";
+import {ClassModal} from "@components/Modal";
 
 class Header extends React.Component {
     constructor(props) {
@@ -23,7 +23,7 @@ class Header extends React.Component {
                 </NavigationWrapper>
                 <MobileNavigation onClick={() => this.setIsModalOpen(true)}><BiMenu/></MobileNavigation>
                 {this.isModalOpen &&
-                    <Modal closeModal={() => this.setIsModalOpen(false)}>
+                    <ClassModal closeModal={() => this.setIsModalOpen(false)}>
                         <MobileNavigationWrapper>
                             <NavLink to={'/func/home'}>{({isActive}) => <Link onClick={() => this.setIsModalOpen(false)}
                                                                         active={isActive}>HomeFC</Link>}</NavLink>
@@ -32,7 +32,7 @@ class Header extends React.Component {
                             <NavLink to={'settings'}>{({isActive}) => <Link onClick={() => this.setIsModalOpen(false)}
                                                                             active={isActive}>Settings</Link>}</NavLink>
                         </MobileNavigationWrapper>
-                    </Modal>}
+                    </ClassModal>}
             </HeaderWrapper>
         )
     }

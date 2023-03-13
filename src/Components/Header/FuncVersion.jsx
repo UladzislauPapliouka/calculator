@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {HeaderWrapper, Link, MobileNavigation, MobileNavigationWrapper, NavigationWrapper} from "./styled";
 import {NavLink} from "react-router-dom";
 import {BiMenu} from 'react-icons/bi'
-import {Modal} from "@components/Modal";
+import {FuncModal} from "@components/Modal";
 
 const Header = () => {
     const [isModalOpen, setIsModalOpen] = useState(false)
@@ -16,13 +16,13 @@ const Header = () => {
             </NavigationWrapper>
             <MobileNavigation onClick={()=>setIsModalOpen(true)}><BiMenu/></MobileNavigation>
             {isModalOpen &&
-                <Modal closeModal={()=>setIsModalOpen(false)}>
+                <FuncModal closeModal={()=>setIsModalOpen(false)}>
                         <MobileNavigationWrapper>
                             <NavLink to={'home'}>{({isActive})=><Link onClick={()=>setIsModalOpen(false)} active={isActive}>HomeFC</Link>}</NavLink>
                             <NavLink to={'/class/home'}>{({isActive})=><Link onClick={()=>setIsModalOpen(false)} active={isActive}>HomeCC</Link>}</NavLink>
                             <NavLink to={'settings'}>{({isActive})=><Link onClick={()=>setIsModalOpen(false)} active={isActive}>Settings</Link>}</NavLink>
                         </MobileNavigationWrapper>
-                </Modal>}
+                </FuncModal>}
         </HeaderWrapper>
     )
 }
