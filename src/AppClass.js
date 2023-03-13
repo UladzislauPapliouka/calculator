@@ -3,7 +3,7 @@ import '@/App.css';
 import {ClassHeader} from "@components/Header";
 import {Navigate, Route, Routes} from "react-router-dom";
 import {ClassCalculator} from "@pages/Calculator";
-import Settings from "@pages/SettingsClass";
+import {ClassSettings} from "@pages/Settings";
 import {Calculator as calc} from '@utils/Calculator'
 import React, {useEffect, useRef, useState} from "react";
 import {getLastNumber} from "./utils/utilities";
@@ -36,7 +36,7 @@ function ClassApp() {
                    <Routes>
                        <Route path={'/*'} element={<Navigate to={'/class/home'} replace/>}/>
                        <Route path={'/home'} element={<ClassCalculator onEnterSymbol={onEnterSymbol} history={history} displayValue={displayValue}/>}/>}/>
-                       <Route path={'/settings'} element={<Settings/>}/>
+                       <Route path={'/settings'} element={<ClassSettings/>}/>
                    </Routes>
                </div>
            </ThemeProvider>

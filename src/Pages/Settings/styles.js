@@ -1,5 +1,3 @@
-import React, {useContext} from "react";
-import {ThemeContext, themes} from "@constants/Theme";
 import styled from "styled-components";
 const StyledSelect = styled.select`
   padding: 28px;
@@ -27,16 +25,7 @@ const StyledPage = styled.div`
     font-size:4em ;
   }
 `
-const Settings = () => {
-    const {theme, toggleTheme} = useContext(ThemeContext)
-    return(
-        <StyledPage>
-            <h1>Settings</h1>
-            <StyledSelect value={theme} onChange={(e)=>toggleTheme(e.target.value)}>
-                {Object.keys(themes).map(theme => <option value={theme}>{theme}</option>) }
-            </StyledSelect>
-        </StyledPage>
-    )
+export {
+    StyledPage,
+    StyledSelect
 }
-
-export default  Settings

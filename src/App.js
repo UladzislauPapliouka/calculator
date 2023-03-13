@@ -3,7 +3,7 @@ import '@/App.css';
 import {FuncHeader} from "@components/Header";
 import {Navigate, Route, Routes} from "react-router-dom";
 import {FuncCalculator} from "@pages/Calculator";
-import Settings from "@pages/Settings";
+import {FuncSettings} from "@pages/Settings";
 import {Calculator as calc} from '@utils/Calculator'
 import React, {useEffect, useRef, useState} from "react";
 import {getLastNumber} from "./utils/utilities";
@@ -36,7 +36,7 @@ function App() {
                    <Routes>
                        <Route path={'/*'} element={<Navigate to={'/func/home'} replace/>}/>
                        <Route path={'/home'} element={<FuncCalculator onEnterSymbol={onEnterSymbol} history={history} displayValue={displayValue}/>}/>}/>
-                       <Route path={'/settings'} element={<Settings/>}/>
+                       <Route path={'/settings'} element={<FuncSettings/>}/>
                    </Routes>
                </div>
            </ThemeProvider>
