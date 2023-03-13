@@ -1,5 +1,5 @@
 import React from "react";
-import {Key, KeypadWrapper} from "@components/Keypad/styled";
+import {Key, KeypadWrapper} from "./styled";
 import {KeyPadTable} from "@constants/KeypadConstansts";
 import * as PropTypes from "prop-types";
 
@@ -17,4 +17,4 @@ class Keypad extends React.Component {
 }
 
 Keypad.propTypes = {onEnterSymbol: PropTypes.func}
-export default Keypad
+export {Keypad}

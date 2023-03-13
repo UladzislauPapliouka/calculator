@@ -1,5 +1,5 @@
 import React from "react";
-import Keypad from "@components/Keypad/indexClass";
+import {ClassKeypad} from "@components/Keypad";
 import {ClassDisplay} from "@components/Display";
 import {ClassHistory} from "@components/History";
 import {StyleCalculator} from "./styled";
@@ -11,7 +11,7 @@ class Calculator extends React.Component {
         return (
             <StyleCalculator>
                 <ClassDisplay value={displayValue}/>
-                <Keypad onEnterSymbol={onEnterSymbol}/>
+                <ClassKeypad onEnterSymbol={onEnterSymbol}/>
                 <ClassHistory history={history}/>
             </StyleCalculator>
         )
