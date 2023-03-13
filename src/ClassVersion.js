@@ -20,7 +20,8 @@ class App extends React.Component {
         this.calcRef = React.createRef()
     }
     onEnterSymbol = (symbol)=> {
-        this.setState(prevState => ({displayValue:this.calcRef.current.EnterSymbol(symbol), history:prevState.history.concat(this.calcRef.current.getHistory())}))
+        const newDisplayValue = this.calcRef.current.EnterSymbol(symbol)
+        this.setState(prevState => ({displayValue:newDisplayValue, history:prevState.history.concat(this.calcRef.current.getHistory())}))
     }
     componentDidMount() {
         this.calcRef.current = new calc()

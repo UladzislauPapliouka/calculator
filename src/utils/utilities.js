@@ -62,7 +62,7 @@ const getExpressionValue = (expression, runCommand, arithmeticUnit) => {
     let workingExpression = expression
     const regularExpression = /\(([^()]*)\)/g;
     let matches = workingExpression.match(regularExpression);
-    while (matches.length) {
+    while (matches?.length) {
         for (const expression of matches) {
             const index = workingExpression.indexOf(expression);
             workingExpression =
