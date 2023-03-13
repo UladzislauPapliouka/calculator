@@ -1,5 +1,5 @@
 import React from "react";
-import {HistoryOperation, StyledH2, StyledHistory} from "@components/History/styled";
+import {HistoryOperation, StyledH2, StyledHistory} from "./styled";
 import * as PropTypes from "prop-types";
 
 class History extends React.Component {
@@ -15,4 +15,4 @@ class History extends React.Component {
 }
 
 History.propTypes = {history: PropTypes.array}
-export default History
+export {History}

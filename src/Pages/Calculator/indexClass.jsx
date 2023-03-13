@@ -1,7 +1,7 @@
 import React from "react";
 import Keypad from "@components/Keypad/indexClass";
 import {ClassDisplay} from "@components/Display";
-import History from "@components/History/indexClass";
+import {ClassHistory} from "@components/History";
 import {StyleCalculator} from "./styled";
 import * as PropTypes from "prop-types";
 
@@ -12,7 +12,7 @@ class Calculator extends React.Component {
             <StyleCalculator>
                 <ClassDisplay value={displayValue}/>
                 <Keypad onEnterSymbol={onEnterSymbol}/>
-                <History history={history}/>
+                <ClassHistory history={history}/>
             </StyleCalculator>
         )
     }
