@@ -1,5 +1,5 @@
-import {Operation} from "../Constants/KeypadConstansts";
-import {AddCommand, SubCommand,MulCommand,DivCommand} from "./Commands";
+import {Operation} from "@constants/KeypadConstansts";
+import {AddCommand, SubCommand,MulCommand,DivCommand} from "@utils/Commands";
 
 const getLastNumber = (value) => {
     for(let i = value.length -1;i>=0;i--){

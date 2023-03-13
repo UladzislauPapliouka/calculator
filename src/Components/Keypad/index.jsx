@@ -1,6 +1,6 @@
 import React from "react";
-import {Key, KeypadWrapper} from "./styled";
-import {KeyPadTable} from "../../Constants/KeypadConstansts";
+import {Key, KeypadWrapper} from "@components/Keypad/styled";
+import {KeyPadTable} from "@constants/KeypadConstansts";
 
 const Keypad = ({onEnterSymbol})=>{
     return(

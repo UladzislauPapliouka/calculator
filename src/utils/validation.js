@@ -1,4 +1,4 @@
-import {Operation} from "../Constants/KeypadConstansts";
+import {Operation} from "@constants/KeypadConstansts";
 
 const isBracketCorrect = (expression) =>{
     const brackets =  expression.split('').filter(symbol => symbol === Operation.LeftBracket || Operation.RightBracket)

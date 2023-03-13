@@ -1,5 +1,5 @@
 import React from "react";
-import {StyledDisplay} from "./styled";
+import {StyledDisplay} from "@components/Display/styled";
 
 const Display = ({value}) =>{
     return (

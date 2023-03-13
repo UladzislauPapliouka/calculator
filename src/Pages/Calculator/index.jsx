@@ -1,7 +1,7 @@
 import React from "react";
-import Keypad from "../../Components/Keypad";
-import Display from "../../Components/Display";
-import History from "../../Components/History";
+import Keypad from "@components/Keypad";
+import Display from "@components/Display";
+import History from "@components/History";
 import {StyleCalculator} from "./styled";
 const Calculator = ({displayValue,onEnterSymbol,history}) => {
     return(

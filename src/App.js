@@ -1,14 +1,14 @@
 import logo from './logo.svg';
-import './App.css';
-import Header from "./Components/Header";
+import '@/App.css';
+import Header from "@components/Header";
 import {Route, Routes} from "react-router-dom";
-import Calculator from "./Pages/Calculator";
-import Settings from "./Pages/Settings";
-import {Calculator as calc} from './utils/Calculator'
+import Calculator from "@pages/Calculator";
+import Settings from "@pages/Settings";
+import {Calculator as calc} from '@utils/Calculator'
 import {useEffect, useRef, useState} from "react";
 import {getLastNumber} from "./utils/utilities";
 import {ThemeProvider} from "styled-components";
-import {ThemeContext, themes} from "./Constants/Theme";
+import {ThemeContext, themes} from "@constants/Theme";
 
 function App() {
     const [displayValue, setDisplayValue] =useState('')

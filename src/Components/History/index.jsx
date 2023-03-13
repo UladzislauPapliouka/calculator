@@ -1,5 +1,5 @@
 import React from "react";
-import {HistoryOperation, StyledH2, StyledHistory} from "./styled";
+import {HistoryOperation, StyledH2, StyledHistory} from "@components/History/styled";
 
 const History = ({history}) =>{
     return(
