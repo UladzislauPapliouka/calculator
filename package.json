@@ -40,6 +40,7 @@
     ]
   },
   "devDependencies": {
-    "craco-alias": "^3.0.1"
+    "craco-alias": "^3.0.1",
+    "cypress": "^12.7.0"
   }
 }
