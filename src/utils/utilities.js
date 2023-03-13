@@ -39,6 +39,12 @@ const operatorToCommand = {
 };
 const calculateAction = (expression,runCommand,arithmeticUnit) => {
     if (!expression) return "0";
+    console.log(expression)
+    console.log(expression.slice(0,2))
+    if (expression.slice(0,2) === "--") {
+        console.log(expression.slice(2))
+        expression = expression.slice(2)
+    }
     for (const priorityLevel of operatorPriority) {
         for (const operator of priorityLevel) {
             const splittedExpression = expression.split(operator);
@@ -62,6 +68,7 @@ const getExpressionValue = (expression, runCommand, arithmeticUnit) => {
     const regExp = /\(([^()]*)\)/g;
     let matches = workingExpression.match(regExp);
     while (matches?.length) {
+        console.log(matches)
         for (const expression of matches) {
             const index = workingExpression.indexOf(expression);
             workingExpression =
