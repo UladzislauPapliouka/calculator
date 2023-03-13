@@ -9,6 +9,7 @@ import {useEffect, useRef, useState} from "react";
 import {getLastNumber} from "./utils/utilities";
 import {ThemeProvider} from "styled-components";
 import {ThemeContext, themes} from "@constants/Theme";
+import {ErrorBoundary} from "./Components/ErrorBoudaries";
 
 function App() {
     const [displayValue, setDisplayValue] =useState('')
@@ -26,17 +27,19 @@ function App() {
         setTheme(theme)
     }
   return (
-    <ThemeContext.Provider value={{theme, toggleTheme: chooseTheme}} >
-        <ThemeProvider theme={themes[theme]}>
-            <div className="App">
-                <Header/>
-                <Routes>
-                    <Route path={'/'} element={<Calculator onEnterSymbol={onEnterSymbol} history={history} displayValue={displayValue}/>}/>}/>
-                    <Route path={'settings'} element={<Settings/>}/>
-                </Routes>
-            </div>
-        </ThemeProvider>
-    </ThemeContext.Provider>
+   <ErrorBoundary>
+       <ThemeContext.Provider value={{theme, toggleTheme: chooseTheme}} >
+           <ThemeProvider theme={themes[theme]}>
+               <div className="App">
+                   <Header/>
+                   <Routes>
+                       <Route path={'/'} element={<Calculator onEnterSymbol={onEnterSymbol} history={history} displayValue={displayValue}/>}/>}/>
+                       <Route path={'settings'} element={<Settings/>}/>
+                   </Routes>
+               </div>
+           </ThemeProvider>
+       </ThemeContext.Provider>
+   </ErrorBoundary>
   );
 }
 
