@@ -1,16 +1,10 @@
 import React from "react";
-import styled from "styled-components";
- const StyledDiv = styled.div`
-    height: 100vh;
-    display: flex;
-   align-items: center;
-   justify-content: center;
-   font-size: 6em;
- `
-export const Error =  ({errorMassage})=>{
+import {StyledErrorContainer} from "./styled";
+
+export const Error =  ()=>{
     return(
-        <StyledDiv>
+        <StyledErrorContainer>
             <span>Oops... Something went wrong...</span>
-        </StyledDiv>
+        </StyledErrorContainer>
     )
 }
