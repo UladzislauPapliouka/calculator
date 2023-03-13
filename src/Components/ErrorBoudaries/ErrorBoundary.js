@@ -13,7 +13,7 @@ class ErrorBoundary extends Component {
 
     render() {
         return this.state.hasError ?
-            this.props.errorFallback
+            this.props.errorFallback()
             : this.props.children
     }
 }

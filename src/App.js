@@ -10,6 +10,7 @@ import {getLastNumber} from "./utils/utilities";
 import {ThemeProvider} from "styled-components";
 import {ThemeContext, themes} from "@constants/Theme";
 import {ErrorBoundary} from "./Components/ErrorBoudaries";
+import {Error} from "@components/Error/Error";
 
 function App() {
     const [displayValue, setDisplayValue] =useState('')
@@ -27,7 +28,7 @@ function App() {
         setTheme(theme)
     }
   return (
-   <ErrorBoundary>
+   <ErrorBoundary errorFallback={()=><Error/>}>
        <ThemeContext.Provider value={{theme, toggleTheme: chooseTheme}} >
            <ThemeProvider theme={themes[theme]}>
                <div className="App">
