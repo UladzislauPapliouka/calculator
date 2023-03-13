@@ -1,6 +1,7 @@
 import React from "react";
 import {Key, KeypadWrapper} from "@components/Keypad/styled";
 import {KeyPadTable} from "@constants/KeypadConstansts";
+import * as PropTypes from "prop-types";
 
 const Keypad = ({onEnterSymbol})=>{
     return(
@@ -9,4 +10,5 @@ const Keypad = ({onEnterSymbol})=>{
         </KeypadWrapper>
     )
 }
+Keypad.propTypes = {onEnterSymbol: PropTypes.func}
 export default Keypad

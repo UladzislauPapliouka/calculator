@@ -1,5 +1,6 @@
 import React from "react";
 import {HistoryOperation, StyledH2, StyledHistory} from "@components/History/styled";
+import * as PropTypes from "prop-types";
 
 const History = ({history}) =>{
     return(
@@ -9,4 +10,6 @@ const History = ({history}) =>{
         </StyledHistory>
     )
 }
+History.propTypes = {history: PropTypes.array}
+
 export default History

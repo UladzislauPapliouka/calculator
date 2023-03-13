@@ -16,5 +16,5 @@ class Keypad extends React.Component {
     }
 }
 
-Keypad.propTypes = {onEnterSymbol: PropTypes.any}
+Keypad.propTypes = {onEnterSymbol: PropTypes.func}
 export default Keypad

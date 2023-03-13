@@ -1,5 +1,6 @@
 import React, { useRef} from "react";
 import ReactDOM from "react-dom";
+import * as PropTypes from "prop-types";
 
 
 
@@ -26,4 +27,8 @@ export  const Modal = ({children, closeModal}) => {
         {children}
     </div>
     return ReactDOM.createPortal(modalContainer,document.getElementById('modalRoot'))
+}
+Modal.propTypes = {
+    children: PropTypes.func,
+    closeModal: PropTypes.func
 }

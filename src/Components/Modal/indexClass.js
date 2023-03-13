@@ -35,6 +35,6 @@ export class Modal extends React.Component {
 }
 
 Modal.propTypes = {
-    children: PropTypes.any,
-    closeModal: PropTypes.any
+    children: PropTypes.func,
+    closeModal: PropTypes.func
 }

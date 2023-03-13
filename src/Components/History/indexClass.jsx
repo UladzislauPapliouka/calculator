@@ -14,5 +14,5 @@ class History extends React.Component {
     }
 }
 
-History.propTypes = {history: PropTypes.any}
+History.propTypes = {history: PropTypes.array}
 export default History
