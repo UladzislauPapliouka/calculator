@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import '@/App.css';
-import Header from "@components/Header";
+import {FuncHeader} from "@components/Header";
 import {Navigate, Route, Routes} from "react-router-dom";
 import Calculator from "@pages/Calculator";
 import Settings from "@pages/Settings";
@@ -32,7 +32,7 @@ function App() {
        <ThemeContext.Provider value={{theme, toggleTheme: chooseTheme}} >
            <ThemeProvider theme={themes[theme]}>
                <div className="App">
-                   <Header/>
+                   <FuncHeader/>
                    <Routes>
                        <Route path={'/*'} element={<Navigate to={'/func/home'} replace/>}/>
                        <Route path={'/home'} element={<Calculator onEnterSymbol={onEnterSymbol} history={history} displayValue={displayValue}/>}/>}/>

@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import '@/App.css';
-import Header from "@components/Header/indexClass";
+import {ClassHeader} from "@components/Header";
 import {Navigate, Route, Routes} from "react-router-dom";
 import Calculator from "@pages/Calculator/indexClass";
 import Settings from "@pages/SettingsClass";
@@ -32,7 +32,7 @@ function ClassApp() {
        <ThemeContext.Provider value={{theme, toggleTheme: chooseTheme}} >
            <ThemeProvider theme={themes[theme]}>
                <div className="App">
-                   <Header/>
+                   <ClassHeader/>
                    <Routes>
                        <Route path={'/*'} element={<Navigate to={'/class/home'} replace/>}/>
                        <Route path={'/home'} element={<Calculator onEnterSymbol={onEnterSymbol} history={history} displayValue={displayValue}/>}/>}/>

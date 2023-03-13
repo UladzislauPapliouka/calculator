@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {HeaderWrapper, Link, MobileNavigation, MobileNavigationWrapper, NavigationWrapper} from "@components/Header/styled";
+import React from "react";
+import {HeaderWrapper, Link, MobileNavigation, MobileNavigationWrapper, NavigationWrapper} from "./styled";
 import {NavLink} from "react-router-dom";
 import {BiMenu} from 'react-icons/bi'
 import {Modal} from "@components/Modal/indexClass";
@@ -38,4 +38,4 @@ class Header extends React.Component {
     }
 }
 
-export default  Header
+export  {Header}
