@@ -12,7 +12,7 @@ export class AddCommand extends  Command {
         this.operand2 = operand2
     }
     execute = () => this.unit.Add(this.operand,this.operand2)
-    unExecute = () =>this.unit.Substruct(this.operand,this.operand2)
+    unExecute = () =>this.unit.Subtruct(this.operand,this.operand2)
 }
 export class SubCommand extends  Command {
     constructor(unit, operand1,operand2) {
@@ -21,7 +21,7 @@ export class SubCommand extends  Command {
         this.operand = operand1
         this.operand2 = operand2
     }
-    execute = () =>this.unit.Substruct(this.operand,this.operand2)
+    execute = () =>this.unit.Subtruct(this.operand,this.operand2)
     unExecute = () => this.unit.Add(this.operand,this.operand2)
 }
 export class MulCommand extends  Command {

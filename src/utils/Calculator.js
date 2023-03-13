@@ -1,9 +1,7 @@
 import {ArithmeticUnit} from "@utils/ArithmeticUnit";
-import {ControlUnit} from "@utils//ControlUnit";
-import {AddCommand, DivCommand, MulCommand, ReversSingCommand, SubCommand} from "@utils//Commands";
+import {ControlUnit} from "@utils/ControlUnit";
 import {Operation} from "@constants/KeypadConstansts";
 import {getExpressionValue, getLastNumber, isOperationLast} from "@utils/utilities";
-import display from "../Components/Display/FuncVersion";
 import {isBracketCorrect} from "@utils/validation";
 
 export class Calculator {
@@ -14,7 +12,7 @@ export class Calculator {
         this.operationHistory =[]
     }
     EnterSymbol =(symbol)=>{
-        if(this.displayValue === "Incorrect expression") this.cleaeEntry()
+        if(this.displayValue === "Incorrect expression") this.clearEntry()
         const lastNumber = getLastNumber(this.displayValue)
         switch (symbol) {
             case Operation.Clear:
@@ -84,7 +82,7 @@ export class Calculator {
                     }
                     break
             case Operation.CleanEntry:
-                this.cleaeEntry()
+                this.clearEntry()
                 break;
             case Operation.Equal :
                 if(isBracketCorrect(this.displayValue)){
@@ -107,32 +105,17 @@ export class Calculator {
     clearHistory = () => {
         this.operationHistory = []
     }
-    cleaeEntry = () => {
+    clearEntry = () => {
         this.displayValue =''
     }
     clearAll = () => {
         this.clearHistory()
-        this.cleaeEntry()
+        this.clearEntry()
     }
     getHistory = ()=>this.operationHistory
     Run = (command) =>{
         this.controlUnit.StoreCommand(command)
         return this.controlUnit.ExecuteCommand()
-    }
-    Add = (operand) => {
-        return this.Run(new AddCommand(this.arithmeticUnit, operand))
-    }
-    Sub = (operand) => {
-        return this.Run(new SubCommand(this.arithmeticUnit, operand))
-    }
-    Mul = (operand) => {
-        return this.Run(new MulCommand(this.arithmeticUnit, operand))
-    }
-    Div = (operand) => {
-        return this.Run(new DivCommand(this.arithmeticUnit, operand))
-    }
-    Rev = (operand) => {
-        return this.Run(new ReversSingCommand(this.arithmeticUnit))
     }
     Undo = (level) => {
         this.controlUnit.Undo(level)

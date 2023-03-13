@@ -20,12 +20,11 @@ const isOperationLast =(value)=>{
         || symbol === Operation.Subtract
         || symbol ===Operation.Myltiply
         || symbol === Operation.Devide
-        || symbol ===Operation.LeftBracket
-        || symbol ===Operation.RightBracket
 }
 
-const searchLastDigit = /-?\d*\.?\d*$/g;
-const searchFirstDigit = /^-?\d*\.?\d*/g;
+const getLastDigit = /-?\d*\.?\d*$/g;
+const getFirstDigit = /^-?\d*\.?\d*/g;
+
 const operatorPriority = [
     [ Operation.Devide, Operation.Myltiply],
     [Operation.Add, Operation.Subtract],
@@ -37,26 +36,22 @@ const operatorToCommand = {
     [Operation.Myltiply]: MulCommand,
     [Operation.Devide]: DivCommand,
 };
+
 const calculateAction = (expression,runCommand,arithmeticUnit) => {
     if (!expression) return "0";
-    console.log(expression)
-    console.log(expression.slice(0,2))
-    if (expression.slice(0,2) === "--") {
-        console.log(expression.slice(2))
-        expression = expression.slice(2)
-    }
+    if (expression.slice(0,2) === "--") expression = expression.slice(2)
     for (const priorityLevel of operatorPriority) {
         for (const operator of priorityLevel) {
             const splittedExpression = expression.split(operator);
             if (splittedExpression.length > 1) {
                 expression = splittedExpression.reduce((acc, element) => {
-                    const numA = acc.match(searchLastDigit)[0];
-                    const numB = element.match(searchFirstDigit)[0];
-                    const operationResult = runCommand(new operatorToCommand[operator](arithmeticUnit,+numA, +numB));
+                    const operand1 = acc.match(getLastDigit)[0];
+                    const operand2 = element.match(getFirstDigit)[0];
+                    const operationResult = runCommand(new operatorToCommand[operator](arithmeticUnit,+operand1, +operand2));
                     if (!Number.isFinite(operationResult) && operator === Operation.Divide) {
                         throw new Error("Devision by zero");
                     }
-                    return acc.slice(0, -numA.length) + operationResult + element.slice(numB.length);
+                    return acc.slice(0, -operand1.length) + operationResult + element.slice(operand2.length);
                 });
             }
         }
@@ -65,10 +60,9 @@ const calculateAction = (expression,runCommand,arithmeticUnit) => {
 };
 const getExpressionValue = (expression, runCommand, arithmeticUnit) => {
     let workingExpression = expression
-    const regExp = /\(([^()]*)\)/g;
-    let matches = workingExpression.match(regExp);
-    while (matches?.length) {
-        console.log(matches)
+    const regularExpression = /\(([^()]*)\)/g;
+    let matches = workingExpression.match(regularExpression);
+    while (matches.length) {
         for (const expression of matches) {
             const index = workingExpression.indexOf(expression);
             workingExpression =
@@ -76,7 +70,7 @@ const getExpressionValue = (expression, runCommand, arithmeticUnit) => {
                 calculateAction(expression.slice(1, -1),runCommand,arithmeticUnit) +
                 workingExpression.slice(index + expression.length);
          }
-        matches = workingExpression.match(regExp);
+        matches = workingExpression.match(regularExpression);
      }
      return calculateAction(workingExpression,runCommand,arithmeticUnit);
 };
