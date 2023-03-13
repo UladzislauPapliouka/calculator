@@ -22,7 +22,7 @@ class Header extends React.Component {
                     <NavLink to={'settings'}>{({isActive})=><Link active={isActive}>Settings</Link>}</NavLink>
                 </NavigationWrapper>
                 <MobileNavigation onClick={() => this.setIsModalOpen(true)}><BiMenu/></MobileNavigation>
-                {this.isModalOpen &&
+                {this.state.isModalOpen &&
                     <ClassModal closeModal={() => this.setIsModalOpen(false)}>
                         <MobileNavigationWrapper>
                             <NavLink to={'/func/home'}>{({isActive}) => <Link onClick={() => this.setIsModalOpen(false)}

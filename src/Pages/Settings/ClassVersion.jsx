@@ -10,7 +10,7 @@ class Settings extends React.Component {
             <StyledPage>
                 <h1>Settings</h1>
                 <StyledSelect value={theme} onChange={(e)=>toggleTheme(e.target.value)}>
-                    {Object.keys(themes).map(theme => <option value={theme}>{theme}</option>) }
+                    {Object.keys(themes).map(theme => <option key={theme} value={theme}>{theme}</option>) }
                 </StyledSelect>
             </StyledPage>
         )

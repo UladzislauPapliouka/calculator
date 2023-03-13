@@ -71,9 +71,9 @@ export const  MobileNavigationWrapper =styled.div`
   color: black;
   padding: 16px;
   border-radius: 8px;
-  background: aliceblue;
+  background-color: ${props => props.theme.keysBackground};
   & div:before{
-    background-color: black;
+    background-color: ${props => props.theme.mainColor};
   }
   @media screen and (max-width:768px ){
     display: flex;
