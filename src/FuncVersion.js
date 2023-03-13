@@ -4,10 +4,6 @@ import {FuncCalculator} from "@pages/Calculator";
 import {FuncSettings} from "@pages/Settings";
 import {Calculator as calc} from '@utils/Calculator'
 import React, {useEffect, useRef, useState} from "react";
-import {ThemeProvider} from "styled-components";
-import {ThemeContext, themes} from "@constants/Theme";
-import {ErrorBoundary} from "@components/ErrorBoudaries";
-import {Error} from "@components/Error";
 
 function App() {
     const [displayValue, setDisplayValue] =useState('')
@@ -20,14 +16,8 @@ function App() {
     useEffect(()=>{
         calcRef.current = new calc()
     },[])
-    const [theme, setTheme] = useState('dark')
-    const chooseTheme = (theme) => {
-        setTheme(theme)
-    }
+
   return (
-   <ErrorBoundary errorFallback={()=><Error/>}>
-       <ThemeContext.Provider value={{theme, toggleTheme: chooseTheme}} >
-           <ThemeProvider theme={themes[theme]}>
                <div className="App">
                    <FuncHeader/>
                    <Routes>
@@ -36,9 +26,6 @@ function App() {
                        <Route path={'/settings'} element={<FuncSettings/>}/>
                    </Routes>
                </div>
-           </ThemeProvider>
-       </ThemeContext.Provider>
-   </ErrorBoundary>
   );
 }
 

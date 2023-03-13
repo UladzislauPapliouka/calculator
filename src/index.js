@@ -6,16 +6,19 @@ import {App as FuncApp} from './FuncVersion';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import {App as ClassApp} from "./ClassVersion";
+import {Decorator} from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-       <Routes>
-           <Route path={'/*'} element={<Navigate to={'/func/home'} replace/>}/>
-           <Route path={'/func/*'} element={<FuncApp/>}/>
-           <Route path={'/class/*'} element={<ClassApp/>}/>
-       </Routes>
+      <Decorator>
+          <Routes>
+              <Route path={'/*'} element={<Navigate to={'/func/home'} replace/>}/>
+              <Route path={'/func/*'} element={<FuncApp/>}/>
+              <Route path={'/class/*'} element={<ClassApp/>}/>
+          </Routes>
+      </Decorator>
     </BrowserRouter>
   </React.StrictMode>
 );
