@@ -4,13 +4,18 @@ import '@/index.css';
 import '@assets/fonts/stylesheet.css'
 import App from '@/App';
 import reportWebVitals from '@/reportWebVitals';
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
+import ClassApp from "@/AppClass";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-       <App />
+       <Routes>
+           <Route path={'/*'} element={<Navigate to={'/func/home'} replace/>}/>
+           <Route path={'/func/*'} element={<App/>}/>
+           <Route path={'/class/*'} element={<ClassApp/>}/>
+       </Routes>
     </BrowserRouter>
   </React.StrictMode>
 );
