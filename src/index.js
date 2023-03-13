@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import '@/index.css';
+import './index.css';
 import '@assets/fonts/stylesheet.css'
-import App from '@/App';
-import reportWebVitals from '@/reportWebVitals';
+import {App as FuncApp} from './FuncVersion';
+import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
-import ClassApp from "@/AppClass";
+import {App as ClassApp} from "./ClassVersion";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,7 +13,7 @@ root.render(
     <BrowserRouter>
        <Routes>
            <Route path={'/*'} element={<Navigate to={'/func/home'} replace/>}/>
-           <Route path={'/func/*'} element={<App/>}/>
+           <Route path={'/func/*'} element={<FuncApp/>}/>
            <Route path={'/class/*'} element={<ClassApp/>}/>
        </Routes>
     </BrowserRouter>

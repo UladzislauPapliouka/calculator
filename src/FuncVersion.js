@@ -1,21 +1,18 @@
-import logo from './logo.svg';
-import '@/App.css';
-import {ClassHeader} from "@components/Header";
+import {FuncHeader} from "@components/Header";
 import {Navigate, Route, Routes} from "react-router-dom";
-import {ClassCalculator} from "@pages/Calculator";
-import {ClassSettings} from "@pages/Settings";
+import {FuncCalculator} from "@pages/Calculator";
+import {FuncSettings} from "@pages/Settings";
 import {Calculator as calc} from '@utils/Calculator'
 import React, {useEffect, useRef, useState} from "react";
-import {getLastNumber} from "./utils/utilities";
 import {ThemeProvider} from "styled-components";
 import {ThemeContext, themes} from "@constants/Theme";
 import {ErrorBoundary} from "@components/ErrorBoudaries";
 import {Error} from "@components/Error";
 
-function ClassApp() {
+function App() {
     const [displayValue, setDisplayValue] =useState('')
     const [history, setHistory] = useState([])
-    const  calcRef =useRef()
+    const  calcRef = useRef()
     const onEnterSymbol = (symbol)=> {
         setDisplayValue(calcRef.current.EnterSymbol(symbol))
         setHistory(calcRef.current.getHistory())
@@ -32,11 +29,11 @@ function ClassApp() {
        <ThemeContext.Provider value={{theme, toggleTheme: chooseTheme}} >
            <ThemeProvider theme={themes[theme]}>
                <div className="App">
-                   <ClassHeader/>
+                   <FuncHeader/>
                    <Routes>
-                       <Route path={'/*'} element={<Navigate to={'/class/home'} replace/>}/>
-                       <Route path={'/home'} element={<ClassCalculator onEnterSymbol={onEnterSymbol} history={history} displayValue={displayValue}/>}/>}/>
-                       <Route path={'/settings'} element={<ClassSettings/>}/>
+                       <Route path={'/*'} element={<Navigate to={'/func/home'} replace/>}/>
+                       <Route path={'/home'} element={<FuncCalculator onEnterSymbol={onEnterSymbol} history={history} displayValue={displayValue}/>}/>}/>
+                       <Route path={'/settings'} element={<FuncSettings/>}/>
                    </Routes>
                </div>
            </ThemeProvider>
@@ -45,4 +42,4 @@ function ClassApp() {
   );
 }
 
-export default ClassApp;
+export {App};

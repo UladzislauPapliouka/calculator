@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-family: Helvetica Neue, Regular;
+  font-size: 10px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
