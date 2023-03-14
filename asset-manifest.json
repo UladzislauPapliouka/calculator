@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/calculator/static/css/main.f9e22120.css",
+    "main.js": "/calculator/static/js/main.ceb36183.js",
+    "static/js/787.a174f9e5.chunk.js": "/calculator/static/js/787.a174f9e5.chunk.js",
+    "static/media/HelveticaNeueBoldCondensed.ttf": "/calculator/static/media/HelveticaNeueBoldCondensed.7ff1b25d7041efe11b45.ttf",
+    "static/media/HelveticaNeueBlackCondensed.ttf": "/calculator/static/media/HelveticaNeueBlackCondensed.2e8b367db51828f58e83.ttf",
+    "static/media/HelveticaNeueCyr-LightItalic.ttf": "/calculator/static/media/HelveticaNeueCyr-LightItalic.8d4fa63ad998071c6875.ttf",
+    "static/media/HelveticaNeueCyr-ThinItalic.ttf": "/calculator/static/media/HelveticaNeueCyr-ThinItalic.c6a8d318290ef10a2f2f.ttf",
+    "static/media/HelveticaNeueCyr-UltraLightItalic.ttf": "/calculator/static/media/HelveticaNeueCyr-UltraLightItalic.62aca995ea725c98d8e6.ttf",
+    "static/media/HelveticaNeueCyr-BlackItalic.ttf": "/calculator/static/media/HelveticaNeueCyr-BlackItalic.9ee38d5c96737f0ceb9c.ttf",
+    "static/media/HelveticaNeueCyr-MediumItalic.ttf": "/calculator/static/media/HelveticaNeueCyr-MediumItalic.1c95d10a7a1e75a46dcb.ttf",
+    "static/media/HelveticaNeueCyr-Italic.ttf": "/calculator/static/media/HelveticaNeueCyr-Italic.9ecfbd50a76530b5f7b5.ttf",
+    "static/media/HelveticaNeueCyr-HeavyItalic.ttf": "/calculator/static/media/HelveticaNeueCyr-HeavyItalic.03e1ffd271ddbc1f3a19.ttf",
+    "static/media/HelveticaNeueCyr-BoldItalic.ttf": "/calculator/static/media/HelveticaNeueCyr-BoldItalic.8aa92c3c0ccddf8cec47.ttf",
+    "static/media/HelveticaNeueCyr-Thin.ttf": "/calculator/static/media/HelveticaNeueCyr-Thin.2df5e55fd0d45e98939d.ttf",
+    "static/media/HelveticaNeueCyr-UltraLight.ttf": "/calculator/static/media/HelveticaNeueCyr-UltraLight.f0b5bdde1b074e7d9110.ttf",
+    "static/media/HelveticaNeueCyr-Light.ttf": "/calculator/static/media/HelveticaNeueCyr-Light.371670cc0c4aa701241a.ttf",
+    "static/media/HelveticaNeueCyr-Black.ttf": "/calculator/static/media/HelveticaNeueCyr-Black.284a83024e2df8c91f32.ttf",
+    "static/media/HelveticaNeueCyr-Roman.ttf": "/calculator/static/media/HelveticaNeueCyr-Roman.0ca719c710b1fbd7e02f.ttf",
+    "static/media/HelveticaNeueCyr-Medium.ttf": "/calculator/static/media/HelveticaNeueCyr-Medium.bfdbae3c80f7aa49c618.ttf",
+    "static/media/HelveticaNeueCyr-Bold.ttf": "/calculator/static/media/HelveticaNeueCyr-Bold.613e930355ab0b59fc48.ttf",
+    "static/media/HelveticaNeueCyr-Heavy.ttf": "/calculator/static/media/HelveticaNeueCyr-Heavy.c23733367c232fdea6f4.ttf",
+    "index.html": "/calculator/index.html",
+    "main.f9e22120.css.map": "/calculator/static/css/main.f9e22120.css.map",
+    "main.ceb36183.js.map": "/calculator/static/js/main.ceb36183.js.map",
+    "787.a174f9e5.chunk.js.map": "/calculator/static/js/787.a174f9e5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f9e22120.css",
+    "static/js/main.ceb36183.js"
+  ]
+}
