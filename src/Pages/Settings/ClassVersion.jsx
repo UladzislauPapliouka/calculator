@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { ThemeContext, themes } from '@constants/Theme';
 
 import { StyledPage, StyledSelect } from './styles';
 
-class Settings extends React.Component {
+class Settings extends PureComponent {
   render() {
     const { theme: themeName, toggleTheme } = this.context;
     return (

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import * as PropTypes from 'prop-types';
 
 import { HistoryOperation, StyledH2, StyledHistory } from './styled';
 
-class History extends React.Component {
+class History extends PureComponent {
   render() {
     const { history } = this.props;
     return (

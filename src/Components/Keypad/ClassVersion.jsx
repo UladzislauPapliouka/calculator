@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { KeyPadTable } from '@constants/KeypadConstansts';
 import * as PropTypes from 'prop-types';
 
 import { Key, KeypadWrapper } from './styled';
 
-class Keypad extends React.Component {
+class Keypad extends PureComponent {
   render() {
     const { onEnterSymbol } = this.props;
     return (

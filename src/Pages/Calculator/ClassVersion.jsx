@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { ClassDisplay } from '@components/Display';
 import { ClassHistory } from '@components/History';
 import { ClassKeypad } from '@components/Keypad';
@@ -6,7 +6,7 @@ import * as PropTypes from 'prop-types';
 
 import StyleCalculator from './styled';
 
-class Calculator extends React.Component {
+class Calculator extends PureComponent {
   render() {
     const { displayValue, onEnterSymbol, history } = this.props;
     return (

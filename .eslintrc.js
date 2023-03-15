@@ -25,7 +25,6 @@ module.exports = {
     'prettier/prettier': 'error',
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
-    'react/prefer-stateless-function': 'off',
     'default-param-last': 'off',
     'react/require-default-props': 'off',
     'import/no-extraneous-dependencies': 'off',
