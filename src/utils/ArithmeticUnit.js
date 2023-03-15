@@ -1,7 +1,7 @@
 export default class ArithmeticUnit {
   Add = (value1, value2) => (value1 + value2).toFixed(3);
 
-  Subtruct = (value1, value2) => (value1 - value2).toFixed(3);
+  Subtract = (value1, value2) => (value1 - value2).toFixed(3);
 
   Multiply = (value1, value2) => (value1 * value2).toFixed(3);
 
