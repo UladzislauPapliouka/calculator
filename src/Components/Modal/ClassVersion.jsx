@@ -40,6 +40,10 @@ class Modal extends React.Component {
   }
 }
 
+Modal.defaultProps = {
+  children: () => {},
+  closeModal: () => {},
+};
 Modal.propTypes = {
   children: PropTypes.func,
   closeModal: PropTypes.func,

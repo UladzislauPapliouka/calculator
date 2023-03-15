@@ -25,6 +25,6 @@ class Keypad extends PureComponent {
     );
   }
 }
-
+Keypad.defaultProps = { onEnterSymbol: () => {} };
 Keypad.propTypes = { onEnterSymbol: PropTypes.func };
 export default Keypad;

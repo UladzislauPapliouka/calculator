@@ -13,6 +13,11 @@ const Calculator = ({ displayValue, onEnterSymbol, history }) => (
     <FuncHistory history={history} />
   </StyleCalculator>
 );
+Calculator.defaultProps = {
+  displayValue: '',
+  onEnterSymbol: () => {},
+  history: '',
+};
 Calculator.propTypes = {
   displayValue: PropTypes.string,
   onEnterSymbol: PropTypes.func,

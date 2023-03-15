@@ -22,6 +22,9 @@ const Decorator = ({ children }) => {
     </ErrorBoundary>
   );
 };
+Decorator.defaultProps = {
+  children: () => {},
+};
 Decorator.propTypes = {
   children: PropTypes.func,
 };

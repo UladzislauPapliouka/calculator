@@ -9,6 +9,6 @@ class Display extends PureComponent {
     return <StyledDisplay>{value}</StyledDisplay>;
   }
 }
-
+Display.defaultProps = { value: '' };
 Display.propTypes = { value: PropTypes.string };
 export default Display;

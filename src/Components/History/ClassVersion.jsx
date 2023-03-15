@@ -16,6 +16,6 @@ class History extends PureComponent {
     );
   }
 }
-
+History.defaultProps = { history: [] };
 History.propTypes = { history: PropTypes.arrayOf(PropTypes.string) };
 export default History;

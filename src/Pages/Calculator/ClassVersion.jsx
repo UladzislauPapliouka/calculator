@@ -19,6 +19,11 @@ class Calculator extends PureComponent {
   }
 }
 
+Calculator.defaultProps = {
+  displayValue: '',
+  onEnterSymbol: () => {},
+  history: '',
+};
 Calculator.propTypes = {
   displayValue: PropTypes.string,
   onEnterSymbol: PropTypes.func,

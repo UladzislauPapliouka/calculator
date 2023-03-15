@@ -24,6 +24,7 @@ class ErrorBoundary extends Component {
 }
 ErrorBoundary.defaultProps = {
   errorFallback: () => {},
+  children: () => {},
 };
 ErrorBoundary.propTypes = {
   errorFallback: PropTypes.func,

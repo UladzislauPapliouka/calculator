@@ -11,6 +11,7 @@ const History = ({ history }) => (
     ))}
   </StyledHistory>
 );
+History.defaultProps = { history: [] };
 History.propTypes = { history: PropTypes.arrayOf(PropTypes.string) };
 
 export default History;
