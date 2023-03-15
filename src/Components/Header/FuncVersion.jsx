@@ -18,13 +18,25 @@ const Header = () => {
       <span>Calculator App</span>
       <NavigationWrapper>
         <NavLink to="home">
-          {({ isActive }) => <Link active={isActive}>HomeFC</Link>}
+          {({ isActive }) => (
+            <Link href="replace" active={isActive}>
+              HomeFC
+            </Link>
+          )}
         </NavLink>
         <NavLink to="/class/home">
-          {({ isActive }) => <Link active={isActive}>HomeCC</Link>}
+          {({ isActive }) => (
+            <Link href="replace" active={isActive}>
+              HomeCC
+            </Link>
+          )}
         </NavLink>
         <NavLink to="settings">
-          {({ isActive }) => <Link active={isActive}>Settings</Link>}
+          {({ isActive }) => (
+            <Link href="replace" active={isActive}>
+              Settings
+            </Link>
+          )}
         </NavLink>
       </NavigationWrapper>
       <MobileNavigation onClick={() => setIsModalOpen(true)}>
@@ -35,21 +47,33 @@ const Header = () => {
           <MobileNavigationWrapper>
             <NavLink to="home">
               {({ isActive }) => (
-                <Link onClick={() => setIsModalOpen(false)} active={isActive}>
+                <Link
+                  href="replace"
+                  onClick={() => setIsModalOpen(false)}
+                  active={isActive}
+                >
                   HomeFC
                 </Link>
               )}
             </NavLink>
             <NavLink to="/class/home">
               {({ isActive }) => (
-                <Link onClick={() => setIsModalOpen(false)} active={isActive}>
+                <Link
+                  href="replace"
+                  onClick={() => setIsModalOpen(false)}
+                  active={isActive}
+                >
                   HomeCC
                 </Link>
               )}
             </NavLink>
             <NavLink to="settings">
               {({ isActive }) => (
-                <Link onClick={() => setIsModalOpen(false)} active={isActive}>
+                <Link
+                  href="replace"
+                  onClick={() => setIsModalOpen(false)}
+                  active={isActive}
+                >
                   Settings
                 </Link>
               )}

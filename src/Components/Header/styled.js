@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const Link = styled.div`
+export const Link = styled.a`
   ${(props) => {
     switch (props.active) {
       case true:
