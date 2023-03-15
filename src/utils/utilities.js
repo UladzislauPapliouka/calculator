@@ -1,10 +1,10 @@
-import { Operation } from '@constants/KeypadConstansts';
+import { Operation } from '@constants/keypadConstansts';
 import {
   AddCommand,
   DivCommand,
   MulCommand,
   SubCommand,
-} from '@utils/Commands';
+} from '@utils/commands';
 
 const getLastNumber = (value) => {
   for (let i = value.length - 1; i >= 0; i -= 1) {

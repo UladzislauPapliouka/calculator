@@ -3,7 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { FuncHeader } from '@components/Header';
 import { FuncCalculator } from '@pages/Calculator';
 import { FuncSettings } from '@pages/Settings';
-import Calc from '@utils/Calculator';
+import Calc from '@utils/calculator';
 
 const App = () => {
   const [displayValue, setDisplayValue] = useState('');

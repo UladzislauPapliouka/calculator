@@ -1,4 +1,4 @@
-import { Operation } from '@constants/KeypadConstansts';
+import { Operation } from '@constants/keypadConstansts';
 
 const isBracketCorrect = (expression) => {
   const brackets = expression

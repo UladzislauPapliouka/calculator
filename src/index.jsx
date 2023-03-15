@@ -2,9 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
+import { ClassVersion, FuncApp } from './components/App';
 import Decorator from './App';
-import ClassVersion from './ClassVersion';
-import FuncApp from './FuncVersion';
 import reportWebVitals from './reportWebVitals';
 
 import './index.css';

@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import Error from '@components/Error';
 import ErrorBoundary from '@components/ErrorBoudaries';
-import { ThemeContext, themes } from '@constants/Theme';
+import { ThemeContext, themes } from '@constants/theme';
 import * as PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 

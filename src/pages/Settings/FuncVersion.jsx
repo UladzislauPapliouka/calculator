@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ThemeContext, themes } from '@constants/Theme';
+import { ThemeContext, themes } from '@constants/theme';
 
 import { StyledPage, StyledSelect } from './styles';
 

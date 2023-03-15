@@ -1,6 +1,6 @@
-import { Operation } from '@constants/KeypadConstansts';
-import ArithmeticUnit from '@utils/ArithmeticUnit';
-import ControlUnit from '@utils/ControlUnit';
+import { Operation } from '@constants/keypadConstansts';
+import ArithmeticUnit from '@utils/arithmeticUnit';
+import ControlUnit from '@utils/controlUnit';
 import {
   getExpressionValue,
   getLastNumber,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { KeyPadTable } from '@constants/KeypadConstansts';
+import { KeyPadTable } from '@constants/keypadConstansts';
 import * as PropTypes from 'prop-types';
 
 import { Key, KeypadWrapper } from './styled';
