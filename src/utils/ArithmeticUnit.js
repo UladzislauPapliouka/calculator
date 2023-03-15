@@ -1,27 +1,21 @@
-export class ArithmeticUnit {
-    constructor() {}
-    Add = (value1, value2)=>{
-        return (value1 + value2).toFixed(3)
+export default class ArithmeticUnit {
+  Add = (value1, value2) => (value1 + value2).toFixed(3);
+
+  Subtruct = (value1, value2) => (value1 - value2).toFixed(3);
+
+  Multiply = (value1, value2) => (value1 * value2).toFixed(3);
+
+  Divide = (value1, value2) => {
+    try {
+      const result = (value1 / value2).toFixed(3);
+      if (result === 'Infinity') {
+        throw new Error('Division by zero...');
+      }
+      return result;
+    } catch (e) {
+      return e;
     }
-    Subtruct = (value1, value2)=>{
-        return (value1 - value2).toFixed(3)
-    }
-    Multiply = (value1, value2) => {
-        return (value1 * value2).toFixed(3)
-    }
-    Divide = (value1, value2) => {
-        try{
-            const result = (value1 / value2).toFixed(3)
-            console.log(result)
-            if(result === 'Infinity') {
-                throw new Error("Division by zero...")
-            }
-            return result
-        }catch (e){
-            return e
-        }
-    }
-    ReversSign = (value) => {
-        return -value.toFixed(3)
-    }
+  };
+
+  ReversSign = (value) => -value.toFixed(3);
 }

@@ -1,6 +1,4 @@
-import {Display as FuncDisplay }  from './FuncVersion'
-import {Display as ClassDisplay }  from './ClassVersion'
-export {
-    FuncDisplay,
-    ClassDisplay
-}
+import ClassDisplay from './ClassVersion';
+import FuncDisplay from './FuncVersion';
+
+export { ClassDisplay, FuncDisplay };

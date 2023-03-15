@@ -1,15 +1,16 @@
-import React from "react";
-import {HistoryOperation, StyledH2, StyledHistory} from "./styled";
-import * as PropTypes from "prop-types";
+import React from 'react';
+import * as PropTypes from 'prop-types';
 
-const History = ({history}) =>{
-    return(
-        <StyledHistory>
-            <StyledH2>History</StyledH2>
-                {history.map((his,i)=> <HistoryOperation key={i}>{his}</HistoryOperation>)}
-        </StyledHistory>
-    )
-}
-History.propTypes = {history: PropTypes.array}
+import { HistoryOperation, StyledH2, StyledHistory } from './styled';
 
-export {History}
+const History = ({ history }) => (
+  <StyledHistory>
+    <StyledH2>History</StyledH2>
+    {history.map((his) => (
+      <HistoryOperation key={his}>{his}</HistoryOperation>
+    ))}
+  </StyledHistory>
+);
+History.propTypes = { history: PropTypes.arrayOf(PropTypes.string) };
+
+export default History;

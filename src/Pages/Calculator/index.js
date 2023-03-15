@@ -1,6 +1,4 @@
-import {Calculator as FuncCalculator} from "./FuncVersion";
-import {Calculator as ClassCalculator} from "./ClassVersion";
-export {
-    FuncCalculator,
-    ClassCalculator
-}
+import ClassCalculator from './ClassVersion';
+import FuncCalculator from './FuncVersion';
+
+export { ClassCalculator, FuncCalculator };

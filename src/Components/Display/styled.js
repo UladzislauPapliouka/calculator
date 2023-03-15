@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledDisplay = styled.span`
   display: inline-block;
@@ -8,12 +8,10 @@ const StyledDisplay = styled.span`
   width: 100%;
   padding: 30px;
   grid-area: disp;
-  color: ${props => props.theme.mainColor};
-  @media screen and (max-width:1000px ){
+  color: ${(props) => props.theme.mainColor};
+  @media screen and (max-width: 1000px) {
     padding: 16px;
   }
-`
+`;
 
-export {
-    StyledDisplay
-}
+export default StyledDisplay;

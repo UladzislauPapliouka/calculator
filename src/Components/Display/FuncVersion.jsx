@@ -1,17 +1,10 @@
-import React from "react";
-import {StyledDisplay} from "./styled";
+import React from 'react';
 import PropTypes from 'prop-types';
 
-const Display = ({value}) =>{
-    return (
-        <StyledDisplay>
-            {value}
-        </StyledDisplay>
-    )
-}
+import StyledDisplay from './styled';
+
+const Display = ({ value }) => <StyledDisplay>{value}</StyledDisplay>;
 Display.propTypes = {
-    value: PropTypes.string
-}
-export{
-    Display
-}
+  value: PropTypes.string,
+};
+export default Display;

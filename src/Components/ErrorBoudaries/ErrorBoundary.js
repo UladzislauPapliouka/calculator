@@ -1,29 +1,31 @@
-import React, {Component} from "react";
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class ErrorBoundary extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            hasError:false
-        }
-    }
-    componentDidCatch(error, errorInfo) {
-        this.setState({hasError:true})
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      hasError: false,
+      error: null,
+      errorInfo: null,
+    };
+  }
 
-    render() {
-        return this.state.hasError ?
-            this.props.errorFallback()
-            : this.props.children
-    }
+  componentDidCatch(error, errorInfo) {
+    this.setState({ hasError: true, error, errorInfo });
+  }
+
+  render() {
+    const { state, props } = this;
+    return state.hasError && state.error && state.errorInfo
+      ? props.errorFallback()
+      : props.children;
+  }
 }
 ErrorBoundary.defaultProps = {
-    errorFallback: ()=>{}
-}
-ErrorBoundary.propTypes ={
-    errorFallback: PropTypes.func
-}
-export {
-    ErrorBoundary
-}
+  errorFallback: () => {},
+};
+ErrorBoundary.propTypes = {
+  errorFallback: PropTypes.func,
+};
+export default ErrorBoundary;

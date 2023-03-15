@@ -1,7 +1,4 @@
-import {Settings as FuncSettings} from "./FuncVersion";
-import {Settings as ClassSettings} from "./ClassVersion";
+import ClassSettings from './ClassVersion';
+import FuncSettings from './FuncVersion';
 
-export  {
-    FuncSettings,
-    ClassSettings
-}
+export { ClassSettings, FuncSettings };

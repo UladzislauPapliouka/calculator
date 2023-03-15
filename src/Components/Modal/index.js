@@ -1,6 +1,4 @@
-import {Modal as FuncModal} from "./FuncVersion";
-import {Modal as ClassModal} from "./ClassVersion";
-export {
-    FuncModal,
-    ClassModal
-}
+import ClassModal from './ClassVersion';
+import FuncModal from './FuncVersion';
+
+export { ClassModal, FuncModal };

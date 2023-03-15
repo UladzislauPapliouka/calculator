@@ -1,6 +1,4 @@
-import {History as FuncHistory} from "./FuncVersion";
-import {History as ClassHistory} from "./ClassVersion";
-export {
-    FuncHistory,
-    ClassHistory
-}
+import ClassHistory from './ClassVersion';
+import FuncHistory from './FuncVersion';
+
+export { ClassHistory, FuncHistory };
