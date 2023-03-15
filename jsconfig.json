@@ -4,9 +4,9 @@
     "paths": {
       "@": ["."],
       "@assets": ["./assets"],
-      "@components": ["./Components"],
-      "@constants": ["./Constants"],
-      "@pages": ["./Pages"],
+      "@components": ["./components"],
+      "@constants": ["./constants"],
+      "@pages": ["./pages"],
       "@utils": ["./utils"]
     }
   }
