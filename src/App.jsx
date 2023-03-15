@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import Error from '@components/Error';
 import ErrorBoundary from '@components/ErrorBoudaries';
 import { ThemeContext, themes } from '@constants/Theme';
+import * as PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 
 const Decorator = ({ children }) => {
@@ -20,5 +21,8 @@ const Decorator = ({ children }) => {
       </ThemeContext.Provider>
     </ErrorBoundary>
   );
+};
+Decorator.propTypes = {
+  children: PropTypes.func,
 };
 export default Decorator;

@@ -27,5 +27,6 @@ ErrorBoundary.defaultProps = {
 };
 ErrorBoundary.propTypes = {
   errorFallback: PropTypes.func,
+  children: PropTypes.func,
 };
 export default ErrorBoundary;
