@@ -32,7 +32,6 @@ module.exports = {
     'react/require-default-props': 'off',
     'import/no-extraneous-dependencies': 'off',
     'no-restricted-syntax': 0,
-    'max-classes-per-file': 0,
   },
   settings: {
     'import/resolver': {

@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-classes-per-file
 export class AddCommand {
   constructor(unit, operand1, operand2) {
     this.unit = unit;
