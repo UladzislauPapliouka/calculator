@@ -49,15 +49,16 @@ const operatorToCommand = {
 const calculateAction = (expression, runCommand, arithmeticUnit) => {
   if (!expression) return '0';
   if (expression.slice(0, 2) === '--') expression = expression.slice(2);
-  for (const priorityLevel of operatorPriority) {
-    for (const operator of priorityLevel) {
-      const splittedExpression = expression.split(operator);
+  for (let i = 0; i < operatorPriority.length - 1; i += 1) {
+    for (let j = 0; j < operatorPriority[i].length - j; i += j) {
+      const splittedExpression = expression.split(operatorPriority[i][j]);
       if (splittedExpression.length > 1) {
+        // eslint-disable-next-line no-loop-func
         expression = splittedExpression.reduce((acc, element) => {
           const operand1 = acc.match(getLastDigit)[0];
           const operand2 = element.match(getFirstDigit)[0];
           const operationResult = runCommand(
-            new operatorToCommand[operator](
+            new operatorToCommand[operatorPriority[i][j]](
               arithmeticUnit,
               +operand1,
               +operand2,
@@ -65,7 +66,7 @@ const calculateAction = (expression, runCommand, arithmeticUnit) => {
           );
           if (
             !Number.isFinite(operationResult) &&
-            operator === Operation.Divide
+            operatorPriority[i][j] === Operation.Divide
           ) {
             throw new Error('Devision by zero');
           }
@@ -85,12 +86,12 @@ const getExpressionValue = (expression, runCommand, arithmeticUnit) => {
   const regularExpression = /\(([^()]*)\)/g;
   let matches = workingExpression.match(regularExpression);
   while (matches?.length) {
-    for (const expression1 of matches) {
-      const index = workingExpression.indexOf(expression1);
+    for (let i = 0; i < matches.length - 1; i += 1) {
+      const index = workingExpression.indexOf(matches[i]);
       workingExpression =
         workingExpression.slice(0, index) +
-        calculateAction(expression1.slice(1, -1), runCommand, arithmeticUnit) +
-        workingExpression.slice(index + expression1.length);
+        calculateAction(matches[i].slice(1, -1), runCommand, arithmeticUnit) +
+        workingExpression.slice(index + matches[i].length);
     }
     matches = workingExpression.match(regularExpression);
   }

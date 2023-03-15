@@ -31,7 +31,6 @@ module.exports = {
     'default-param-last': 'off',
     'react/require-default-props': 'off',
     'import/no-extraneous-dependencies': 'off',
-    'no-restricted-syntax': 0,
   },
   settings: {
     'import/resolver': {
