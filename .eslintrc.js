@@ -34,7 +34,6 @@ module.exports = {
     'no-restricted-syntax': 0,
     'max-classes-per-file': 0,
     'class-methods-use-this': 0,
-    'jsx-a11y/no-noninteractive-element-interactions': 0,
   },
   settings: {
     'import/resolver': {

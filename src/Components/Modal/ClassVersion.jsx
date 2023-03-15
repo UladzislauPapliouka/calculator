@@ -25,7 +25,7 @@ class Modal extends React.Component {
           justifyContent: 'center',
           background: 'rgba(80,80,80,0.61)',
         }}
-        role="banner"
+        role="presentation"
         ref={this.backRef}
         onClick={onBackgroundClickHandler}
         onKeyDown={onBackgroundClickHandler}

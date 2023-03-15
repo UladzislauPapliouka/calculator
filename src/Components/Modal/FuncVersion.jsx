@@ -19,7 +19,7 @@ const Modal = ({ children, closeModal }) => {
         justifyContent: 'center',
         background: 'rgba(80,80,80,0.61)',
       }}
-      role="banner"
+      role="presentation"
       ref={backRef}
       onKeyDown={onBackgroundClickHandler}
       onClick={onBackgroundClickHandler}
