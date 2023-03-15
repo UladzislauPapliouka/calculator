@@ -48,12 +48,13 @@ const operatorToCommand = {
 
 const calculateAction = (expression, runCommand, arithmeticUnit) => {
   if (!expression) return '0';
+  // eslint-disable-next-line no-param-reassign
   if (expression.slice(0, 2) === '--') expression = expression.slice(2);
   for (let i = 0; i < operatorPriority.length - 1; i += 1) {
     for (let j = 0; j < operatorPriority[i].length - j; i += j) {
       const splittedExpression = expression.split(operatorPriority[i][j]);
       if (splittedExpression.length > 1) {
-        // eslint-disable-next-line no-loop-func
+        // eslint-disable-next-line no-loop-func,no-param-reassign
         expression = splittedExpression.reduce((acc, element) => {
           const operand1 = acc.match(getLastDigit)[0];
           const operand2 = element.match(getFirstDigit)[0];

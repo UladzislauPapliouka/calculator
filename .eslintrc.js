@@ -23,7 +23,6 @@ module.exports = {
       },
     ],
     'prettier/prettier': 'error',
-    'no-param-reassign': 'off',
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
     'react/prefer-stateless-function': 'off',
