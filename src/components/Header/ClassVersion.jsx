@@ -19,10 +19,12 @@ class Header extends React.Component {
     };
   }
 
-  setIsModalOpen = (value) => this.setState({ isModalOpen: value });
+  handleClose = () => this.setState({ isModalOpen: false });
+
+  handleOpen = () => this.setState({ isModalOpen: true });
 
   render() {
-    const { state, setIsModalOpen } = this;
+    const { state, handleClose, handleOpen } = this;
     return (
       <HeaderWrapper>
         <span>Calculator App</span>
@@ -49,41 +51,29 @@ class Header extends React.Component {
             )}
           </NavLink>
         </NavigationWrapper>
-        <MobileNavigation onClick={() => setIsModalOpen(true)}>
+        <MobileNavigation onClick={handleOpen}>
           <BiMenu />
         </MobileNavigation>
         {state.isModalOpen && (
-          <ClassModal closeModal={() => setIsModalOpen(false)}>
+          <ClassModal closeModal={handleClose}>
             <MobileNavigationWrapper>
               <NavLink to="/func/home">
                 {({ isActive }) => (
-                  <Link
-                    href="replace"
-                    onClick={() => setIsModalOpen(false)}
-                    active={isActive}
-                  >
+                  <Link href="replace" onClick={handleClose} active={isActive}>
                     HomeFC
                   </Link>
                 )}
               </NavLink>
               <NavLink to="home">
                 {({ isActive }) => (
-                  <Link
-                    href="replace"
-                    onClick={() => setIsModalOpen(false)}
-                    active={isActive}
-                  >
+                  <Link href="replace" onClick={handleClose} active={isActive}>
                     HomeCC
                   </Link>
                 )}
               </NavLink>
               <NavLink to="settings">
                 {({ isActive }) => (
-                  <Link
-                    href="replace"
-                    onClick={() => setIsModalOpen(false)}
-                    active={isActive}
-                  >
+                  <Link href="replace" onClick={handleClose} active={isActive}>
                     Settings
                   </Link>
                 )}

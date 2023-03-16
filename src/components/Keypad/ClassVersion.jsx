@@ -10,16 +10,16 @@ class Keypad extends PureComponent {
     return (
       <KeypadWrapper>
         {KeyPadTable.map((line) =>
-          line.map((key) => (
-            <Key
-              onClick={() => {
-                onEnterSymbol(key);
-              }}
-              key={key}
-            >
-              {key}
-            </Key>
-          )),
+          line.map((key) => {
+            const handleClick = () => {
+              onEnterSymbol(key);
+            };
+            return (
+              <Key onClick={handleClick} key={key}>
+                {key}
+              </Key>
+            );
+          }),
         )}
       </KeypadWrapper>
     );

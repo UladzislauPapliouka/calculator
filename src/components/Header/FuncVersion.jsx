@@ -13,6 +13,8 @@ import {
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleClose = () => setIsModalOpen(false);
+  const handleOpen = () => setIsModalOpen(true);
   return (
     <HeaderWrapper>
       <span>Calculator App</span>
@@ -39,41 +41,29 @@ const Header = () => {
           )}
         </NavLink>
       </NavigationWrapper>
-      <MobileNavigation onClick={() => setIsModalOpen(true)}>
+      <MobileNavigation onClick={handleOpen}>
         <BiMenu />
       </MobileNavigation>
       {isModalOpen && (
-        <FuncModal closeModal={() => setIsModalOpen(false)}>
+        <FuncModal closeModal={handleClose}>
           <MobileNavigationWrapper>
             <NavLink to="home">
               {({ isActive }) => (
-                <Link
-                  href="replace"
-                  onClick={() => setIsModalOpen(false)}
-                  active={isActive}
-                >
+                <Link href="replace" onClick={handleClose} active={isActive}>
                   HomeFC
                 </Link>
               )}
             </NavLink>
             <NavLink to="/class/home">
               {({ isActive }) => (
-                <Link
-                  href="replace"
-                  onClick={() => setIsModalOpen(false)}
-                  active={isActive}
-                >
+                <Link href="replace" onClick={handleClose} active={isActive}>
                   HomeCC
                 </Link>
               )}
             </NavLink>
             <NavLink to="settings">
               {({ isActive }) => (
-                <Link
-                  href="replace"
-                  onClick={() => setIsModalOpen(false)}
-                  active={isActive}
-                >
+                <Link href="replace" onClick={handleClose} active={isActive}>
                   Settings
                 </Link>
               )}

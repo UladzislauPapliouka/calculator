@@ -8,10 +8,7 @@ const Settings = () => {
   return (
     <StyledPage>
       <h1>Settings</h1>
-      <StyledSelect
-        value={themeName}
-        onChange={(e) => toggleTheme(e.target.value)}
-      >
+      <StyledSelect value={themeName} onChange={toggleTheme}>
         {Object.keys(themes).map((theme) => (
           <option key={theme} value={theme}>
             {theme}

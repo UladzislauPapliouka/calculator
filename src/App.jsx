@@ -7,8 +7,8 @@ import { ThemeProvider } from 'styled-components';
 
 const Decorator = ({ children }) => {
   const [themeName, setThemeName] = useState('dark');
-  const chooseTheme = (theme) => {
-    setThemeName(theme);
+  const chooseTheme = (event) => {
+    setThemeName(event.target.value);
   };
   const themeContextValue = useMemo(
     () => ({ theme: themeName, toggleTheme: chooseTheme }),
