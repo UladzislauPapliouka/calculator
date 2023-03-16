@@ -6,7 +6,6 @@ import { ClassVersion, FuncApp } from './components/App';
 import Decorator from './App';
 import reportWebVitals from './reportWebVitals';
 
-import './index.css';
 import '@assets/fonts/stylesheet.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

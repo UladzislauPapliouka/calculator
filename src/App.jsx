@@ -7,6 +7,8 @@ import store from '@store';
 import * as PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 
+import GlobalStyles from '@/globalStyles';
+
 const Decorator = ({ children }) => {
   const [themeName, setThemeName] = useState('dark');
   const chooseTheme = (event) => {
@@ -20,6 +22,7 @@ const Decorator = ({ children }) => {
     <ErrorBoundary errorFallback={<Error />}>
       <ThemeContext.Provider value={themeContextValue}>
         <ThemeProvider theme={themes[themeName]}>
+          <GlobalStyles />
           <Provider store={store}>{children}</Provider>
         </ThemeProvider>
       </ThemeContext.Provider>
