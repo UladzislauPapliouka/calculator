@@ -16,9 +16,9 @@ const StyleCalculator = styled.div`
     grid-template-rows: auto;
     grid-template-columns: 100%;
     grid-template-areas:
-      'his'
       'disp'
-      'keyp';
+      'keyp'
+      'his';
   }
 `;
 
