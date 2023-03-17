@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from 'react';
 import { Provider } from 'react-redux';
-import Error from '@components/Error';
 import ErrorBoundary from '@components/ErrorBoudaries';
 import { ThemeContext, themes } from '@constants/theme';
 import store from '@store';
@@ -19,7 +18,7 @@ const Decorator = ({ children }) => {
     [themeName, chooseTheme],
   );
   return (
-    <ErrorBoundary errorFallback={<Error />}>
+    <ErrorBoundary>
       <ThemeContext.Provider value={themeContextValue}>
         <ThemeProvider theme={themes[themeName]}>
           <GlobalStyles />

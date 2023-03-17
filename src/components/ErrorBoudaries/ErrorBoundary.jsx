@@ -1,5 +1,7 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
+import StyledErrorContainer from './styled';
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -17,17 +19,19 @@ class ErrorBoundary extends Component {
 
   render() {
     const { state, props } = this;
-    return state.hasError && state.error && state.errorInfo
-      ? props.errorFallback()
-      : props.children;
+    return state.hasError && state.error && state.errorInfo ? (
+      <StyledErrorContainer>
+        <span>{state.error.message}</span>
+      </StyledErrorContainer>
+    ) : (
+      props.children
+    );
   }
 }
 ErrorBoundary.defaultProps = {
-  errorFallback: () => {},
   children: () => {},
 };
 ErrorBoundary.propTypes = {
-  errorFallback: PropTypes.func,
   children: PropTypes.func,
 };
 export default ErrorBoundary;
