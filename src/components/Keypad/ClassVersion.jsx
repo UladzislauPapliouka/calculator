@@ -6,13 +6,13 @@ import { Key, KeypadWrapper } from './styled';
 
 class Keypad extends PureComponent {
   render() {
-    const { onEnterSymbol } = this.props;
+    const { handleEnterSymbol } = this.props;
     return (
       <KeypadWrapper>
         {KeyPadTable.map((line) =>
           line.map((key) => {
             const handleClick = () => {
-              onEnterSymbol(key);
+              handleEnterSymbol(key);
             };
             return (
               <Key key={key} onClick={handleClick}>
@@ -25,6 +25,6 @@ class Keypad extends PureComponent {
     );
   }
 }
-Keypad.defaultProps = { onEnterSymbol: () => {} };
-Keypad.propTypes = { onEnterSymbol: PropTypes.func };
+Keypad.defaultProps = { handleEnterSymbol: () => {} };
+Keypad.propTypes = { handleEnterSymbol: PropTypes.func };
 export default Keypad;

@@ -19,7 +19,7 @@ export default class App extends React.Component {
     this.calcRef.current = new Calc();
   }
 
-  onEnterSymbol(symbol) {
+  handleEnterSymbol(symbol) {
     const newDisplayValue = this.calcRef.current.EnterSymbol(symbol);
     this.setState((prevState) => ({
       displayValue: newDisplayValue,
@@ -38,7 +38,7 @@ export default class App extends React.Component {
             path="/home"
             element={
               <ClassCalculator
-                onEnterSymbol={this.onEnterSymbol}
+                onEnterSymbol={this.handleEnterSymbol}
                 history={state.history}
                 displayValue={state.displayValue}
               />

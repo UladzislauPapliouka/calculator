@@ -9,7 +9,7 @@ const App = () => {
   const [displayValue, setDisplayValue] = useState('');
   const [history, setHistory] = useState([]);
   const calcRef = useRef();
-  const onEnterSymbol = (symbol) => {
+  const handleEnterSymbol = (symbol) => {
     setDisplayValue(calcRef.current.EnterSymbol(symbol));
     setHistory(calcRef.current.getHistory());
   };
@@ -26,7 +26,7 @@ const App = () => {
           path="/home"
           element={
             <FuncCalculator
-              onEnterSymbol={onEnterSymbol}
+              onEnterSymbol={handleEnterSymbol}
               history={history}
               displayValue={displayValue}
             />

@@ -4,12 +4,12 @@ import * as PropTypes from 'prop-types';
 
 import { Key, KeypadWrapper } from './styled';
 
-const Keypad = ({ onEnterSymbol }) => (
+const Keypad = ({ handleEnterSymbol }) => (
   <KeypadWrapper>
     {KeyPadTable.map((line) =>
       line.map((key) => {
         const handleClick = () => {
-          onEnterSymbol(key);
+          handleEnterSymbol(key);
         };
         return (
           <Key key={key} onClick={handleClick}>
@@ -20,6 +20,6 @@ const Keypad = ({ onEnterSymbol }) => (
     )}
   </KeypadWrapper>
 );
-Keypad.defaultProps = { onEnterSymbol: () => {} };
-Keypad.propTypes = { onEnterSymbol: PropTypes.func };
+Keypad.defaultProps = { handleEnterSymbol: () => {} };
+Keypad.propTypes = { handleEnterSymbol: PropTypes.func };
 export default Keypad;

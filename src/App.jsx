@@ -10,12 +10,12 @@ import GlobalStyles from '@/globalStyles';
 
 const Decorator = ({ children }) => {
   const [themeName, setThemeName] = useState('dark');
-  const chooseTheme = (event) => {
+  const handleThemeChange = (event) => {
     setThemeName(event.target.value);
   };
   const themeContextValue = useMemo(
-    () => ({ theme: themeName, toggleTheme: chooseTheme }),
-    [themeName, chooseTheme],
+    () => ({ theme: themeName, toggleTheme: handleThemeChange }),
+    [themeName, handleThemeChange],
   );
   return (
     <ErrorBoundary>

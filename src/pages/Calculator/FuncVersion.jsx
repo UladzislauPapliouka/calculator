@@ -6,21 +6,21 @@ import * as PropTypes from 'prop-types';
 
 import StyleCalculator from './styled';
 
-const Calculator = ({ displayValue, onEnterSymbol, history }) => (
+const Calculator = ({ displayValue, handleEnterSymbol, history }) => (
   <StyleCalculator>
     <FuncDisplay value={displayValue} />
-    <FuncKeypad onEnterSymbol={onEnterSymbol} />
+    <FuncKeypad handleEnterSymbol={handleEnterSymbol} />
     <FuncHistory history={history} />
   </StyleCalculator>
 );
 Calculator.defaultProps = {
   displayValue: '',
-  onEnterSymbol: () => {},
+  handleEnterSymbol: () => {},
   history: '',
 };
 Calculator.propTypes = {
   displayValue: PropTypes.string,
-  onEnterSymbol: PropTypes.func,
+  handleEnterSymbol: PropTypes.func,
   history: PropTypes.arrayOf(PropTypes.string),
 };
 

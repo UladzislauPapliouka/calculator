@@ -8,11 +8,11 @@ import StyleCalculator from './styled';
 
 class Calculator extends PureComponent {
   render() {
-    const { displayValue, onEnterSymbol, history } = this.props;
+    const { displayValue, handleEnterSymbol, history } = this.props;
     return (
       <StyleCalculator>
         <ClassDisplay value={displayValue} />
-        <ClassKeypad onEnterSymbol={onEnterSymbol} />
+        <ClassKeypad handleEnterSymbol={handleEnterSymbol} />
         <ClassHistory history={history} />
       </StyleCalculator>
     );
@@ -21,12 +21,12 @@ class Calculator extends PureComponent {
 
 Calculator.defaultProps = {
   displayValue: '',
-  onEnterSymbol: () => {},
+  handleEnterSymbol: () => {},
   history: '',
 };
 Calculator.propTypes = {
   displayValue: PropTypes.string,
-  onEnterSymbol: PropTypes.func,
+  handleEnterSymbol: PropTypes.func,
   history: PropTypes.arrayOf(PropTypes.string),
 };
 

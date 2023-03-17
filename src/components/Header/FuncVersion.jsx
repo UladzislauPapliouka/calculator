@@ -45,7 +45,7 @@ const Header = () => {
         <BiMenu />
       </MobileNavigation>
       {isModalOpen && (
-        <FuncModal closeModal={handleClose}>
+        <FuncModal handleClose={handleClose}>
           <MobileNavigationWrapper>
             <NavLink to="home">
               {({ isActive }) => (

@@ -2,11 +2,11 @@ import React, { useRef } from 'react';
 import ReactDOM from 'react-dom';
 import * as PropTypes from 'prop-types';
 
-const Modal = ({ children, closeModal }) => {
+const Modal = ({ children, handleClose }) => {
   const backRef = useRef();
   const onBackgroundClickHandler = (e) => {
     if (backRef.current === e.target) {
-      closeModal();
+      handleClose();
     }
   };
   const modalContainer = (
@@ -34,7 +34,7 @@ const Modal = ({ children, closeModal }) => {
 };
 Modal.propTypes = {
   children: PropTypes.func,
-  closeModal: PropTypes.func,
+  handleClose: PropTypes.func,
 };
 
 export default Modal;

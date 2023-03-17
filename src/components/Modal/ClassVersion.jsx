@@ -9,10 +9,10 @@ class Modal extends React.Component {
   }
 
   render() {
-    const { children, closeModal } = this.props;
+    const { children, handleClose } = this.props;
     const onBackgroundClickHandler = (e) => {
       if (this.backRef.current === e.target) {
-        closeModal();
+        handleClose();
       }
     };
     const modalContainer = (
@@ -42,10 +42,10 @@ class Modal extends React.Component {
 
 Modal.defaultProps = {
   children: () => {},
-  closeModal: () => {},
+  handleClose: () => {},
 };
 Modal.propTypes = {
   children: PropTypes.func,
-  closeModal: PropTypes.func,
+  handleClose: PropTypes.func,
 };
 export default Modal;
