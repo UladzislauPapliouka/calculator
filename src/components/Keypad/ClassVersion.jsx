@@ -15,7 +15,7 @@ class Keypad extends PureComponent {
               handleEnterSymbol(key);
             };
             return (
-              <Key key={key} onClick={handleClick}>
+              <Key key={key} id={`key-${key}`} onClick={handleClick}>
                 {key}
               </Key>
             );

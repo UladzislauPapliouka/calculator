@@ -6,7 +6,7 @@ import StyledDisplay from './styled';
 class Display extends PureComponent {
   render() {
     const { value } = this.props;
-    return <StyledDisplay>{value}</StyledDisplay>;
+    return <StyledDisplay id="calculator-display">{value}</StyledDisplay>;
   }
 }
 Display.defaultProps = { value: '' };

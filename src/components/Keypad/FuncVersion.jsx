@@ -12,7 +12,7 @@ const Keypad = ({ handleEnterSymbol }) => (
           handleEnterSymbol(key);
         };
         return (
-          <Key key={key} onClick={handleClick}>
+          <Key key={key} data-cy={`key(${key})`} onClick={handleClick}>
             {key}
           </Key>
         );
