@@ -1,4 +1,4 @@
-import ClassHeader from './ClassVersion';
-import FuncHeader from './FuncVersion';
+import HeaderCC from './ClassVersion';
+import HeaderFC from './FuncVersion';
 
-export { ClassHeader, FuncHeader };
+export { HeaderCC, HeaderFC };

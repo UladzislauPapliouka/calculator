@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { ClassHeader } from '@components/Header';
+import { HeaderCC } from '@components/Header';
 import { ClassCalculator } from '@pages/Calculator';
 import { ClassSettings } from '@pages/Settings';
 import Calc from '@utils/calculator';
@@ -31,7 +31,7 @@ export default class App extends React.Component {
     const { state } = this;
     return (
       <div className="App">
-        <ClassHeader />
+        <HeaderCC />
         <Routes>
           <Route path={'/*'} element={<Navigate to="/class/home" replace />} />
           <Route

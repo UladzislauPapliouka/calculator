@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { FuncHeader } from '@components/Header';
+import { HeaderFC } from '@components/Header';
 import { FuncCalculator } from '@pages/Calculator';
 import { FuncSettings } from '@pages/Settings';
 import Calc from '@utils/calculator';
@@ -19,7 +19,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <FuncHeader />
+      <HeaderFC />
       <Routes>
         <Route path={'/*'} element={<Navigate to="/func/home" replace />} />
         <Route
