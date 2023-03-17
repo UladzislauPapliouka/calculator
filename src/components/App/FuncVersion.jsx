@@ -13,6 +13,10 @@ const App = () => {
     setDisplayValue(calcRef.current.EnterSymbol(symbol));
     setHistory(calcRef.current.getHistory());
   };
+  const handleClearHistory = () => {
+    calcRef.current.clearHistory();
+    setHistory(calcRef.current.getHistory());
+  };
   useEffect(() => {
     calcRef.current = new Calc();
   }, []);
@@ -26,13 +30,16 @@ const App = () => {
           path="/home"
           element={
             <FuncCalculator
-              onEnterSymbol={handleEnterSymbol}
+              handleEnterSymbol={handleEnterSymbol}
               history={history}
               displayValue={displayValue}
             />
           }
         />
-        <Route path="/settings" element={<FuncSettings />} />
+        <Route
+          path="/settings"
+          element={<FuncSettings handleClearHistory={handleClearHistory} />}
+        />
       </Routes>
     </div>
   );

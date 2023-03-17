@@ -20,6 +20,7 @@ const StyledPage = styled.div`
   font-size: 1.6em;
   display: flex;
   flex-direction: column;
+  gap: 16px;
   align-items: flex-start;
   padding: 4%;
   h1 {

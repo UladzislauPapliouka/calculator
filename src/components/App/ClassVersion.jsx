@@ -19,13 +19,20 @@ export default class App extends React.Component {
     this.calcRef.current = new Calc();
   }
 
-  handleEnterSymbol(symbol) {
+  handleEnterSymbol = (symbol) => {
     const newDisplayValue = this.calcRef.current.EnterSymbol(symbol);
-    this.setState((prevState) => ({
+    this.setState(() => ({
       displayValue: newDisplayValue,
-      history: prevState.history.concat(this.calcRef.current.getHistory()),
+      history: this.calcRef.current.getHistory(),
     }));
-  }
+  };
+
+  handleClearHistory = () => {
+    this.calcRef.current.clearHistory();
+    this.setState(() => ({
+      history: this.calcRef.current.getHistory(),
+    }));
+  };
 
   render() {
     const { state } = this;
@@ -38,13 +45,18 @@ export default class App extends React.Component {
             path="/home"
             element={
               <ClassCalculator
-                onEnterSymbol={this.handleEnterSymbol}
+                handleEnterSymbol={this.handleEnterSymbol}
                 history={state.history}
                 displayValue={state.displayValue}
               />
             }
           />
-          <Route path="/settings" element={<ClassSettings />} />
+          <Route
+            path="/settings"
+            element={
+              <ClassSettings handleClearHistory={this.handleClearHistory} />
+            }
+          />
         </Routes>
       </div>
     );
