@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import mainRoutes from '@constants/routes';
+import App from '@components/App';
 
-import Decorator from './App';
 import reportWebVitals from './reportWebVitals';
 
 import '@assets/fonts/stylesheet.css';
@@ -11,15 +9,7 @@ import '@assets/fonts/stylesheet.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Decorator>
-        <Routes>
-          {mainRoutes.map(({ path, element }) => (
-            <Route path={path} element={element} />
-          ))}
-        </Routes>
-      </Decorator>
-    </BrowserRouter>
+    <App />
   </React.StrictMode>,
 );
 

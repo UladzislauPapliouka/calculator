@@ -1,4 +1,3 @@
-import ClassApp from './ClassVersion';
-import FuncApp from './FuncVersion';
+import App from './App';
 
-export { ClassApp, FuncApp };
+export default App;

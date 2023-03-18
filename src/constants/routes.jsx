@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { ClassApp, FuncApp } from '@components/App';
+import { ClassApp, FuncApp } from '@components/AppVariants';
 
 const mainRoutes = [
   {
