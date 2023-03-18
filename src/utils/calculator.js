@@ -13,7 +13,7 @@ export default class Calculator {
     this.arithmeticUnit = new ArithmeticUnit();
     this.controlUnit = new ControlUnit();
     this.displayValue = '';
-    this.operationHistory = ['h+5', '0-f'];
+    this.operationHistory = [];
   }
 
   EnterSymbol = (symbol) => {
