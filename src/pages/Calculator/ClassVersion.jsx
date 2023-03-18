@@ -4,17 +4,17 @@ import { ClassHistory } from '@components/History';
 import { ClassKeypad } from '@components/Keypad';
 import * as PropTypes from 'prop-types';
 
-import StyleCalculator from './styled';
+import CalculatorWrapper from './styled';
 
 class Calculator extends PureComponent {
   render() {
     const { displayValue, handleEnterSymbol, history } = this.props;
     return (
-      <StyleCalculator>
+      <CalculatorWrapper>
         <ClassDisplay value={displayValue} />
         <ClassKeypad handleEnterSymbol={handleEnterSymbol} />
         <ClassHistory history={history} />
-      </StyleCalculator>
+      </CalculatorWrapper>
     );
   }
 }

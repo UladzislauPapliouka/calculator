@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyleCalculator = styled.div`
+const CalculatorWrapper = styled.div`
   position: relative;
   display: grid;
   grid-template-rows: 150px 1fr;
@@ -22,4 +22,4 @@ const StyleCalculator = styled.div`
   }
 `;
 
-export default StyleCalculator;
+export default CalculatorWrapper;

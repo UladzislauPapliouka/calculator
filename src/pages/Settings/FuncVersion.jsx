@@ -3,22 +3,22 @@ import Button from '@components/Button';
 import { ThemeContext, themes } from '@constants/theme';
 import PropTypes from 'prop-types';
 
-import { StyledPage, StyledSelect } from './styles';
+import { Select, SettingsWrapper } from './styles';
 
 const Settings = ({ handleClearHistory }) => {
   const { theme: themeName, toggleTheme } = useContext(ThemeContext);
   return (
-    <StyledPage>
+    <SettingsWrapper>
       <h1>Settings</h1>
-      <StyledSelect value={themeName} onChange={toggleTheme}>
+      <Select value={themeName} onChange={toggleTheme}>
         {Object.keys(themes).map((theme) => (
           <option key={theme} value={theme}>
             {theme}
           </option>
         ))}
-      </StyledSelect>
+      </Select>
       <Button onClick={handleClearHistory}>Clear history</Button>
-    </StyledPage>
+    </SettingsWrapper>
   );
 };
 Settings.defaultProps = {

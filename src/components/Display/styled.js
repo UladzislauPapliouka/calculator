@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledDisplay = styled.span`
+const DisplayWrapper = styled.span`
   display: inline-block;
   box-sizing: border-box;
   font-size: 6.5em;
@@ -14,4 +14,4 @@ const StyledDisplay = styled.span`
   }
 `;
 
-export default StyledDisplay;
+export default DisplayWrapper;

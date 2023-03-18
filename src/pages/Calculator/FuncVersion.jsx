@@ -4,14 +4,14 @@ import { FuncHistory } from '@components/History';
 import { FuncKeypad } from '@components/Keypad';
 import * as PropTypes from 'prop-types';
 
-import StyleCalculator from './styled';
+import CalculatorWrapper from './styled';
 
 const Calculator = ({ displayValue, handleEnterSymbol, history }) => (
-  <StyleCalculator>
+  <CalculatorWrapper>
     <FuncDisplay value={displayValue} />
     <FuncKeypad handleEnterSymbol={handleEnterSymbol} />
     <FuncHistory history={history} />
-  </StyleCalculator>
+  </CalculatorWrapper>
 );
 Calculator.defaultProps = {
   displayValue: '',

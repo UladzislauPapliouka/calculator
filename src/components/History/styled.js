@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledHistory = styled.div`
+export const HistoryWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -31,7 +31,7 @@ export const HistoryOperation = styled.span`
     background: ${(props) => props.theme.keysActive};
   }
 `;
-export const StyledH2 = styled.h2`
+export const Title = styled.h2`
   font-size: 3em;
   align-self: center;
   margin: 0;

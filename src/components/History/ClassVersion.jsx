@@ -1,18 +1,18 @@
 import React, { PureComponent } from 'react';
 import * as PropTypes from 'prop-types';
 
-import { HistoryOperation, StyledH2, StyledHistory } from './styled';
+import { HistoryOperation, HistoryWrapper, Title } from './styled';
 
 class History extends PureComponent {
   render() {
     const { history } = this.props;
     return (
-      <StyledHistory>
-        <StyledH2>History</StyledH2>
+      <HistoryWrapper>
+        <Title>History</Title>
         {history.map((his) => (
           <HistoryOperation key={his}>{his}</HistoryOperation>
         ))}
-      </StyledHistory>
+      </HistoryWrapper>
     );
   }
 }

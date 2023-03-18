@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledSelect = styled.select`
+const Select = styled.select`
   padding: 28px;
   border-radius: 8px;
   border: 2px solid ${(props) => props.theme.borderColor};
@@ -12,7 +12,7 @@ const StyledSelect = styled.select`
     border: 2px solid #707070;
   }
 `;
-const StyledPage = styled.div`
+const SettingsWrapper = styled.div`
   box-sizing: border-box;
   height: 89vh;
   background-color: ${(props) => props.theme.mainBackground};
@@ -27,4 +27,4 @@ const StyledPage = styled.div`
     font-size: 4em;
   }
 `;
-export { StyledPage, StyledSelect };
+export { Select, SettingsWrapper };
