@@ -1,15 +1,23 @@
+import colors from '@constants/styles/colors';
+import {
+  borderRadiuses,
+  borderWidths,
+  fontSizes,
+  gapSizes,
+  paddingSizes,
+} from '@constants/styles/sizes';
 import styled from 'styled-components';
 
 const Select = styled.select`
-  padding: 28px;
-  border-radius: 8px;
-  border: 2px solid ${(props) => props.theme.borderColor};
-  font-size: 2em;
+  padding: ${paddingSizes.s}px;
+  border-radius: ${borderRadiuses.md}px;
+  border: ${borderWidths.md}px solid ${(props) => props.theme.borderColor};
+  font-size: ${fontSizes.s}px;
   background-color: ${(props) => props.theme.keysBackground};
   color: ${(props) => props.theme.mainColor};
   option {
-    padding: 6px 28px;
-    border: 2px solid #707070;
+    padding: ${paddingSizes.xs}px ${paddingSizes.s}px;
+    border: ${borderWidths.md}px solid ${(props) => props.theme.borderColor};
   }
 `;
 const SettingsWrapper = styled.div`
@@ -17,14 +25,14 @@ const SettingsWrapper = styled.div`
   height: 89vh;
   background-color: ${(props) => props.theme.mainBackground};
   color: ${(props) => props.theme.mainColor};
-  font-size: 1.6em;
+  font-size: ${fontSizes.s}px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: ${gapSizes.s}px;
   align-items: flex-start;
-  padding: 4%;
+  padding: ${paddingSizes.s}px;
   h1 {
-    font-size: 4em;
+    font-size: ${fontSizes.xxxl}px;
   }
 `;
 export { Select, SettingsWrapper };

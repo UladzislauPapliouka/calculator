@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as PropTypes from 'prop-types';
 
+import ModalWrapper from './styled';
+
 class Modal extends React.Component {
   constructor(props) {
     super(props);
@@ -16,22 +18,13 @@ class Modal extends React.Component {
       }
     };
     const modalContainer = (
-      <div
-        style={{
-          height: '100vh',
-          width: '100vw',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          background: 'rgba(80,80,80,0.61)',
-        }}
-        role="presentation"
+      <ModalWrapper
         ref={this.backRef}
         onClick={onBackgroundClickHandler}
         onKeyDown={onBackgroundClickHandler}
       >
         {children}
-      </div>
+      </ModalWrapper>
     );
     return ReactDOM.createPortal(
       modalContainer,

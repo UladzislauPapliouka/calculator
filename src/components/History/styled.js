@@ -1,30 +1,37 @@
+import {
+  borderRadiuses,
+  fontSizes,
+  gapSizes,
+  marginSizes,
+  paddingSizes,
+  scrollbarWidth,
+} from '@constants/styles/sizes';
 import styled from 'styled-components';
 
 export const HistoryWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 3.6em;
-  padding: 0 54px;
-  margin: 10px 10px 10px 0;
+  gap: ${gapSizes.l}px;
+  padding: 0 ${paddingSizes.lg}px;
+  margin: ${marginSizes.xs}px ${marginSizes.xs}px ${marginSizes.xs}px 0;
   grid-area: his;
   overflow-y: auto;
   color: ${(props) => props.theme.mainColor};
   ::-webkit-scrollbar {
-    width: 10px;
+    width: ${scrollbarWidth.md}px;
   }
   ::-webkit-scrollbar-track {
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    border-radius: 8px;
+    border-radius: ${borderRadiuses.md}px;
     background-color: ${(props) => props.theme.scrollbarColor};
   }
 `;
 export const HistoryOperation = styled.span`
-  font-size: 3em;
+  font-size: ${fontSizes.xl}px;
   display: inline-block;
-  width: 100%;
   text-align: left;
   cursor: pointer;
   &:active {
@@ -32,7 +39,7 @@ export const HistoryOperation = styled.span`
   }
 `;
 export const Title = styled.h2`
-  font-size: 3em;
+  font-size: ${fontSizes.xl}px;
   align-self: center;
   margin: 0;
 `;

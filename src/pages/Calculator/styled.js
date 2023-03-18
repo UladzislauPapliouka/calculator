@@ -1,10 +1,15 @@
+import {
+  columnSizes,
+  displayBreakpoints,
+  rowSizes,
+} from '@constants/styles/sizes';
 import styled from 'styled-components';
 
 const CalculatorWrapper = styled.div`
   position: relative;
   display: grid;
-  grid-template-rows: 150px 1fr;
-  grid-template-columns: 1fr 400px;
+  grid-template-rows: ${rowSizes.md}px 1fr;
+  grid-template-columns: 1fr ${columnSizes.md}px;
   grid-template-areas:
     'disp  his'
     'keyp  his';
@@ -12,7 +17,7 @@ const CalculatorWrapper = styled.div`
   overflow: hidden;
   background-color: ${(props) => props.theme.mainBackground};
   position: relative;
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: ${displayBreakpoints.lg}px) {
     grid-template-rows: auto;
     grid-template-columns: 100%;
     grid-template-areas:

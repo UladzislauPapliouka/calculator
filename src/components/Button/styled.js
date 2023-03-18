@@ -1,12 +1,18 @@
+import {
+  borderRadiuses,
+  borderWidths,
+  fontSizes,
+  paddingSizes,
+} from '@constants/styles/sizes';
 import styled from 'styled-components';
 
 const Button = styled.button`
-  padding: 1em 2em;
+  padding: ${paddingSizes.xs}px ${paddingSizes.s}px;
   background: ${(props) => props.theme.keysBackground};
   color: ${(props) => props.theme.mainColor};
-  border: ${(props) => props.theme.bordersColor} 2px solid;
-  border-radius: 8px;
-  font-size: 2em;
+  border: ${(props) => props.theme.bordersColor} ${borderWidths.md}px solid;
+  border-radius: ${borderRadiuses.md}px;
+  font-size: ${fontSizes.s}px;
   &:hover {
     background: ${(props) => props.theme.keysHover};
   }

@@ -37,7 +37,7 @@ export default class App extends React.Component {
   render() {
     const { state } = this;
     return (
-      <div className="App">
+      <>
         <HeaderCC />
         <Routes>
           <Route path={'/*'} element={<Navigate to="/class/home" replace />} />
@@ -58,7 +58,7 @@ export default class App extends React.Component {
             }
           />
         </Routes>
-      </div>
+      </>
     );
   }
 }

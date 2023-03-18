@@ -1,3 +1,11 @@
+import {
+  borderRadiuses,
+  displayBreakpoints,
+  fontSizes,
+  gapSizes,
+  paddingSizes,
+  underlineWidths,
+} from '@constants/styles/sizes';
 import styled, { css } from 'styled-components';
 
 export const Link = styled.a`
@@ -5,7 +13,7 @@ export const Link = styled.a`
     switch (props.active) {
       case true:
         return css`
-          font-size: 3.2em;
+          font-size: ${fontSizes.xl}px;
           cursor: pointer;
           position: relative;
           opacity: 1;
@@ -14,14 +22,14 @@ export const Link = styled.a`
             content: '';
             position: absolute;
             width: 100%;
-            height: 2px;
+            height: ${underlineWidths.sm}px;
             bottom: 0;
             background-color: ${props.theme.headerColor};
           }
         `;
       default:
         return css`
-          font-size: 3.2em;
+          font-size: ${fontSizes.xl}px;
           text-decoration: none;
           cursor: pointer;
           position: relative;
@@ -31,15 +39,16 @@ export const Link = styled.a`
     }
   }}
 `;
+// TODO: how set adaptive height in px
 export const HeaderWrapper = styled.header`
   height: 11vh;
   background-color: ${(props) => props.theme.headerBackground};
   color: ${(props) => props.theme.headerColor};
-  padding: 0 32px;
+  padding: 0 ${paddingSizes.s};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: HelveticaNeueCyr;
+  font-family: HelveticaNeueCyr, serif;
   font-weight: 100;
 
   & a {
@@ -47,15 +56,15 @@ export const HeaderWrapper = styled.header`
     color: inherit;
   }
   & span {
-    font-size: 3.2em;
+    font-size: ${fontSizes.xl}px;
   }
 `;
 export const NavigationWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 32px;
-  @media screen and (max-width: 768px) {
+  gap: ${gapSizes.l}px;
+  @media screen and (max-width: ${displayBreakpoints.md}px) {
     display: none;
   }
   & a {
@@ -68,28 +77,28 @@ export const MobileNavigationWrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 32px;
-  color: black;
-  padding: 16px;
-  border-radius: 8px;
-  background-color: ${(props) => props.theme.keysBackground};
+  gap: ${gapSizes.l}px;
+  color: ${(props) => props.theme.headerColor};
+  padding: ${paddingSizes.xs}px;
+  border-radius: ${borderRadiuses.md}px;
+  background-color: ${(props) => props.theme.headerBackground};
   & div:before {
-    background-color: ${(props) => props.theme.mainColor};
+    background-color: ${(props) => props.theme.headerColor};
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: ${displayBreakpoints.md}px) {
     display: flex;
   }
   & a {
     text-decoration: none;
-    color: inherit;
+    color: ${(props) => props.theme.headerColor};
   }
 `;
 export const MobileNavigation = styled.div`
   align-items: center;
   justify-content: center;
   display: none;
-  font-size: 4em;
-  @media screen and (max-width: 768px) {
+  font-size: ${fontSizes.xl}px;
+  @media screen and (max-width: ${displayBreakpoints.md}px) {
     display: flex;
   }
 `;

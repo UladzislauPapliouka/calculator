@@ -1,26 +1,27 @@
 import { createContext } from 'react';
+import colors from '@constants/styles/colors';
 
 const lightTheme = {
-  headerColor: '#ffffff',
-  headerBackground: '#434343',
-  mainColor: '#000000',
-  bordersColor: '#707070',
-  keysBackground: '#F2F2F2',
-  keysHover: '#d5d5d5',
-  keysActive: '#c9c9c9',
-  mainBackground: '#ffffff',
-  scrollbarColor: '#434343',
+  headerColor: colors.white,
+  headerBackground: colors.gray43,
+  mainColor: colors.black,
+  bordersColor: colors.gray70,
+  keysBackground: colors.whiteF2,
+  keysHover: colors.whiteD5,
+  keysActive: colors.whiteC9,
+  mainBackground: colors.white,
+  scrollbarColor: colors.gray43,
 };
 const darkTheme = {
-  headerColor: '#ffffff',
-  headerBackground: '#121212',
-  mainColor: '#ffffff',
-  bordersColor: '#707070',
-  keysBackground: '#201E2A',
-  keysHover: '#18151e',
-  keysActive: '#131118',
-  mainBackground: '#17151F',
-  scrollbarColor: '#ffffff',
+  headerColor: colors.white,
+  headerBackground: colors.darkGray,
+  mainColor: colors.white,
+  bordersColor: colors.gray70,
+  keysBackground: colors.darkBlue,
+  keysHover: colors.darkBlue30,
+  keysActive: colors.darkBlue80,
+  mainBackground: colors.darkBlue,
+  scrollbarColor: colors.white,
 };
 const themes = {
   light: lightTheme,

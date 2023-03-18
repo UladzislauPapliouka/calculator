@@ -22,7 +22,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="App">
+    <>
       <HeaderFC />
       <Routes>
         <Route path={'/*'} element={<Navigate to="/func/home" replace />} />
@@ -41,7 +41,7 @@ const App = () => {
           element={<FuncSettings handleClearHistory={handleClearHistory} />}
         />
       </Routes>
-    </div>
+    </>
   );
 };
 
