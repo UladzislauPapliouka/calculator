@@ -24,6 +24,10 @@ export default class Calculator {
         this.clearAll();
         break;
       case Operation.Dot:
+        if (!this.displayValue || isOperationLast(this.displayValue)) {
+          this.displayValue += '0.';
+          break;
+        }
         if (lastNumber && lastNumber.indexOf(Operation.Dot) === -1) {
           this.displayValue += symbol;
           break;
