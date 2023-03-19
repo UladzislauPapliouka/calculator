@@ -105,6 +105,39 @@ const EnterSymbol = (state, symbol) => {
     case Operation.ChangeSign:
       if (expressionLength === 0) break;
       if (
+        state.expression[expressionLength - lastNumberLength - 1] ===
+        Operation.Devide
+      ) {
+        state.expression = `${state.expression.slice(
+          0,
+          expressionLength - lastNumberLength,
+        )}(-${lastNumber}`;
+        break;
+      }
+
+      if (
+        state.expression[expressionLength - lastNumberLength - 1] ===
+        Operation.Myltiply
+      ) {
+        state.expression = `${state.expression.slice(
+          0,
+          expressionLength - lastNumberLength,
+        )}(-${lastNumber}`;
+        break;
+      }
+      if (
+        state.expression[expressionLength - lastNumberLength - 1] ===
+          Operation.Subtract &&
+        state.expression[expressionLength - lastNumberLength - 2] ===
+          Operation.LeftBracket
+      ) {
+        state.expression = `${state.expression.slice(
+          0,
+          expressionLength - lastNumberLength - 2,
+        )}${lastNumber}`;
+        break;
+      }
+      if (
         state.expression[0] === '-' &&
         state.expression.slice(1) === lastNumber
       ) {
@@ -116,23 +149,25 @@ const EnterSymbol = (state, symbol) => {
         break;
       }
       if (lastNumber && lastNumberLength < expressionLength) {
-        console.log(state.expression[expressionLength - lastNumberLength - 2]);
         if (
-          isOperation(state.expression[expressionLength - lastNumberLength - 1])
-        ) {
-          state.expression = `${state.expression.slice(
-            0,
-            expressionLength - lastNumberLength,
-          )}-${lastNumber}`;
-        }
-        if (
-          state.expression[expressionLength - lastNumberLength - 1] === '-' &&
-          isOperation(state.expression[expressionLength - lastNumberLength - 2])
+          state.expression[expressionLength - lastNumberLength - 1] ===
+          Operation.Subtract
         ) {
           state.expression = `${state.expression.slice(
             0,
             expressionLength - lastNumberLength - 1,
-          )}${lastNumber}`;
+          )}+${lastNumber}`;
+          break;
+        }
+        if (
+          state.expression[expressionLength - lastNumberLength - 1] ===
+          Operation.Add
+        ) {
+          state.expression = `${state.expression.slice(
+            0,
+            expressionLength - lastNumberLength - 1,
+          )}-${lastNumber}`;
+          break;
         }
         break;
       }
@@ -141,7 +176,7 @@ const EnterSymbol = (state, symbol) => {
         state.expression[1] === '(' &&
         state.expression[state.expression.length - 1] === ')'
       ) {
-        state.expression = state.expression.slice(2, -1);
+        state.expression = state.expression.slice(1);
         break;
       }
       if (

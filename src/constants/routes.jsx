@@ -5,7 +5,7 @@ import { ClassApp, FuncApp } from '@components/AppVariants';
 const mainRoutes = [
   {
     path: '/*',
-    element: <Navigate />,
+    element: <Navigate to="/func/home" />,
   },
   {
     path: '/func/*',
