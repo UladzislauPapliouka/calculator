@@ -25,6 +25,11 @@ module.exports = {
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
+    'no-param-reassign': 0,
+    'no-plusplus': 0,
+    eqeqeq: 0,
+    'operator-assignment': 0,
+    'no-continue': 0,
   },
   settings: {
     'import/resolver': {

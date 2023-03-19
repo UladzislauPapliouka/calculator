@@ -1,55 +1,57 @@
-// eslint-disable-next-line max-classes-per-file
-export class AddCommand {
-  constructor(unit, operand1, operand2) {
-    this.unit = unit;
-    this.operand = operand1;
-    this.operand2 = operand2;
+function add(x, y) {
+  return x + y;
+}
+function sub(x, y) {
+  return x - y;
+}
+function mul(x, y) {
+  return x * y;
+}
+function div(x, y) {
+  return x / y;
+}
+
+class AddCommand {
+  constructor() {
+    this.value = 0;
   }
 
-  execute = () => this.unit.Add(this.operand, this.operand2);
-
-  unExecute = () => this.unit.Subtruct(this.operand, this.operand2);
+  execute(currentValueOne, currentValueTwo) {
+    this.value = currentValueTwo + currentValueOne;
+    return this.value;
+  }
 }
-export class SubCommand {
-  constructor(unit, operand1, operand2) {
-    this.unit = unit;
-    this.operand = operand1;
-    this.operand2 = operand2;
+
+class SubCommand {
+  constructor() {
+    this.value = 0;
   }
 
-  execute = () => this.unit.Subtruct(this.operand, this.operand2);
-
-  unExecute = () => this.unit.Add(this.operand, this.operand2);
+  execute(currentValueOne, currentValueTwo) {
+    this.value = currentValueTwo - currentValueOne;
+    return this.value;
+  }
 }
-export class MulCommand {
-  constructor(unit, operand1, operand2) {
-    this.unit = unit;
-    this.operand = operand1;
-    this.operand2 = operand2;
+
+class MulCommand {
+  constructor() {
+    this.value = 0;
   }
 
-  execute = () => this.unit.Multiply(this.operand, this.operand2);
-
-  unExecute = () => this.unit.Divide(this.operand, this.operand2);
+  execute(currentValueOne, currentValueTwo) {
+    this.value = currentValueTwo * currentValueOne;
+    return this.value;
+  }
 }
-export class DivCommand {
-  constructor(unit, operand1, operand2) {
-    this.unit = unit;
-    this.operand = operand1;
-    this.operand2 = operand2;
+class DivCommand {
+  constructor() {
+    this.value = 0;
   }
 
-  execute = () => this.unit.Divide(this.operand, this.operand2);
-
-  unExecute = () => this.unit.Multiply(this.operand, this.operand2);
-}
-export class ReversSingCommand {
-  constructor(unit, operand1) {
-    this.unit = unit;
-    this.operand = operand1;
+  execute(currentValueOne, currentValueTwo) {
+    this.value = currentValueTwo / currentValueOne;
+    return this.value;
   }
-
-  execute = () => this.unit.ReversSign(this.operand);
-
-  unExecute = () => this.unit.ReversSign(this.operand);
 }
+
+export { AddCommand, DivCommand, MulCommand, SubCommand };

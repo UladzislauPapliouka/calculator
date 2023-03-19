@@ -1,25 +1,20 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { HeaderCC, HeaderFC } from '@components/Header';
 import { ClassCalculator, FuncCalculator } from '@pages/Calculator';
 import { ClassSettings, FuncSettings } from '@pages/Settings';
+import { clearHistory, enterSymbol } from '@store/reducers/displaySlice';
 import Calc from '@utils/calculator';
 
 const FuncApp = () => {
-  const [displayValue, setDisplayValue] = useState('');
-  const [history, setHistory] = useState([]);
-  const calcRef = useRef();
+  const displayValue = useSelector((state) => state.display.expression);
+  const history = useSelector((state) => state.display.history);
+  const dispatch = useDispatch();
   const handleEnterSymbol = (symbol) => {
-    setDisplayValue(calcRef.current.EnterSymbol(symbol));
-    setHistory(calcRef.current.getHistory());
+    dispatch(enterSymbol(enterSymbol({ symbol })));
   };
-  const handleClearHistory = () => {
-    calcRef.current.clearHistory();
-    setHistory(calcRef.current.getHistory());
-  };
-  useEffect(() => {
-    calcRef.current = new Calc();
-  }, []);
+  const handleClearHistory = () => {};
 
   return (
     <>
@@ -45,37 +40,17 @@ const FuncApp = () => {
   );
 };
 
-class ClassApp extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      displayValue: '',
-      history: [],
-    };
-    this.calcRef = React.createRef();
-  }
-
-  componentDidMount() {
-    this.calcRef.current = new Calc();
-  }
-
+class ClassAppWithoutStore extends React.Component {
   handleEnterSymbol = (symbol) => {
-    const newDisplayValue = this.calcRef.current.EnterSymbol(symbol);
-    this.setState(() => ({
-      displayValue: newDisplayValue,
-      history: this.calcRef.current.getHistory(),
-    }));
+    this.props.EnterSymbol(symbol);
   };
 
   handleClearHistory = () => {
-    this.calcRef.current.clearHistory();
-    this.setState(() => ({
-      history: this.calcRef.current.getHistory(),
-    }));
+    this.props.ClearHistory();
   };
 
   render() {
-    const { state } = this;
+    const { props } = this;
     return (
       <>
         <HeaderCC />
@@ -86,8 +61,8 @@ class ClassApp extends React.Component {
             element={
               <ClassCalculator
                 handleEnterSymbol={this.handleEnterSymbol}
-                history={state.history}
-                displayValue={state.displayValue}
+                history={props.state.display.history}
+                displayValue={props.state.display.expression}
               />
             }
           />
@@ -102,5 +77,15 @@ class ClassApp extends React.Component {
     );
   }
 }
-
+const ClassApp = connect(
+  (state) => ({ state }),
+  (dispatch) => ({
+    EnterSymbol(symbol) {
+      dispatch(enterSymbol(enterSymbol({ symbol })));
+    },
+    ClearHistory() {
+      dispatch(clearHistory());
+    },
+  }),
+)(ClassAppWithoutStore);
 export { ClassApp, FuncApp };

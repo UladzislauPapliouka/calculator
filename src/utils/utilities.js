@@ -1,10 +1,9 @@
 import { Operation } from '@constants/keypadConstansts';
 import {
-  AddCommand,
-  DivCommand,
-  MulCommand,
-  SubCommand,
-} from '@utils/commands';
+  calculatePolishString,
+  convertToPolishString,
+} from '@utils/polishNotation';
+import { isBracketCorrect } from '@utils/validation';
 
 const getLastNumber = (value) => {
   for (let i = value.length - 1; i >= 0; i -= 1) {
@@ -31,72 +30,110 @@ const isOperationLast = (value) => {
   );
 };
 
-const getLastDigit = /-?\d*\.?\d*$/g;
-const getFirstDigit = /^-?\d*\.?\d*/g;
-
-const operatorPriority = [
-  [Operation.Devide, Operation.Myltiply],
-  [Operation.Add, Operation.Subtract],
-];
-
-const operatorToCommand = {
-  [Operation.Add]: AddCommand,
-  [Operation.Subtract]: SubCommand,
-  [Operation.Myltiply]: MulCommand,
-  [Operation.Devide]: DivCommand,
-};
-
-const calculateAction = (expression, runCommand, arithmeticUnit) => {
-  if (!expression) return '0';
-  // eslint-disable-next-line no-param-reassign
-  if (expression.slice(0, 2) === '--') expression = expression.slice(2);
-  for (let i = 0; i < operatorPriority.length - 1; i += 1) {
-    for (let j = 0; j < operatorPriority[i].length - j; i += j) {
-      const splittedExpression = expression.split(operatorPriority[i][j]);
-      if (splittedExpression.length > 1) {
-        // eslint-disable-next-line no-loop-func,no-param-reassign
-        expression = splittedExpression.reduce((acc, element) => {
-          const operand1 = acc.match(getLastDigit)[0];
-          const operand2 = element.match(getFirstDigit)[0];
-          const operationResult = runCommand(
-            new operatorToCommand[operatorPriority[i][j]](
-              arithmeticUnit,
-              +operand1,
-              +operand2,
-            ),
-          );
-          if (
-            !Number.isFinite(operationResult) &&
-            operatorPriority[i][j] === Operation.Divide
-          ) {
-            throw new Error('Devision by zero');
-          }
-          return (
-            acc.slice(0, -operand1.length) +
-            operationResult +
-            element.slice(operand2.length)
-          );
-        });
+const EnterSymbol = (state, symbol) => {
+  if (state.expression === 'Incorrect state.expression') {
+    state.state.expression = '';
+    return;
+  }
+  const lastNumber = getLastNumber(state.expression);
+  switch (symbol) {
+    case Operation.Clear:
+      state.expression = '';
+      state.history = [];
+      break;
+    case Operation.Dot:
+      if (!state.expression || isOperationLast(state.expression)) {
+        state.expression = `${state.expression}0.`;
       }
-    }
+      if (lastNumber && lastNumber.indexOf(Operation.Dot) === -1) {
+        state.expression = `${state.expression}${symbol}`;
+      }
+      break;
+
+    case Operation.Add:
+      if (isOperationLast(state.expression)) {
+        state.expression =
+          state.expression.slice(0, state.expression.length - 1) + symbol;
+        break;
+      }
+      state.expression = `${state.expression}${symbol}`;
+      break;
+    case Operation.Subtract:
+      if (isOperationLast(state.expression)) {
+        state.expression =
+          state.expression.slice(0, state.expression.length - 1) + symbol;
+        break;
+      }
+      state.expression = `${state.expression}${symbol}`;
+      break;
+    case Operation.Myltiply:
+      if (isOperationLast(state.expression)) {
+        state.expression =
+          state.expression.slice(0, state.expression.length - 1) + symbol;
+        break;
+      }
+      state.expression = `${state.expression}${symbol}`;
+      break;
+    case Operation.Devide:
+      if (isOperationLast(state.expression)) {
+        state.expression =
+          state.expression.slice(0, state.expression.length - 1) + symbol;
+        break;
+      }
+      state.expression = `${state.expression}${symbol}`;
+      break;
+    case Operation.LeftBracket:
+      if (isOperationLast(state.expression)) {
+        state.expression = `${state.expression}${symbol}`;
+        break;
+      }
+      state.expression = `*${symbol}`;
+      break;
+    case Operation.ChangeSign:
+      if (
+        state.expression[0] === '-' &&
+        state.expression.slice(1) === lastNumber
+      ) {
+        state.expression = state.expression.slice(1);
+        break;
+      }
+      if (state.expression === lastNumber) {
+        state.expression = -state.expression;
+        break;
+      }
+      if (
+        state.expression.length > lastNumber &&
+        state.expression[0] === '-' &&
+        state.expression[1] === '(' &&
+        state.expression[state.expression.length - 1] === ')'
+      ) {
+        state.expression = state.expression.slice(2, -1);
+      }
+      if (state.expression.length > lastNumber.length) {
+        state.expression = `-(${state.expression})`;
+      }
+      break;
+    case Operation.CleanEntry:
+      state.expression = '';
+      break;
+    case Operation.Equal:
+      if (isBracketCorrect(state.expression)) {
+        state.history.push(state.expression);
+        state.expression = calculatePolishString(
+          convertToPolishString(state.expression),
+        );
+        break;
+      }
+      state.expression = 'Incorrect state.expression';
+      break;
+    default:
+      if (lastNumber && lastNumber[lastNumber.length - 4] === '.') {
+        // TODO:  implement warning 'Too much symbols after dot';
+      } else {
+        console.log(`${state.expression}${symbol}`);
+        state.expression = `${state.expression}${symbol}`;
+      }
   }
-  return expression;
-};
-const getExpressionValue = (expression, runCommand, arithmeticUnit) => {
-  let workingExpression = expression;
-  const regularExpression = /\(([^()]*)\)/g;
-  let matches = workingExpression.match(regularExpression);
-  while (matches?.length) {
-    for (let i = 0; i < matches.length - 1; i += 1) {
-      const index = workingExpression.indexOf(matches[i]);
-      workingExpression =
-        workingExpression.slice(0, index) +
-        calculateAction(matches[i].slice(1, -1), runCommand, arithmeticUnit) +
-        workingExpression.slice(index + matches[i].length);
-    }
-    matches = workingExpression.match(regularExpression);
-  }
-  return calculateAction(workingExpression, runCommand, arithmeticUnit);
 };
 
-export { getExpressionValue, getLastNumber, isOperationLast };
+export { EnterSymbol, getLastNumber, isOperationLast };

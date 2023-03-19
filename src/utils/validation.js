@@ -2,6 +2,7 @@ import { Operation } from '@constants/keypadConstansts';
 
 const isBracketCorrect = (expression) => {
   const brackets = expression
+    .toString()
     .split('')
     .filter(
       (symbol) => symbol === Operation.LeftBracket || Operation.RightBracket,
