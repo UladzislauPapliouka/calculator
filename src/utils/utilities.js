@@ -38,10 +38,7 @@ const isOperation = (symbol) =>
   symbol === Operation.RightBracket;
 
 const EnterSymbol = (state, symbol) => {
-  if (
-    state.expression === 'Incorrect state.expression' ||
-    state.expression === '0'
-  ) {
+  if (state.expression === 'Incorrect state.expression') {
     state.expression = symbol;
     return;
   }
@@ -106,6 +103,7 @@ const EnterSymbol = (state, symbol) => {
       state.expression = `${state.expression}*${symbol}`;
       break;
     case Operation.ChangeSign:
+      if (expressionLength === 0) break;
       if (
         state.expression[0] === '-' &&
         state.expression.slice(1) === lastNumber

@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { EnterSymbol } from '@utils/utilities';
 
 const initialState = {
-  expression: '0',
+  expression: '',
   history: [],
 };
 
