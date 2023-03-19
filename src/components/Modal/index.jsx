@@ -13,13 +13,11 @@ const FuncModal = ({ children, handleClose }) => {
   };
   const modalContainer = (
     <ModalWrapper
-      ref={this.backRef}
-      onClick={onBackgroundClickHandler}
-      onKeyDown={onBackgroundClickHandler}
-    >
       ref={backRef}
       onKeyDown={onBackgroundClickHandler}
-      onClick={onBackgroundClickHandler}>{children}
+      onClick={onBackgroundClickHandler}
+    >
+      {children}
     </ModalWrapper>
   );
   return ReactDOM.createPortal(

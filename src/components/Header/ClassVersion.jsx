@@ -19,7 +19,10 @@ class Header extends React.Component {
     };
   }
 
-  handleClose = () => this.setState({ isModalOpen: false });
+  handleClose = () => {
+    console.log('close');
+    this.setState({ isModalOpen: false });
+  };
 
   handleOpen = () => this.setState({ isModalOpen: true });
 
@@ -55,7 +58,7 @@ class Header extends React.Component {
           <BiMenu />
         </MobileNavigation>
         {state.isModalOpen && (
-          <ClassModal closeModal={handleClose}>
+          <ClassModal handleClose={handleClose}>
             <MobileNavigationWrapper>
               <NavLink to="/func/home">
                 {({ isActive }) => (

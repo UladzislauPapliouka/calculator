@@ -20,7 +20,7 @@ const getLastNumber = (value) => {
   }
   return value;
 };
-const isOperationLast = (value) => {
+const isOperandLast = (value) => {
   const symbol = value[value.length - 1];
   return (
     symbol === Operation.Add ||
@@ -29,20 +29,32 @@ const isOperationLast = (value) => {
     symbol === Operation.Devide
   );
 };
+const isOperation = (symbol) =>
+  symbol === Operation.Add ||
+  symbol === Operation.Subtract ||
+  symbol === Operation.Myltiply ||
+  symbol === Operation.Devide ||
+  symbol === Operation.LeftBracket ||
+  symbol === Operation.RightBracket;
 
 const EnterSymbol = (state, symbol) => {
-  if (state.expression === 'Incorrect state.expression') {
-    state.state.expression = '';
+  if (
+    state.expression === 'Incorrect state.expression' ||
+    state.expression === '0'
+  ) {
+    state.expression = symbol;
     return;
   }
   const lastNumber = getLastNumber(state.expression);
+  const lastNumberLength = lastNumber ? lastNumber.length : 0;
+  const expressionLength = state.expression ? state.expression.length : 0;
   switch (symbol) {
     case Operation.Clear:
       state.expression = '';
       state.history = [];
       break;
     case Operation.Dot:
-      if (!state.expression || isOperationLast(state.expression)) {
+      if (!state.expression || isOperandLast(state.expression)) {
         state.expression = `${state.expression}0.`;
       }
       if (lastNumber && lastNumber.indexOf(Operation.Dot) === -1) {
@@ -51,7 +63,7 @@ const EnterSymbol = (state, symbol) => {
       break;
 
     case Operation.Add:
-      if (isOperationLast(state.expression)) {
+      if (isOperandLast(state.expression)) {
         state.expression =
           state.expression.slice(0, state.expression.length - 1) + symbol;
         break;
@@ -59,7 +71,7 @@ const EnterSymbol = (state, symbol) => {
       state.expression = `${state.expression}${symbol}`;
       break;
     case Operation.Subtract:
-      if (isOperationLast(state.expression)) {
+      if (isOperandLast(state.expression)) {
         state.expression =
           state.expression.slice(0, state.expression.length - 1) + symbol;
         break;
@@ -67,7 +79,7 @@ const EnterSymbol = (state, symbol) => {
       state.expression = `${state.expression}${symbol}`;
       break;
     case Operation.Myltiply:
-      if (isOperationLast(state.expression)) {
+      if (isOperandLast(state.expression)) {
         state.expression =
           state.expression.slice(0, state.expression.length - 1) + symbol;
         break;
@@ -75,7 +87,7 @@ const EnterSymbol = (state, symbol) => {
       state.expression = `${state.expression}${symbol}`;
       break;
     case Operation.Devide:
-      if (isOperationLast(state.expression)) {
+      if (isOperandLast(state.expression)) {
         state.expression =
           state.expression.slice(0, state.expression.length - 1) + symbol;
         break;
@@ -83,11 +95,15 @@ const EnterSymbol = (state, symbol) => {
       state.expression = `${state.expression}${symbol}`;
       break;
     case Operation.LeftBracket:
-      if (isOperationLast(state.expression)) {
+      if (!state.expression) {
+        state.expression = '(';
+        break;
+      }
+      if (isOperandLast(state.expression)) {
         state.expression = `${state.expression}${symbol}`;
         break;
       }
-      state.expression = `*${symbol}`;
+      state.expression = `${state.expression}*${symbol}`;
       break;
     case Operation.ChangeSign:
       if (
@@ -101,17 +117,43 @@ const EnterSymbol = (state, symbol) => {
         state.expression = -state.expression;
         break;
       }
+      if (lastNumber && lastNumberLength < expressionLength) {
+        console.log(state.expression[expressionLength - lastNumberLength - 2]);
+        if (
+          isOperation(state.expression[expressionLength - lastNumberLength - 1])
+        ) {
+          state.expression = `${state.expression.slice(
+            0,
+            expressionLength - lastNumberLength,
+          )}-${lastNumber}`;
+        }
+        if (
+          state.expression[expressionLength - lastNumberLength - 1] === '-' &&
+          isOperation(state.expression[expressionLength - lastNumberLength - 2])
+        ) {
+          state.expression = `${state.expression.slice(
+            0,
+            expressionLength - lastNumberLength - 1,
+          )}${lastNumber}`;
+        }
+        break;
+      }
       if (
-        state.expression.length > lastNumber &&
         state.expression[0] === '-' &&
         state.expression[1] === '(' &&
         state.expression[state.expression.length - 1] === ')'
       ) {
         state.expression = state.expression.slice(2, -1);
+        break;
       }
-      if (state.expression.length > lastNumber.length) {
-        state.expression = `-(${state.expression})`;
+      if (
+        state.expression[0] === '(' &&
+        state.expression[state.expression.length - 1] === ')'
+      ) {
+        state.expression = `-${state.expression}`;
+        break;
       }
+      state.expression = `-(${state.expression})`;
       break;
     case Operation.CleanEntry:
       state.expression = '';
@@ -130,10 +172,9 @@ const EnterSymbol = (state, symbol) => {
       if (lastNumber && lastNumber[lastNumber.length - 4] === '.') {
         // TODO:  implement warning 'Too much symbols after dot';
       } else {
-        console.log(`${state.expression}${symbol}`);
         state.expression = `${state.expression}${symbol}`;
       }
   }
 };
 
-export { EnterSymbol, getLastNumber, isOperationLast };
+export { EnterSymbol, getLastNumber, isOperandLast };
