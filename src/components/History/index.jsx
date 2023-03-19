@@ -1,28 +1,54 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, useState } from 'react';
 import * as PropTypes from 'prop-types';
 
 import { HistoryOperation, HistoryWrapper, Title } from './styled';
 
-const FuncHistory = ({ history }) => (
-  <HistoryWrapper>
-    <Title>History</Title>
-    {history.map((his) => (
-      <HistoryOperation key={his}>{his}</HistoryOperation>
-    ))}
-  </HistoryWrapper>
-);
+const FuncHistory = ({ history }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleHistory = () => setIsOpen(!isOpen);
+  const historyList = history.length ? (
+    history.map((his) => <HistoryOperation key={his}>{his}</HistoryOperation>)
+  ) : (
+    <HistoryOperation>No operation yet...</HistoryOperation>
+  );
+  return (
+    <HistoryWrapper>
+      <Title onClick={toggleHistory}>
+        {isOpen ? 'Hide history' : 'Show history'}
+      </Title>
+      {isOpen && historyList}
+    </HistoryWrapper>
+  );
+};
 FuncHistory.defaultProps = { history: [] };
 FuncHistory.propTypes = { history: PropTypes.arrayOf(PropTypes.string) };
 
 class ClassHistory extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false,
+    };
+  }
+
+  toggleHistory = () =>
+    this.setState((prevState) => ({ isOpen: !prevState.isOpen }));
+
   render() {
     const { history } = this.props;
+    const { isOpen } = this.state;
+    const { toggleHistory } = this;
+    const historyList = history.length ? (
+      history.map((his) => <HistoryOperation key={his}>{his}</HistoryOperation>)
+    ) : (
+      <HistoryOperation>No operation yet...</HistoryOperation>
+    );
     return (
       <HistoryWrapper>
-        <Title>History</Title>
-        {history.map((his) => (
-          <HistoryOperation key={his}>{his}</HistoryOperation>
-        ))}
+        <Title onClick={toggleHistory}>
+          {isOpen ? 'Hide history' : 'Show history'}
+        </Title>
+        {isOpen && historyList}
       </HistoryWrapper>
     );
   }
