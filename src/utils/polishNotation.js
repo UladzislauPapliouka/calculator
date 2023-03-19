@@ -1,5 +1,5 @@
 import { Operation } from '@constants/keypadConstansts';
-import operationsPriority from '@constants/styles/operationsConstants';
+import operationsPrioritets from '@constants/styles/operationsConstants';
 import Calculator from '@utils/calculator';
 import {
   AddCommand,
@@ -8,6 +8,7 @@ import {
   SubCommand,
 } from '@utils/commands';
 
+const SPLITTER = '&';
 const convertToPolishString = (expression) => {
   const stack = [];
   let result = '';
@@ -24,9 +25,9 @@ const convertToPolishString = (expression) => {
     } else if (char === Operation.RightBracket) {
       if (
         result[result.length - 1] !== ' ' &&
-        Object.keys(operationsPriority).indexOf(result[result.length - 1]) < 0
+        Object.keys(operationsPrioritets).indexOf(result[result.length - 1]) < 0
       ) {
-        result += ' ';
+        result += SPLITTER;
       }
       let el = stack.pop();
 
@@ -34,15 +35,15 @@ const convertToPolishString = (expression) => {
         result += el;
         el = stack.pop();
       }
-    } else if (Object.keys(operationsPriority).indexOf(char) >= 0) {
+    } else if (Object.keys(operationsPrioritets).indexOf(char) >= 0) {
       if (
         result[result.length - 1] !== ' ' &&
-        Object.keys(operationsPriority).indexOf(result[result.length - 1]) < 0
+        Object.keys(operationsPrioritets).indexOf(result[result.length - 1]) < 0
       ) {
-        result += ' ';
+        result += SPLITTER;
       }
       while (
-        operationsPriority[stack.slice(-1)[0]] >= operationsPriority[char]
+        operationsPrioritets[stack.slice(-1)[0]] >= operationsPrioritets[char]
       ) {
         result += stack.pop();
       }
@@ -56,7 +57,7 @@ const convertToPolishString = (expression) => {
   if (
     ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].indexOf(lastChar) >= 0
   ) {
-    result += ' ';
+    result += SPLITTER;
   }
   let sym = stack.pop();
 
@@ -64,7 +65,7 @@ const convertToPolishString = (expression) => {
     result += sym;
     sym = stack.pop();
   }
-
+  console.log(result);
   return result;
 };
 
@@ -79,7 +80,7 @@ const calculatePolishString = (expression) => {
       expression[i] === '.'
     ) {
       result += expression[i];
-    } else if (expression[i] === ' ') {
+    } else if (expression[i] === SPLITTER) {
       number = +result;
       calculator.pushValue(number);
       result = '';
