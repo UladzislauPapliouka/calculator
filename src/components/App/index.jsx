@@ -23,22 +23,19 @@ const App = () => {
   );
   return (
     <HashRouter>
-      <ErrorBoundary>
-        <ThemeContext.Provider value={themeContextValue}>
-          <ThemeProvider
-            theme={{ ...themes[currentTheme], sizes, opacity, fontWeight }}
-          >
-            <GlobalStyles />
-            <Provider store={store}>
-              <Routes>
-                {mainRoutes.map(({ path, element }) => (
-                  <Route key={`route-${path}`} path={path} element={element} />
-                ))}
-              </Routes>
-            </Provider>
-          </ThemeProvider>
-        </ThemeContext.Provider>
-      </ErrorBoundary>
+      <ThemeContext.Provider value={themeContextValue}>
+        <ThemeProvider
+          theme={{ ...themes[currentTheme], sizes, opacity, fontWeight }}
+        >
+          <GlobalStyles />
+
+          <Routes>
+            {mainRoutes.map(({ path, element }) => (
+              <Route key={`route-${path}`} path={path} element={element} />
+            ))}
+          </Routes>
+        </ThemeProvider>
+      </ThemeContext.Provider>
     </HashRouter>
   );
 };

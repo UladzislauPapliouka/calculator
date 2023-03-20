@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
 import App from '@components/App';
+import ErrorBoundary from '@components/ErrorBoudaries';
+import store from '@store';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -9,7 +12,11 @@ import '@assets/fonts/stylesheet.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <ErrorBoundary>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </ErrorBoundary>
   </React.StrictMode>,
 );
 
