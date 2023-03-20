@@ -16,7 +16,6 @@ const CalculatorWrapper = styled.div`
   height: 89vh;
   overflow: hidden;
   background-color: ${(props) => props.theme.mainBackground};
-  position: relative;
   @media screen and (max-width: ${displayBreakpoints.lg}px) {
     grid-template-rows: auto;
     grid-template-columns: 100%;

@@ -1,3 +1,4 @@
+import opacity from '@constants/styles/opacity';
 import {
   borderRadiuses,
   displayBreakpoints,
@@ -16,7 +17,7 @@ export const Link = styled.a`
           font-size: ${fontSizes.xl}px;
           cursor: pointer;
           position: relative;
-          opacity: 1;
+          opacity: ${opacity['100']};
           color: ${props.theme.headerColor};
           &:before {
             content: '';
@@ -33,7 +34,7 @@ export const Link = styled.a`
           text-decoration: none;
           cursor: pointer;
           position: relative;
-          opacity: 0.7;
+          opacity: ${opacity['70']};
           color: ${props.theme.headerColor};
         `;
     }
