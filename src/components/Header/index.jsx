@@ -13,12 +13,11 @@ import routesLink from '@constants/links';
 
 const HeaderFC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const handleClose = useCallback(() => setIsModalOpen(false), []);
-  const handleOpen = useCallback(() => setIsModalOpen(true), []);
+  const toggleIsOpen = () => setIsModalOpen(!isModalOpen);
   const links = (
     <>
       {routesLink.map((route) => (
-        <NavLink to={route.path} onClick={handleClose}>
+        <NavLink to={route.path} onClick={toggleIsOpen}>
           {route.title}
         </NavLink>
       ))}
@@ -29,11 +28,11 @@ const HeaderFC = () => {
     <HeaderWrapper>
       <Title>Calculator App</Title>
       <NavigationWrapper>{links}</NavigationWrapper>
-      <MobileNavigation onClick={handleOpen}>
+      <MobileNavigation onClick={toggleIsOpen}>
         <BiMenu />
       </MobileNavigation>
       {isModalOpen && (
-        <ModalFC handleClose={handleClose}>
+        <ModalFC handleClose={toggleIsOpen}>
           <MobileNavigationWrapper>{links}</MobileNavigationWrapper>
         </ModalFC>
       )}
