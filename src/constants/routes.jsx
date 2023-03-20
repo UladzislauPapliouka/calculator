@@ -16,4 +16,5 @@ const mainRoutes = [
     element: <ClassApp />,
   },
 ];
+
 export default mainRoutes;

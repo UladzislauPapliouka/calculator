@@ -29,13 +29,6 @@ const isOperandLast = (value) => {
     symbol === Operation.Devide
   );
 };
-const isOperation = (symbol) =>
-  symbol === Operation.Add ||
-  symbol === Operation.Subtract ||
-  symbol === Operation.Myltiply ||
-  symbol === Operation.Devide ||
-  symbol === Operation.LeftBracket ||
-  symbol === Operation.RightBracket;
 
 const EnterSymbol = (state, symbol) => {
   if (state.expression === 'Incorrect state.expression') {
@@ -202,9 +195,7 @@ const EnterSymbol = (state, symbol) => {
       state.expression = 'Incorrect state.expression';
       break;
     default:
-      if (lastNumber && lastNumber[lastNumber.length - 4] === '.') {
-        // TODO:  implement warning 'Too much symbols after dot';
-      } else {
+      if (lastNumber && lastNumber[lastNumber.length - 4] !== '.') {
         state.expression = `${state.expression}${symbol}`;
       }
   }

@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import displayReducer from './reducers/displaySlice';
+import calculatorReducer from './reducers/calculatorSlice';
 
 const store = configureStore({
   reducer: {
-    display: displayReducer,
+    calculator: calculatorReducer,
   },
 });
 export default store;

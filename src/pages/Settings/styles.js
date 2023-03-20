@@ -1,4 +1,3 @@
-import colors from '@constants/styles/colors';
 import {
   borderRadiuses,
   borderWidths,
@@ -31,8 +30,8 @@ const SettingsWrapper = styled.div`
   gap: ${gapSizes.s}px;
   align-items: flex-start;
   padding: ${paddingSizes.s}px;
-  h1 {
-    font-size: ${fontSizes.xxxl}px;
-  }
 `;
-export { Select, SettingsWrapper };
+const Title = styled.h1`
+  font-size: ${fontSizes.xxxl}px;
+`;
+export { Select, SettingsWrapper, Title };

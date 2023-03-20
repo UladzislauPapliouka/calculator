@@ -4,11 +4,11 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { HeaderCC, HeaderFC } from '@components/Header';
 import { ClassCalculator, FuncCalculator } from '@pages/Calculator';
 import { ClassSettings, FuncSettings } from '@pages/Settings';
-import { clearHistory, enterSymbol } from '@store/reducers/displaySlice';
+import { clearHistory, enterSymbol } from '@store/reducers/calculatorSlice';
 
 const FuncApp = () => {
-  const displayValue = useSelector((state) => state.display.expression);
-  const history = useSelector((state) => state.display.history);
+  const displayValue = useSelector((state) => state.calculator.expression);
+  const history = useSelector((state) => state.calculator.history);
   const dispatch = useDispatch();
   const handleEnterSymbol = useCallback((symbol) => {
     dispatch(enterSymbol({ symbol }));
@@ -62,8 +62,8 @@ class ClassAppWithoutStore extends React.Component {
             element={
               <ClassCalculator
                 handleEnterSymbol={this.handleEnterSymbol}
-                history={props.state.display.history}
-                displayValue={props.state.display.expression}
+                history={props.state.calculator.history}
+                displayValue={props.state.calculator.expression}
               />
             }
           />

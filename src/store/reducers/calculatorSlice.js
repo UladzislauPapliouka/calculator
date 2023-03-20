@@ -6,7 +6,7 @@ const initialState = {
   history: [],
 };
 
-const displaySlice = createSlice({
+const calculatorSlice = createSlice({
   name: 'display',
   initialState,
   reducers: {
@@ -19,5 +19,5 @@ const displaySlice = createSlice({
   },
 });
 
-export default displaySlice.reducer;
-export const { enterSymbol, clearHistory } = displaySlice.actions;
+export default calculatorSlice.reducer;
+export const { enterSymbol, clearHistory } = calculatorSlice.actions;

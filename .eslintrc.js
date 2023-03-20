@@ -30,6 +30,7 @@ module.exports = {
     eqeqeq: 0,
     'operator-assignment': 0,
     'no-continue': 0,
+    'max-classes-per-file': 0,
   },
   settings: {
     'import/resolver': {

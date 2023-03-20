@@ -65,7 +65,6 @@ const convertToPolishString = (expression) => {
     result += sym;
     sym = stack.pop();
   }
-  console.log(result);
   return result;
 };
 
