@@ -194,7 +194,7 @@ const EnterSymbol = (state, symbol) => {
       state.expression = `-(${state.expression})`;
       break;
     case Operation.CleanEntry:
-      state.expression = '';
+      state.expression = state.expression.slice(0, -1);
       break;
     case Operation.Equal:
       if (isBracketCorrect(state.expression)) {
