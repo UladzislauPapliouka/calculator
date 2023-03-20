@@ -1,27 +1,41 @@
 import React, { PureComponent } from 'react';
 import * as PropTypes from 'prop-types';
 
-import DisplayWrapper from './styled';
+import { DisplayWrapper, ExpressionSpan, LastExpressionSpan } from './styled';
 
-const DisplayFC = React.memo(({ expression }) => (
-  <DisplayWrapper data-cy="calculator-display">{expression}</DisplayWrapper>
+const DisplayFC = React.memo(({ expression, lastExpression }) => (
+  <DisplayWrapper data-cy="calculator-display">
+    <LastExpressionSpan>{lastExpression}</LastExpressionSpan>
+    <ExpressionSpan>{expression}</ExpressionSpan>
+  </DisplayWrapper>
 ));
 DisplayFC.defaultProps = {
   expression: '',
+  lastExpression: '',
 };
 DisplayFC.propTypes = {
   expression: PropTypes.string,
+  lastExpression: PropTypes.string,
 };
 
 class DisplayCC extends PureComponent {
   render() {
-    const { expression } = this.props;
+    const { expression, lastExpression } = this.props;
     return (
-      <DisplayWrapper data-cy="calculator-display">{expression}</DisplayWrapper>
+      <DisplayWrapper data-cy="calculator-display">
+        <LastExpressionSpan>{lastExpression}</LastExpressionSpan>
+        <ExpressionSpan>{expression}</ExpressionSpan>
+      </DisplayWrapper>
     );
   }
 }
-DisplayCC.defaultProps = { expression: '' };
-DisplayCC.propTypes = { expression: PropTypes.string };
+DisplayCC.defaultProps = {
+  expression: '',
+  lastExpression: '',
+};
+DisplayCC.propTypes = {
+  expression: PropTypes.string,
+  lastExpression: PropTypes.string,
+};
 
 export { DisplayCC, DisplayFC };

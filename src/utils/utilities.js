@@ -199,6 +199,7 @@ const EnterSymbol = (state, symbol) => {
     case Operation.Equal:
       if (isBracketCorrect(state.expression)) {
         state.history.push(state.expression);
+        state.lastExpression = `${state.expression}=`;
         state.expression = calculatePolishString(
           convertToPolishString(state.expression),
         );

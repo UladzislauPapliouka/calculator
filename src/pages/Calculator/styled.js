@@ -9,6 +9,8 @@ const CalculatorWrapper = styled.div`
     'disp  his'
     'keyp  his';
   height: 89vh;
+  box-sizing: border-box;
+  padding: ${({ theme: { sizes } }) => sizes.paddingSizes.xs}px;
   overflow: hidden;
   background-color: ${({ theme: { mainBackground } }) => mainBackground};
   @media screen and (max-width: ${({ theme: { sizes } }) =>

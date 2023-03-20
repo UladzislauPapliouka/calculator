@@ -5,6 +5,7 @@ const initialState = {
   expression: '',
   history: [],
   isHistoryOpen: false,
+  lastExpression: '',
 };
 
 const calculatorSlice = createSlice({

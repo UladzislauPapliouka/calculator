@@ -6,9 +6,9 @@ import * as PropTypes from 'prop-types';
 
 import CalculatorWrapper from './styled';
 
-const CalculatorFC = ({ displayValue, handleEnterSymbol }) => (
+const CalculatorFC = ({ displayValue, handleEnterSymbol, lastExpression }) => (
   <CalculatorWrapper>
-    <DisplayFC expression={displayValue} />
+    <DisplayFC expression={displayValue} lastExpression={lastExpression} />
     <KeypadFC handleEnterSymbol={handleEnterSymbol} />
     <HistoryFC />
   </CalculatorWrapper>
@@ -16,18 +16,20 @@ const CalculatorFC = ({ displayValue, handleEnterSymbol }) => (
 CalculatorFC.defaultProps = {
   displayValue: '',
   handleEnterSymbol: () => {},
+  lastExpression: '',
 };
 CalculatorFC.propTypes = {
   displayValue: PropTypes.string,
+  lastExpression: PropTypes.string,
   handleEnterSymbol: PropTypes.func,
 };
 
 class CalculatorCC extends PureComponent {
   render() {
-    const { displayValue, handleEnterSymbol } = this.props;
+    const { displayValue, handleEnterSymbol, lastExpression } = this.props;
     return (
       <CalculatorWrapper>
-        <DisplayCC expression={displayValue} />
+        <DisplayCC expression={displayValue} lastExpression={lastExpression} />
         <KeypadCC handleEnterSymbol={handleEnterSymbol} />
         <HistoryCC />
       </CalculatorWrapper>
@@ -38,9 +40,11 @@ class CalculatorCC extends PureComponent {
 CalculatorCC.defaultProps = {
   displayValue: '',
   handleEnterSymbol: () => {},
+  lastExpression: '',
 };
 CalculatorCC.propTypes = {
   displayValue: PropTypes.string,
+  lastExpression: PropTypes.string,
   handleEnterSymbol: PropTypes.func,
 };
 export { CalculatorCC, CalculatorFC };
