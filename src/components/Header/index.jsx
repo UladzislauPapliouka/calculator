@@ -27,7 +27,6 @@ const HeaderFC = () => {
       ))}
     </>
   );
-
   return (
     <HeaderWrapper>
       <Title>Calculator App</Title>

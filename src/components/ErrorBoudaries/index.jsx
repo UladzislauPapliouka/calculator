@@ -13,13 +13,17 @@ class ErrorBoundary extends Component {
     };
   }
 
+  static getDerivedStateFromProps() {
+    return { hasError: true };
+  }
+
   componentDidCatch(error, errorInfo) {
-    this.setState({ hasError: true, error, errorInfo });
+    this.setState({ error, errorInfo });
   }
 
   render() {
     const { state, props } = this;
-    return state.hasError && state.error && state.errorInfo ? (
+    return state.errorInfo && state.errorInfo.componentStack ? (
       <ErrorWrapper>
         <ErrorText>{state.error.message}</ErrorText>
       </ErrorWrapper>
