@@ -42,7 +42,6 @@ module.exports = {
     clean: true, // Очищает директорию dist перед обновлением бандла
     // Свойство стало доступно с версии 5.20.0, до этого использовался
     // CleanWebpackPlugin
-    publicPath: '/',
   },
   devtool: 'source-map',
   devServer: {

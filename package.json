@@ -23,7 +23,7 @@
     "webpack-merge": "^5.8.0"
   },
   "scripts": {
-    "predeploy": "npm run build-prod",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "cross-env SERVE=true webpack serve",
     "build": "webpack",

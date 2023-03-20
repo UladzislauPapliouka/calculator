@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import ErrorBoundary from '@components/ErrorBoudaries';
 import mainRoutes from '@constants/routes';
 import { ThemeContext, themes } from '@constants/theme';
@@ -19,7 +19,7 @@ const App = () => {
     [themeName, handleThemeChange],
   );
   return (
-    <BrowserRouter>
+    <HashRouter>
       <ErrorBoundary>
         <ThemeContext.Provider value={themeContextValue}>
           <ThemeProvider theme={themes[themeName]}>
@@ -34,7 +34,7 @@ const App = () => {
           </ThemeProvider>
         </ThemeContext.Provider>
       </ErrorBoundary>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 export default App;
