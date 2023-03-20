@@ -41,15 +41,21 @@ const AppFC = () => {
 
 class ClassAppWithoutStore extends React.Component {
   handleEnterSymbol = (symbol) => {
-    this.props.EnterSymbol(symbol);
+    const { EnterSymbol } = this.props;
+    EnterSymbol(symbol);
   };
 
   handleClearHistory = () => {
-    this.props.ClearHistory();
+    const { ClearHistory } = this.props;
+    ClearHistory();
   };
 
   render() {
-    const { props } = this;
+    const {
+      props: { displayValue },
+      handleEnterSymbol,
+      handleClearHistory,
+    } = this;
     return (
       <>
         <HeaderCC />
@@ -59,16 +65,14 @@ class ClassAppWithoutStore extends React.Component {
             path="/home"
             element={
               <CalculatorCC
-                handleEnterSymbol={this.handleEnterSymbol}
-                displayValue={props.displayValue}
+                handleEnterSymbol={handleEnterSymbol}
+                displayValue={displayValue}
               />
             }
           />
           <Route
             path="/settings"
-            element={
-              <SettingsCC handleClearHistory={this.handleClearHistory} />
-            }
+            element={<SettingsCC handleClearHistory={handleClearHistory} />}
           />
         </Routes>
       </>
