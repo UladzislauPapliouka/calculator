@@ -19,12 +19,8 @@ const HeaderFC = () => {
     () => (
       <>
         {routesLink.map((route) => (
-          <NavLink to={route.path}>
-            {({ isActive }) => (
-              <LinkText onClick={handleClose} active={isActive}>
-                {route.title}
-              </LinkText>
-            )}
+          <NavLink to={route.path} onClick={handleClose}>
+            {route.title}
           </NavLink>
         ))}
       </>
@@ -55,12 +51,8 @@ class HeaderCC extends React.Component {
     this.links = (
       <>
         {routesLink.map((route) => (
-          <NavLink to={route.path}>
-            {({ isActive }) => (
-              <LinkText onClick={this.handleClose} active={isActive}>
-                {route.title}
-              </LinkText>
-            )}
+          <NavLink to={route.path} onClick={this.handleClose}>
+            {route.title}
           </NavLink>
         ))}
       </>

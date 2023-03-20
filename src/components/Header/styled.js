@@ -10,36 +10,26 @@ import {
 } from '@constants/styles/sizes';
 import styled, { css } from 'styled-components';
 
-export const LinkText = styled.span`
-  ${(props) => {
-    switch (props.active) {
-      case true:
-        return css`
-          font-size: ${fontSizes.xl}px;
-          cursor: pointer;
-          position: relative;
-          opacity: ${opacity['100']};
-          color: ${props.theme.headerColor};
-          &:before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: ${underlineWidths.sm}px;
-            bottom: 0;
-            background-color: ${props.theme.headerColor};
-          }
-        `;
-      default:
-        return css`
-          font-size: ${fontSizes.xl}px;
-          text-decoration: none;
-          cursor: pointer;
-          position: relative;
-          opacity: ${opacity['70']};
-          color: ${props.theme.headerColor};
-        `;
+const linkStyles = css`
+  a {
+    font-size: ${fontSizes.xl}px;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    opacity: ${opacity['70']};
+    color: ${(props) => props.theme.headerColor};
+    &.active {
+      opacity: ${opacity['100']};
+      &:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: ${underlineWidths.sm}px;
+        bottom: 0;
+        background-color: ${(props) => props.theme.headerColor};
+      }
     }
-  }}
+  }
 `;
 // TODO: how set adaptive height in px
 export const HeaderWrapper = styled.header`
@@ -52,14 +42,7 @@ export const HeaderWrapper = styled.header`
   align-items: center;
   font-family: HelveticaNeueCyr, serif;
   font-weight: ${fontWeight['100']};
-
-  & a {
-    text-decoration: none;
-    color: inherit;
-  }
-  & span {
-    font-size: ${fontSizes.xl}px;
-  }
+  ${linkStyles}
 `;
 export const NavigationWrapper = styled.div`
   display: flex;
@@ -68,10 +51,6 @@ export const NavigationWrapper = styled.div`
   gap: ${gapSizes.l}px;
   @media screen and (max-width: ${displayBreakpoints.md}px) {
     display: none;
-  }
-  & a {
-    text-decoration: none;
-    color: inherit;
   }
 `;
 export const MobileNavigationWrapper = styled.div`
@@ -90,10 +69,7 @@ export const MobileNavigationWrapper = styled.div`
   @media screen and (max-width: ${displayBreakpoints.md}px) {
     display: flex;
   }
-  & a {
-    text-decoration: none;
-    color: ${(props) => props.theme.headerColor};
-  }
+  ${linkStyles}
 `;
 export const MobileNavigation = styled.div`
   align-items: center;
