@@ -1,55 +1,49 @@
-import fontWeight from '@constants/styles/fontWeight';
-import opacity from '@constants/styles/opacity';
-import {
-  borderRadiuses,
-  displayBreakpoints,
-  fontSizes,
-  gapSizes,
-  paddingSizes,
-  underlineWidths,
-} from '@constants/styles/sizes';
 import styled, { css } from 'styled-components';
 
 const linkStyles = css`
   a {
-    font-size: ${fontSizes.xl}px;
+    font-size: ${({ theme: { sizes } }) => sizes.fontSizes.xl}px;
     text-decoration: none;
     cursor: pointer;
     position: relative;
-    opacity: ${opacity['70']};
-    color: ${(props) => props.theme.headerColor};
+    opacity: ${({ theme: { opacity } }) => opacity['70']};
+    color: ${({ theme: { headerColor } }) => headerColor};
     &.active {
-      opacity: ${opacity['100']};
+      opacity: ${({ theme: { opacity } }) => opacity['100']};
       &:before {
         content: '';
         position: absolute;
         width: 100%;
-        height: ${underlineWidths.sm}px;
+        height: ${({ theme: { sizes } }) => sizes.underlineWidths.sm}px;
         bottom: 0;
-        background-color: ${(props) => props.theme.headerColor};
+        background-color: ${({ theme: { headerColor } }) => headerColor};
       }
     }
   }
 `;
+export const Title = styled.span`
+  font-size: ${({ theme: { sizes } }) => sizes.fontSizes.xl}px;
+`;
 // TODO: how set adaptive height in px
 export const HeaderWrapper = styled.header`
   height: 11vh;
-  background-color: ${(props) => props.theme.headerBackground};
-  color: ${(props) => props.theme.headerColor};
-  padding: 0 ${paddingSizes.s};
+  background-color: ${({ theme: { headerBackground } }) => headerBackground};
+  color: ${({ theme: { headerColor } }) => headerColor};
+  padding: 0 ${({ theme: { sizes } }) => sizes.paddingSizes.s}px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-family: HelveticaNeueCyr, serif;
-  font-weight: ${fontWeight['100']};
+  font-weight: ${({ theme: { fontWeight } }) => fontWeight['100']};
   ${linkStyles}
 `;
 export const NavigationWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: ${gapSizes.l}px;
-  @media screen and (max-width: ${displayBreakpoints.md}px) {
+  gap: ${({ theme: { sizes } }) => sizes.gapSizes.l}px;
+  @media screen and (max-width: ${({ theme: { sizes } }) =>
+      sizes.displayBreakpoints.md}px) {
     display: none;
   }
 `;
@@ -58,15 +52,16 @@ export const MobileNavigationWrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: ${gapSizes.l}px;
-  color: ${(props) => props.theme.headerColor};
-  padding: ${paddingSizes.lg}px;
-  border-radius: ${borderRadiuses.md}px;
-  background-color: ${(props) => props.theme.headerBackground};
+  gap: ${({ theme: { sizes } }) => sizes.gapSizes.l}px;
+  color: ${({ theme: { headerColor } }) => headerColor};
+  padding: ${({ theme: { sizes } }) => sizes.paddingSizes.lg}px;
+  border-radius: ${({ theme: { sizes } }) => sizes.borderRadiuses.md}px;
+  background-color: ${({ theme: { headerBackground } }) => headerBackground};
   & div:before {
-    background-color: ${(props) => props.theme.headerColor};
+    background-color: ${({ theme: { headerColor } }) => headerColor};
   }
-  @media screen and (max-width: ${displayBreakpoints.md}px) {
+  @media screen and (max-width: ${({ theme: { sizes } }) =>
+      sizes.displayBreakpoints.md}px) {
     display: flex;
   }
   ${linkStyles}
@@ -75,8 +70,9 @@ export const MobileNavigation = styled.div`
   align-items: center;
   justify-content: center;
   display: none;
-  font-size: ${fontSizes.xl}px;
-  @media screen and (max-width: ${displayBreakpoints.md}px) {
+  font-size: ${({ theme: { sizes } }) => sizes.fontSizes.xl}px;
+  @media screen and (max-width: ${({ theme: { sizes } }) =>
+      sizes.displayBreakpoints.md}px) {
     display: flex;
   }
 `;

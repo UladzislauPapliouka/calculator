@@ -1,23 +1,19 @@
-import {
-  borderRadiuses,
-  borderWidths,
-  fontSizes,
-  paddingSizes,
-} from '@constants/styles/sizes';
 import styled from 'styled-components';
 
 const Button = styled.button`
-  padding: ${paddingSizes.xs}px ${paddingSizes.s}px;
-  background: ${(props) => props.theme.keysBackground};
-  color: ${(props) => props.theme.mainColor};
-  border: ${(props) => props.theme.bordersColor} ${borderWidths.md}px solid;
-  border-radius: ${borderRadiuses.md}px;
-  font-size: ${fontSizes.s}px;
+  padding: ${({ theme: { sizes } }) => sizes.paddingSizes.xs}px
+    ${({ theme: { sizes } }) => sizes.paddingSizes.s}px;
+  background: ${({ theme: { keysBackground } }) => keysBackground};
+  color: ${({ theme: { mainColor } }) => mainColor};
+  border: ${({ theme: { bordersColor } }) => bordersColor}
+    ${({ theme: { sizes } }) => sizes.borderWidths.md}px solid;
+  border-radius: ${({ theme: { sizes } }) => sizes.borderRadiuses.md}px;
+  font-size: ${({ theme: { sizes } }) => sizes.fontSizes.s}px;
   &:hover {
-    background: ${(props) => props.theme.keysHover};
+    background: ${({ theme: { keysHover } }) => keysHover};
   }
   &:active {
-    background: ${(props) => props.theme.keysActive};
+    background: ${({ theme: { keysActive } }) => keysActive};
   }
 `;
 

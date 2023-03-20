@@ -11,6 +11,7 @@ const lightTheme = {
   keysActive: colors.whiteC9,
   mainBackground: colors.white,
   scrollbarColor: colors.gray43,
+  modalBackground: colors.gray1207,
 };
 const darkTheme = {
   headerColor: colors.white,
@@ -22,6 +23,7 @@ const darkTheme = {
   keysActive: colors.darkBlue80,
   mainBackground: colors.darkBlue,
   scrollbarColor: colors.white,
+  modalBackground: colors.gray1207,
 };
 const themes = {
   light: lightTheme,

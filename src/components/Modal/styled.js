@@ -1,4 +1,3 @@
-import colors from '@constants/styles/colors';
 import styled from 'styled-components';
 
 const ModalWrapper = styled.div`
@@ -7,7 +6,7 @@ const ModalWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: ${colors.gray1207};
+  background: ${({ theme: { modalBackground } }) => modalBackground};
   &:empty {
     display: none;
   }

@@ -1,11 +1,3 @@
-import {
-  borderRadiuses,
-  borderWidths,
-  displayBreakpoints,
-  fontSizes,
-  gapSizes,
-  keySizes,
-} from '@constants/styles/sizes';
 import styled from 'styled-components';
 
 export const KeypadWrapper = styled.div`
@@ -13,25 +5,36 @@ export const KeypadWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(
     5,
-    minmax(${keySizes.lg[0]}px, ${keySizes.lg[1]}px)
+    minmax(
+      ${({ theme: { sizes } }) => sizes.keySizes.lg[0]}px,
+      ${({ theme: { sizes } }) => sizes.keySizes.lg[1]}px
+    )
   );
-  column-gap: ${gapSizes.xxxl}px;
-  row-gap: ${gapSizes.s}px;
+  column-gap: ${({ theme: { sizes } }) => sizes.gapSizes.xxxl}px;
+  row-gap: ${({ theme: { sizes } }) => sizes.gapSizes.s}px;
   grid-area: keyp;
   align-content: center;
   justify-content: center;
-  @media screen and (max-width: ${displayBreakpoints.xxxl}px) {
+  @media screen and (max-width: ${({ theme: { sizes } }) =>
+      sizes.displayBreakpoints.xxxl}px) {
     grid-template-columns: repeat(
       5,
-      minmax(${keySizes.md[0]}px, ${keySizes.md[1]}px)
+      minmax(
+        ${({ theme: { sizes } }) => sizes.keySizes.md[0]}px,
+        ${({ theme: { sizes } }) => sizes.keySizes.md[1]}px
+      )
     );
-    row-gap: ${gapSizes.xs}px;
-    column-gap: ${gapSizes.xs}px;
+    row-gap: ${({ theme: { sizes } }) => sizes.gapSizes.xs}px;
+    column-gap: ${({ theme: { sizes } }) => sizes.gapSizes.xs}px;
   }
-  @media screen and (max-width: ${displayBreakpoints.lg}px) {
+  @media screen and (max-width: ${({ theme: { sizes } }) =>
+      sizes.displayBreakpoints.lg}px) {
     grid-template-columns: repeat(
       5,
-      minmax(${keySizes.sm[0]}px, ${keySizes.sm[1]}px)
+      minmax(
+        ${({ theme: { sizes } }) => sizes.keySizes.sm[0]}px,
+        ${({ theme: { sizes } }) => sizes.keySizes.sm[1]}px
+      )
     );
   }
 `;
@@ -40,22 +43,24 @@ export const Key = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${(props) => props.theme.keysBackground};
-  border: ${borderWidths.sm}px solid ${(props) => props.theme.bordersColor};
-  color: ${(props) => props.theme.mainColor};
-  border-radius: ${borderRadiuses.lg}px;
+  background-color: ${({ theme: { keysBackground } }) => keysBackground};
+  border: ${({ theme: { sizes } }) => sizes.borderWidths.sm}px solid
+    ${({ theme: { bordersColor } }) => bordersColor};
+  color: ${({ theme: { mainColor } }) => mainColor};
+  border-radius: ${({ theme: { sizes } }) => sizes.borderRadiuses.lg}px;
   vertical-align: center;
-  font-size: ${fontSizes.xxxxl}px;
+  font-size: ${({ theme: { sizes } }) => sizes.fontSizes.xxxxl}px;
   cursor: pointer;
-  @media screen and (max-width: ${displayBreakpoints.lg}px) {
-    font-size: ${fontSizes.xl}px;
-    border-radius: ${borderRadiuses.sm}px;
+  @media screen and (max-width: ${({ theme: { sizes } }) =>
+      sizes.displayBreakpoints.lg}px) {
+    font-size: ${({ theme: { sizes } }) => sizes.fontSizes.xl}px;
+    border-radius: ${({ theme: { sizes } }) => sizes.borderRadiuses.sm}px;
   }
   &:hover {
-    background: ${(props) => props.theme.keysHover};
+    background: ${({ theme: { keysHover } }) => keysHover};
   }
 
   &:active {
-    background: ${(props) => props.theme.keysActive};
+    background: ${({ theme: { keysActive } }) => keysActive};
   }
 `;

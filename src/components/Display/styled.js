@@ -1,20 +1,16 @@
-import {
-  displayBreakpoints,
-  fontSizes,
-  paddingSizes,
-} from '@constants/styles/sizes';
 import styled from 'styled-components';
 
 const DisplayWrapper = styled.span`
   display: inline-block;
   box-sizing: border-box;
-  font-size: ${fontSizes.xxxxl}px;
+  font-size: ${({ theme: { sizes } }) => sizes.fontSizes.xxxxl}px;
   text-align: right;
-  padding: ${paddingSizes.s}px;
+  padding: ${({ theme: { sizes } }) => sizes.paddingSizes.s}px;
   grid-area: disp;
-  color: ${(props) => props.theme.mainColor};
-  @media screen and (max-width: ${displayBreakpoints.lg}px) {
-    padding: ${paddingSizes.xs}px;
+  color: ${({ theme: { mainColor } }) => mainColor};
+  @media screen and (max-width: ${({ theme: { sizes } }) =>
+      sizes.displayBreakpoints.lg}px) {
+    padding: ${({ theme: { sizes } }) => sizes.paddingSizes.xs}px;
   }
 `;
 

@@ -3,10 +3,10 @@ import { BiMenu } from 'react-icons/bi';
 import { NavLink } from 'react-router-dom';
 import {
   HeaderWrapper,
-  LinkText,
   MobileNavigation,
   MobileNavigationWrapper,
   NavigationWrapper,
+  Title,
 } from '@components/Header/styled';
 import { ModalCC, ModalFC } from '@components/Modal';
 import routesLink from '@constants/links';
@@ -29,7 +29,7 @@ const HeaderFC = () => {
   );
   return (
     <HeaderWrapper>
-      <span>Calculator App</span>
+      <Title>Calculator App</Title>
       <NavigationWrapper>{links}</NavigationWrapper>
       <MobileNavigation onClick={handleOpen}>
         <BiMenu />
@@ -69,7 +69,7 @@ class HeaderCC extends React.Component {
     const { state, handleClose, handleOpen, links } = this;
     return (
       <HeaderWrapper>
-        <span>Calculator App</span>
+        <Title>Calculator App</Title>
         <NavigationWrapper>{links}</NavigationWrapper>
         <MobileNavigation onClick={handleOpen}>
           <BiMenu />

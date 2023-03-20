@@ -3,6 +3,9 @@ import { Provider } from 'react-redux';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import ErrorBoundary from '@components/ErrorBoudaries';
 import mainRoutes from '@constants/routes';
+import fontWeight from '@constants/styles/fontWeight';
+import opacity from '@constants/styles/opacity';
+import * as sizes from '@constants/styles/sizes';
 import { ThemeContext, themes } from '@constants/theme';
 import store from '@store';
 import { ThemeProvider } from 'styled-components';
@@ -22,7 +25,9 @@ const App = () => {
     <HashRouter>
       <ErrorBoundary>
         <ThemeContext.Provider value={themeContextValue}>
-          <ThemeProvider theme={themes[currentTheme]}>
+          <ThemeProvider
+            theme={{ ...themes[currentTheme], sizes, opacity, fontWeight }}
+          >
             <GlobalStyles />
             <Provider store={store}>
               <Routes>

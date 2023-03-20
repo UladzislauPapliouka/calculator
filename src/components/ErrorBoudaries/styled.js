@@ -1,4 +1,3 @@
-import { fontSizes } from '@constants/styles/sizes';
 import styled from 'styled-components';
 
 const ErrorWrapper = styled.div`
@@ -6,6 +5,6 @@ const ErrorWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: ${fontSizes.xxxxl}px;
+  font-size: ${({ theme: { sizes } }) => sizes.fontSizes.xxxxl}px;
 `;
 export default ErrorWrapper;
