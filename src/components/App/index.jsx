@@ -10,19 +10,19 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyles from '@/globalStyles';
 
 const App = () => {
-  const [themeName, setThemeName] = useState('dark');
+  const [currentTheme, setCurrentTheme] = useState('dark');
   const handleThemeChange = useCallback((event) => {
-    setThemeName(event.target.value);
+    setCurrentTheme(event.target.value);
   }, []);
   const themeContextValue = useMemo(
-    () => ({ theme: themeName, toggleTheme: handleThemeChange }),
-    [themeName, handleThemeChange],
+    () => ({ theme: currentTheme, toggleTheme: handleThemeChange }),
+    [currentTheme, handleThemeChange],
   );
   return (
     <HashRouter>
       <ErrorBoundary>
         <ThemeContext.Provider value={themeContextValue}>
-          <ThemeProvider theme={themes[themeName]}>
+          <ThemeProvider theme={themes[currentTheme]}>
             <GlobalStyles />
             <Provider store={store}>
               <Routes>
