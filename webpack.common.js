@@ -34,7 +34,7 @@ module.exports = {
   plugins,
   target,
   output: {
-    path: path.resolve(__dirname, 'dist'), // Директория, в которой будет
+    path: path.resolve(__dirname, 'build'), // Директория, в которой будет
     // размещаться итоговый бандл, папка dist в корне приложения
     assetModuleFilename: 'assets/[hash][ext][query]', // Все ассеты будут
     // складываться в dist/assets
