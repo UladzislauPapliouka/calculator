@@ -8,7 +8,6 @@ import { clearHistory, enterSymbol } from '@store/reducers/calculatorSlice';
 
 const AppFC = () => {
   const displayValue = useSelector((state) => state.calculator.expression);
-  const history = useSelector((state) => state.calculator.history);
   const dispatch = useDispatch();
   const handleEnterSymbol = useCallback((symbol) => {
     dispatch(enterSymbol({ symbol }));
@@ -27,7 +26,6 @@ const AppFC = () => {
           element={
             <CalculatorFC
               handleEnterSymbol={handleEnterSymbol}
-              history={history}
               displayValue={displayValue}
             />
           }
@@ -62,8 +60,7 @@ class ClassAppWithoutStore extends React.Component {
             element={
               <CalculatorCC
                 handleEnterSymbol={this.handleEnterSymbol}
-                history={props.state.calculator.history}
-                displayValue={props.state.calculator.expression}
+                displayValue={props.displayValue}
               />
             }
           />
@@ -79,7 +76,9 @@ class ClassAppWithoutStore extends React.Component {
   }
 }
 const AppCC = connect(
-  (state) => ({ state }),
+  (state) => ({
+    displayValue: state.calculator.expression,
+  }),
   (dispatch) => ({
     EnterSymbol(symbol) {
       dispatch(enterSymbol({ symbol }));
