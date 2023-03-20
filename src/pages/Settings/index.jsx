@@ -3,7 +3,7 @@ import Button from '@components/Button';
 import { ThemeContext, themes } from '@constants/theme';
 import PropTypes from 'prop-types';
 
-import { Select, SettingsWrapper, Title } from './styles';
+import { Option, Select, SettingsWrapper, Title } from './styles';
 
 const SettingsFC = ({ handleClearHistory }) => {
   const { theme: themeName, toggleTheme } = useContext(ThemeContext);
@@ -12,9 +12,9 @@ const SettingsFC = ({ handleClearHistory }) => {
       <Title>Settings</Title>
       <Select value={themeName} onChange={toggleTheme}>
         {Object.keys(themes).map((theme) => (
-          <option key={theme} value={theme}>
+          <Option key={theme} value={theme}>
             {theme}
-          </option>
+          </Option>
         ))}
       </Select>
       <Button onClick={handleClearHistory}>Clear history</Button>
@@ -37,9 +37,9 @@ class SettingsCC extends PureComponent {
         <Title>Settings</Title>
         <Select value={themeName} onChange={toggleTheme}>
           {Object.keys(themes).map((theme) => (
-            <option key={theme} value={theme}>
+            <Option key={theme} value={theme}>
               {theme}
-            </option>
+            </Option>
           ))}
         </Select>
         <Button onClick={handleClearHistory}>Clear history</Button>

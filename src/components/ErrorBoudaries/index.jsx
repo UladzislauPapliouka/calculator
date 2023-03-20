@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import ErrorWrapper from './styled';
+import { ErrorText, ErrorWrapper } from './styled';
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class ErrorBoundary extends Component {
     const { state, props } = this;
     return state.hasError && state.error && state.errorInfo ? (
       <ErrorWrapper>
-        <span>{state.error.message}</span>
+        <ErrorText>{state.error.message}</ErrorText>
       </ErrorWrapper>
     ) : (
       props.children

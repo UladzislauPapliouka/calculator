@@ -8,6 +8,8 @@ const Select = styled.select`
   font-size: ${({ theme: { sizes } }) => sizes.fontSizes.s}px;
   background-color: ${({ theme: { keysBackground } }) => keysBackground};
   color: ${({ theme: { mainColor } }) => mainColor};
+`;
+const Option = styled.option`
   option {
     padding: ${({ theme: { sizes } }) => sizes.paddingSizes.xs}px
       ${({ theme: { sizes } }) => sizes.paddingSizes.s}px;
@@ -30,4 +32,4 @@ const SettingsWrapper = styled.div`
 const Title = styled.h1`
   font-size: ${({ theme: { sizes } }) => sizes.fontSizes.xxxl}px;
 `;
-export { Select, SettingsWrapper, Title };
+export { Option, Select, SettingsWrapper, Title };

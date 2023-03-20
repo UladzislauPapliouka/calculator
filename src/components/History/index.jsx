@@ -40,7 +40,9 @@ class ClassHistoryWithoutStore extends PureComponent {
     const { history, isOpen, toggleIsOpen } = this.props;
     const historyList = history.length ? (
       history.map((historyExpression) => (
-        <HistoryOperation key={historyExpression} />
+        <HistoryOperation key={historyExpression}>
+          {historyExpression}
+        </HistoryOperation>
       ))
     ) : (
       <HistoryOperation>No operation yet...</HistoryOperation>
