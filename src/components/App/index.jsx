@@ -14,8 +14,8 @@ import GlobalStyles from '@/globalStyles';
 
 const App = () => {
   const [currentTheme, setCurrentTheme] = useState('dark');
-  const handleThemeChange = useCallback((event) => {
-    setCurrentTheme(event.target.value);
+  const handleThemeChange = useCallback(({ target: { value } }) => {
+    setCurrentTheme(value);
   }, []);
   const themeContextValue = useMemo(
     () => ({ theme: currentTheme, toggleTheme: handleThemeChange }),
@@ -28,12 +28,13 @@ const App = () => {
           theme={{ ...themes[currentTheme], sizes, opacity, fontWeight }}
         >
           <GlobalStyles />
-
-          <Routes>
-            {mainRoutes.map(({ path, element }) => (
-              <Route key={`route-${path}`} path={path} element={element} />
-            ))}
-          </Routes>
+          <ErrorBoundary>
+            <Routes>
+              {mainRoutes.map(({ path, element }) => (
+                <Route key={`route-${path}`} path={path} element={element} />
+              ))}
+            </Routes>
+          </ErrorBoundary>
         </ThemeProvider>
       </ThemeContext.Provider>
     </HashRouter>
