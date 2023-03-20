@@ -6,7 +6,8 @@ import mainRoutes from '@constants/routes';
 import fontWeight from '@constants/styles/fontWeight';
 import opacity from '@constants/styles/opacity';
 import * as sizes from '@constants/styles/sizes';
-import { ThemeContext, themes } from '@constants/theme';
+import themes from '@constants/theme';
+import ThemeContext from '@constants/themeContext';
 import store from '@store';
 import { ThemeProvider } from 'styled-components';
 

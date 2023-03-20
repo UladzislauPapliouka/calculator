@@ -1,4 +1,3 @@
-import { createContext } from 'react';
 import colors from '@constants/styles/colors';
 
 const lightTheme = {
@@ -29,9 +28,5 @@ const themes = {
   light: lightTheme,
   dark: darkTheme,
 };
-const initialContext = {
-  theme: 'light',
-  toggleTheme: () => {},
-};
-const ThemeContext = createContext(initialContext);
-export { ThemeContext, themes };
+
+export default themes;
