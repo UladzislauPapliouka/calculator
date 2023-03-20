@@ -1,5 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
+import { displayBreakpoints } from '@constants/styles/sizes';
 import * as PropTypes from 'prop-types';
 
 import ModalWrapper from './styled';
@@ -11,6 +12,17 @@ const ModalFC = React.memo(({ children, handleClose }) => {
       handleClose();
     }
   };
+  const closeModalWithResize = () => {
+    if (window.innerWidth >= displayBreakpoints.md) {
+      handleClose();
+    }
+  };
+  useLayoutEffect(() => {
+    window.onresize = closeModalWithResize;
+    return () => {
+      window.onresize = () => {};
+    };
+  }, []);
   const modalContainer = (
     <ModalWrapper
       ref={backRef}

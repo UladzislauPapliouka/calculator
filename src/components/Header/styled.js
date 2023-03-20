@@ -79,7 +79,7 @@ export const MobileNavigationWrapper = styled.div`
   flex-direction: column;
   gap: ${gapSizes.l}px;
   color: ${(props) => props.theme.headerColor};
-  padding: ${paddingSizes.xs}px;
+  padding: ${paddingSizes.lg}px;
   border-radius: ${borderRadiuses.md}px;
   background-color: ${(props) => props.theme.headerBackground};
   & div:before {

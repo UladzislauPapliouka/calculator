@@ -7,7 +7,10 @@ const ModalWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: ${colors.gray4305};
+  background: ${colors.gray1207};
+  &:empty {
+    display: none;
+  }
 `;
 
 export default ModalWrapper;
