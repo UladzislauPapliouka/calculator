@@ -1,11 +1,17 @@
-import React, { Component, useMemo, useState } from 'react';
+import React, { PureComponent, useMemo } from 'react';
+import { connect, useDispatch, useSelector } from 'react-redux';
+import { toggleIsHistoryOpen } from '@store/reducers/calculatorSlice';
 import * as PropTypes from 'prop-types';
 
 import { HistoryOperation, HistoryWrapper, Title } from './styled';
 
-const FuncHistory = ({ history }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleHistory = () => setIsOpen(!isOpen);
+const FuncHistory = () => {
+  const { isOpen, history } = useSelector(({ calculator }) => ({
+    isOpen: calculator.isHistoryOpen,
+    history: calculator.history,
+  }));
+  const dispatch = useDispatch();
+  const toggleHistory = () => dispatch(toggleIsHistoryOpen());
   const historyList = useMemo(
     () =>
       history.length ? (
@@ -26,24 +32,10 @@ const FuncHistory = ({ history }) => {
     </HistoryWrapper>
   );
 };
-FuncHistory.defaultProps = { history: [] };
-FuncHistory.propTypes = { history: PropTypes.arrayOf(PropTypes.string) };
 
-class ClassHistory extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: false,
-    };
-  }
-
-  toggleHistory = () =>
-    this.setState((prevState) => ({ isOpen: !prevState.isOpen }));
-
+class ClassHistoryWithoutStore extends PureComponent {
   render() {
-    const { history } = this.props;
-    const { isOpen } = this.state;
-    const { toggleHistory } = this;
+    const { history, isOpen, toggleIsOpen } = this.props;
     const historyList = history.length ? (
       history.map((his) => <HistoryOperation key={his}>{his}</HistoryOperation>)
     ) : (
@@ -51,7 +43,7 @@ class ClassHistory extends Component {
     );
     return (
       <HistoryWrapper>
-        <Title onClick={toggleHistory}>
+        <Title onClick={toggleIsOpen}>
           {isOpen ? 'Hide history' : 'Show history'}
         </Title>
         {isOpen && historyList}
@@ -59,6 +51,23 @@ class ClassHistory extends Component {
     );
   }
 }
-ClassHistory.defaultProps = { history: [] };
-ClassHistory.propTypes = { history: PropTypes.arrayOf(PropTypes.string) };
+ClassHistoryWithoutStore.defaultProps = {
+  history: [],
+  isOpen: false,
+  toggleIsOpen: () => {},
+};
+ClassHistoryWithoutStore.propTypes = {
+  history: PropTypes.arrayOf(PropTypes.string),
+  isOpen: PropTypes.bool,
+  toggleIsOpen: PropTypes.func,
+};
+const ClassHistory = connect(
+  ({ calculator }) => ({
+    history: calculator.history,
+    isOpen: calculator.isHistoryOpen,
+  }),
+  (dispatch) => ({
+    toggleIsOpen: () => dispatch(toggleIsHistoryOpen()),
+  }),
+)(ClassHistoryWithoutStore);
 export { ClassHistory, FuncHistory };

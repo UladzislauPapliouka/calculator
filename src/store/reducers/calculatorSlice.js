@@ -4,6 +4,7 @@ import { EnterSymbol } from '@utils/utilities';
 const initialState = {
   expression: '',
   history: [],
+  isHistoryOpen: false,
 };
 
 const calculatorSlice = createSlice({
@@ -16,8 +17,12 @@ const calculatorSlice = createSlice({
     clearHistory: (state) => {
       state.history = [];
     },
+    toggleIsHistoryOpen: (state) => {
+      state.isHistoryOpen = !state.isHistoryOpen;
+    },
   },
 });
 
 export default calculatorSlice.reducer;
-export const { enterSymbol, clearHistory } = calculatorSlice.actions;
+export const { enterSymbol, clearHistory, toggleIsHistoryOpen } =
+  calculatorSlice.actions;
