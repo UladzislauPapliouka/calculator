@@ -1,50 +1,50 @@
 import React, { PureComponent } from 'react';
-import { ClassDisplay, FuncDisplay } from '@components/Display';
-import { ClassHistory, FuncHistory } from '@components/History';
-import { ClassKeypad, FuncKeypad } from '@components/Keypad';
+import { DisplayCC, DisplayFC } from '@components/Display';
+import { HistoryCC, HistoryFC } from '@components/History';
+import { KeypadCC, KeypadFC } from '@components/Keypad';
 import * as PropTypes from 'prop-types';
 
 import CalculatorWrapper from './styled';
 
-const FuncCalculator = ({ displayValue, handleEnterSymbol, history }) => (
+const CalculatorFC = ({ displayValue, handleEnterSymbol, history }) => (
   <CalculatorWrapper>
-    <FuncDisplay expression={displayValue} />
-    <FuncKeypad handleEnterSymbol={handleEnterSymbol} />
-    <FuncHistory history={history} />
+    <DisplayFC expression={displayValue} />
+    <KeypadFC handleEnterSymbol={handleEnterSymbol} />
+    <HistoryFC history={history} />
   </CalculatorWrapper>
 );
-FuncCalculator.defaultProps = {
+CalculatorFC.defaultProps = {
   displayValue: '',
   handleEnterSymbol: () => {},
   history: '',
 };
-FuncCalculator.propTypes = {
+CalculatorFC.propTypes = {
   displayValue: PropTypes.string,
   handleEnterSymbol: PropTypes.func,
   history: PropTypes.arrayOf(PropTypes.string),
 };
 
-class ClassCalculator extends PureComponent {
+class CalculatorCC extends PureComponent {
   render() {
     const { displayValue, handleEnterSymbol, history } = this.props;
     return (
       <CalculatorWrapper>
-        <ClassDisplay expression={displayValue} />
-        <ClassKeypad handleEnterSymbol={handleEnterSymbol} />
-        <ClassHistory history={history} />
+        <DisplayCC expression={displayValue} />
+        <KeypadCC handleEnterSymbol={handleEnterSymbol} />
+        <HistoryCC history={history} />
       </CalculatorWrapper>
     );
   }
 }
 
-ClassCalculator.defaultProps = {
+CalculatorCC.defaultProps = {
   displayValue: '',
   handleEnterSymbol: () => {},
   history: '',
 };
-ClassCalculator.propTypes = {
+CalculatorCC.propTypes = {
   displayValue: PropTypes.string,
   handleEnterSymbol: PropTypes.func,
   history: PropTypes.arrayOf(PropTypes.string),
 };
-export { ClassCalculator, FuncCalculator };
+export { CalculatorCC, CalculatorFC };

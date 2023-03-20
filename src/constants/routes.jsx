@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { ClassApp, FuncApp } from '@components/AppVariants';
+import { AppCC, AppFC } from '@components/AppVariants';
 
 const mainRoutes = [
   {
@@ -9,11 +9,11 @@ const mainRoutes = [
   },
   {
     path: '/func/*',
-    element: <FuncApp />,
+    element: <AppFC />,
   },
   {
     path: '/class/*',
-    element: <ClassApp />,
+    element: <AppCC />,
   },
 ];
 

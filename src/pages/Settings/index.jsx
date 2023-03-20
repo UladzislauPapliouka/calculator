@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import { Select, SettingsWrapper, Title } from './styles';
 
-const FuncSettings = ({ handleClearHistory }) => {
+const SettingsFC = ({ handleClearHistory }) => {
   const { theme: themeName, toggleTheme } = useContext(ThemeContext);
   return (
     <SettingsWrapper>
@@ -21,14 +21,14 @@ const FuncSettings = ({ handleClearHistory }) => {
     </SettingsWrapper>
   );
 };
-FuncSettings.defaultProps = {
+SettingsFC.defaultProps = {
   handleClearHistory: () => {},
 };
-FuncSettings.propTypes = {
+SettingsFC.propTypes = {
   handleClearHistory: PropTypes.func,
 };
 
-class ClassSettings extends PureComponent {
+class SettingsCC extends PureComponent {
   render() {
     const { theme: themeName, toggleTheme } = this.context;
     const { handleClearHistory } = this.props;
@@ -47,12 +47,12 @@ class ClassSettings extends PureComponent {
     );
   }
 }
-ClassSettings.contextType = ThemeContext;
-ClassSettings.defaultProps = {
+SettingsCC.contextType = ThemeContext;
+SettingsCC.defaultProps = {
   handleClearHistory: () => {},
 };
-ClassSettings.propTypes = {
+SettingsCC.propTypes = {
   handleClearHistory: PropTypes.func,
 };
 
-export { ClassSettings, FuncSettings };
+export { SettingsCC, SettingsFC };

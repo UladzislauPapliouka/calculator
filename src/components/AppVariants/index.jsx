@@ -2,11 +2,11 @@ import React, { useCallback } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { HeaderCC, HeaderFC } from '@components/Header';
-import { ClassCalculator, FuncCalculator } from '@pages/Calculator';
-import { ClassSettings, FuncSettings } from '@pages/Settings';
+import { CalculatorCC, CalculatorFC } from '@pages/Calculator';
+import { SettingsCC, SettingsFC } from '@pages/Settings';
 import { clearHistory, enterSymbol } from '@store/reducers/calculatorSlice';
 
-const FuncApp = () => {
+const AppFC = () => {
   const displayValue = useSelector((state) => state.calculator.expression);
   const history = useSelector((state) => state.calculator.history);
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const FuncApp = () => {
         <Route
           path="/home"
           element={
-            <FuncCalculator
+            <CalculatorFC
               handleEnterSymbol={handleEnterSymbol}
               history={history}
               displayValue={displayValue}
@@ -34,7 +34,7 @@ const FuncApp = () => {
         />
         <Route
           path="/settings"
-          element={<FuncSettings handleClearHistory={handleClearHistory} />}
+          element={<SettingsFC handleClearHistory={handleClearHistory} />}
         />
       </Routes>
     </>
@@ -60,7 +60,7 @@ class ClassAppWithoutStore extends React.Component {
           <Route
             path="/home"
             element={
-              <ClassCalculator
+              <CalculatorCC
                 handleEnterSymbol={this.handleEnterSymbol}
                 history={props.state.calculator.history}
                 displayValue={props.state.calculator.expression}
@@ -70,7 +70,7 @@ class ClassAppWithoutStore extends React.Component {
           <Route
             path="/settings"
             element={
-              <ClassSettings handleClearHistory={this.handleClearHistory} />
+              <SettingsCC handleClearHistory={this.handleClearHistory} />
             }
           />
         </Routes>
@@ -78,7 +78,7 @@ class ClassAppWithoutStore extends React.Component {
     );
   }
 }
-const ClassApp = connect(
+const AppCC = connect(
   (state) => ({ state }),
   (dispatch) => ({
     EnterSymbol(symbol) {
@@ -89,4 +89,4 @@ const ClassApp = connect(
     },
   }),
 )(ClassAppWithoutStore);
-export { ClassApp, FuncApp };
+export { AppCC, AppFC };

@@ -5,7 +5,7 @@ import * as PropTypes from 'prop-types';
 
 import { HistoryOperation, HistoryWrapper, Title } from './styled';
 
-const FuncHistory = () => {
+const HistoryFC = () => {
   const { isOpen, history } = useSelector(({ calculator }) => ({
     isOpen: calculator.isHistoryOpen,
     history: calculator.history,
@@ -65,7 +65,7 @@ ClassHistoryWithoutStore.propTypes = {
   isOpen: PropTypes.bool,
   toggleIsOpen: PropTypes.func,
 };
-const ClassHistory = connect(
+const HistoryCC = connect(
   ({ calculator }) => ({
     history: calculator.history,
     isOpen: calculator.isHistoryOpen,
@@ -74,4 +74,4 @@ const ClassHistory = connect(
     toggleIsOpen: () => dispatch(toggleIsHistoryOpen()),
   }),
 )(ClassHistoryWithoutStore);
-export { ClassHistory, FuncHistory };
+export { HistoryCC, HistoryFC };
