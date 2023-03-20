@@ -3,7 +3,7 @@ import { BiMenu } from 'react-icons/bi';
 import { NavLink } from 'react-router-dom';
 import {
   HeaderWrapper,
-  Link,
+  LinkText,
   MobileNavigation,
   MobileNavigationWrapper,
   NavigationWrapper,
@@ -21,9 +21,9 @@ const HeaderFC = () => {
         {routesLink.map((route) => (
           <NavLink to={route.path}>
             {({ isActive }) => (
-              <Link href="replace" onClick={handleClose} active={isActive}>
+              <LinkText onClick={handleClose} active={isActive}>
                 {route.title}
-              </Link>
+              </LinkText>
             )}
           </NavLink>
         ))}
@@ -57,9 +57,9 @@ class HeaderCC extends React.Component {
         {routesLink.map((route) => (
           <NavLink to={route.path}>
             {({ isActive }) => (
-              <Link href="replace" onClick={this.handleClose} active={isActive}>
+              <LinkText onClick={this.handleClose} active={isActive}>
                 {route.title}
-              </Link>
+              </LinkText>
             )}
           </NavLink>
         ))}

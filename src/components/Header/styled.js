@@ -10,7 +10,7 @@ import {
 } from '@constants/styles/sizes';
 import styled, { css } from 'styled-components';
 
-export const Link = styled.a`
+export const LinkText = styled.span`
   ${(props) => {
     switch (props.active) {
       case true:
