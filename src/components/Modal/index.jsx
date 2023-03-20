@@ -7,8 +7,8 @@ import ModalWrapper from './styled';
 
 const ModalFC = React.memo(({ children, handleClose }) => {
   const backRef = useRef();
-  const onBackgroundClickHandler = (e) => {
-    if (backRef.current === e.target) {
+  const onBackgroundClickHandler = ({ target }) => {
+    if (backRef.current === target) {
       handleClose();
     }
   };
@@ -52,13 +52,16 @@ class ModalCC extends React.Component {
     this.backRef = React.createRef(null);
   }
 
+  onBackgroundClickHandler = ({ target }) => {
+    const { handleClose } = this.props;
+    if (this.backRef.current === target) {
+      handleClose();
+    }
+  };
+
   render() {
-    const { children, handleClose } = this.props;
-    const onBackgroundClickHandler = (e) => {
-      if (this.backRef.current === e.target) {
-        handleClose();
-      }
-    };
+    const { children } = this.props;
+    const { onBackgroundClickHandler } = this;
     const modalContainer = (
       <ModalWrapper
         ref={this.backRef}

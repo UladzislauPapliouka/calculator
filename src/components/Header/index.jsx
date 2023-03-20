@@ -16,13 +16,13 @@ const HeaderFC = () => {
   const toggleIsOpen = () => setIsModalOpen(!isModalOpen);
   const links = (
     <>
-      {routesLink.map((route) => (
+      {routesLink.map(({ path, title }) => (
         <NavLink
-          to={route.path}
-          data-cy={route.title}
+          to={path}
+          data-cy={title}
           onClick={isModalOpen && toggleIsOpen}
         >
-          {route.title}
+          {title}
         </NavLink>
       ))}
     </>
@@ -50,13 +50,13 @@ class HeaderCC extends React.Component {
     };
     this.links = (
       <>
-        {routesLink.map((route) => (
+        {routesLink.map(({ path, title }) => (
           <NavLink
-            to={route.path}
-            data-cy={route.title}
+            to={path}
+            data-cy={title}
             onClick={this.state.isModalOpen && this.toggleIsOpen}
           >
-            {route.title}
+            {title}
           </NavLink>
         ))}
       </>
