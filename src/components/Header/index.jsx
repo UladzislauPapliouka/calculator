@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { BiMenu } from 'react-icons/bi';
 import { NavLink } from 'react-router-dom';
 import {
@@ -15,18 +15,16 @@ const HeaderFC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleClose = useCallback(() => setIsModalOpen(false), []);
   const handleOpen = useCallback(() => setIsModalOpen(true), []);
-  const links = useMemo(
-    () => (
-      <>
-        {routesLink.map((route) => (
-          <NavLink to={route.path} onClick={handleClose}>
-            {route.title}
-          </NavLink>
-        ))}
-      </>
-    ),
-    [],
+  const links = (
+    <>
+      {routesLink.map((route) => (
+        <NavLink to={route.path} onClick={handleClose}>
+          {route.title}
+        </NavLink>
+      ))}
+    </>
   );
+
   return (
     <HeaderWrapper>
       <Title>Calculator App</Title>
