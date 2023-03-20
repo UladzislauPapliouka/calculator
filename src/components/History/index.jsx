@@ -15,8 +15,10 @@ const FuncHistory = () => {
   const historyList = useMemo(
     () =>
       history.length ? (
-        history.map((his) => (
-          <HistoryOperation key={his}>{his}</HistoryOperation>
+        history.map((historyExpression) => (
+          <HistoryOperation key={historyExpression}>
+            {historyExpression}
+          </HistoryOperation>
         ))
       ) : (
         <HistoryOperation>No operation yet...</HistoryOperation>
@@ -37,7 +39,9 @@ class ClassHistoryWithoutStore extends PureComponent {
   render() {
     const { history, isOpen, toggleIsOpen } = this.props;
     const historyList = history.length ? (
-      history.map((his) => <HistoryOperation key={his}>{his}</HistoryOperation>)
+      history.map((historyExpression) => (
+        <HistoryOperation key={historyExpression} />
+      ))
     ) : (
       <HistoryOperation>No operation yet...</HistoryOperation>
     );
