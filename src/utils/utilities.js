@@ -97,6 +97,7 @@ const EnterSymbol = (state, symbol) => {
       break;
     case Operation.ChangeSign:
       if (expressionLength === 0) break;
+      console.log(state.expression[expressionLength - lastNumberLength - 1]);
       if (
         state.expression[expressionLength - lastNumberLength - 1] ===
         Operation.Devide
@@ -118,6 +119,17 @@ const EnterSymbol = (state, symbol) => {
         )}(-${lastNumber}`;
         break;
       }
+
+      if (
+        state.expression[expressionLength - lastNumberLength - 1] ===
+        Operation.LeftBracket
+      ) {
+        state.expression = `${state.expression.slice(
+          0,
+          expressionLength - lastNumberLength,
+        )}-${lastNumber}`;
+        break;
+      }
       if (
         state.expression[expressionLength - lastNumberLength - 1] ===
           Operation.Subtract &&
@@ -126,7 +138,7 @@ const EnterSymbol = (state, symbol) => {
       ) {
         state.expression = `${state.expression.slice(
           0,
-          expressionLength - lastNumberLength - 2,
+          expressionLength - lastNumberLength - 1,
         )}${lastNumber}`;
         break;
       }
