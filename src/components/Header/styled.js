@@ -1,3 +1,4 @@
+import fontWeight from '@constants/styles/fontWeight';
 import opacity from '@constants/styles/opacity';
 import {
   borderRadiuses,
@@ -50,7 +51,7 @@ export const HeaderWrapper = styled.header`
   justify-content: space-between;
   align-items: center;
   font-family: HelveticaNeueCyr, serif;
-  font-weight: 100;
+  font-weight: ${fontWeight['100']};
 
   & a {
     text-decoration: none;
