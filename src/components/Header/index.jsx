@@ -17,7 +17,11 @@ const HeaderFC = () => {
   const links = (
     <>
       {routesLink.map((route) => (
-        <NavLink to={route.path} onClick={toggleIsOpen}>
+        <NavLink
+          to={route.path}
+          data-cy={route.title}
+          onClick={isModalOpen && toggleIsOpen}
+        >
           {route.title}
         </NavLink>
       ))}
@@ -28,11 +32,11 @@ const HeaderFC = () => {
     <HeaderWrapper>
       <Title>Calculator App</Title>
       <NavigationWrapper>{links}</NavigationWrapper>
-      <MobileNavigation onClick={toggleIsOpen}>
+      <MobileNavigation onClick={isModalOpen && toggleIsOpen}>
         <BiMenu />
       </MobileNavigation>
       {isModalOpen && (
-        <ModalFC handleClose={toggleIsOpen}>
+        <ModalFC handleClose={isModalOpen && toggleIsOpen}>
           <MobileNavigationWrapper>{links}</MobileNavigationWrapper>
         </ModalFC>
       )}
@@ -48,7 +52,11 @@ class HeaderCC extends React.Component {
     this.links = (
       <>
         {routesLink.map((route) => (
-          <NavLink to={route.path} onClick={this.handleClose}>
+          <NavLink
+            to={route.path}
+            data-cy={route.title}
+            onClick={this.state.isModalOpen && this.toggleIsOpen}
+          >
             {route.title}
           </NavLink>
         ))}
@@ -56,23 +64,19 @@ class HeaderCC extends React.Component {
     );
   }
 
-  handleClose = () => {
-    this.setState({ isModalOpen: false });
-  };
-
-  handleOpen = () => this.setState({ isModalOpen: true });
+  toggleIsOpen = () => this.setState({ isModalOpen: !this.state.isModalOpen });
 
   render() {
-    const { state, handleClose, handleOpen, links } = this;
+    const { state, toggleIsOpen, links } = this;
     return (
       <HeaderWrapper>
         <Title>Calculator App</Title>
         <NavigationWrapper>{links}</NavigationWrapper>
-        <MobileNavigation onClick={handleOpen}>
+        <MobileNavigation onClick={state.isModalOpen && toggleIsOpen}>
           <BiMenu />
         </MobileNavigation>
         {state.isModalOpen && (
-          <ModalCC handleClose={handleClose}>
+          <ModalCC handleClose={state.isModalOpen && toggleIsOpen}>
             <MobileNavigationWrapper>{links}</MobileNavigationWrapper>
           </ModalCC>
         )}

@@ -10,7 +10,7 @@ const SettingsFC = ({ handleClearHistory }) => {
   return (
     <SettingsWrapper>
       <Title>Settings</Title>
-      <Select value={themeName} onChange={toggleTheme}>
+      <Select value={themeName} data-cy="themeSelect" onChange={toggleTheme}>
         {Object.keys(themes).map((theme) => (
           <Option key={theme} value={theme}>
             {theme}
@@ -35,7 +35,7 @@ class SettingsCC extends PureComponent {
     return (
       <SettingsWrapper>
         <Title>Settings</Title>
-        <Select value={themeName} onChange={toggleTheme}>
+        <Select value={themeName} data-cy="themeSelect" onChange={toggleTheme}>
           {Object.keys(themes).map((theme) => (
             <Option key={theme} value={theme}>
               {theme}

@@ -4,7 +4,7 @@ import * as PropTypes from 'prop-types';
 import DisplayWrapper from './styled';
 
 const DisplayFC = React.memo(({ expression }) => (
-  <DisplayWrapper id="calculator-display">{expression}</DisplayWrapper>
+  <DisplayWrapper data-cy="calculator-display">{expression}</DisplayWrapper>
 ));
 DisplayFC.defaultProps = {
   expression: '',
@@ -17,7 +17,7 @@ class DisplayCC extends PureComponent {
   render() {
     const { expression } = this.props;
     return (
-      <DisplayWrapper id="calculator-display">{expression}</DisplayWrapper>
+      <DisplayWrapper data-cy="calculator-display">{expression}</DisplayWrapper>
     );
   }
 }

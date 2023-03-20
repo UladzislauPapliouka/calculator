@@ -34,7 +34,7 @@ class KeypadCC extends PureComponent {
               handleEnterSymbol(key);
             };
             return (
-              <Key key={key} id={`key-${key}`} onClick={handleClick}>
+              <Key key={key} data-cy={`key-${key}`} onClick={handleClick}>
                 {key}
               </Key>
             );
