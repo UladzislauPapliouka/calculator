@@ -4,7 +4,7 @@ import * as PropTypes from 'prop-types';
 
 import { Key, KeypadWrapper } from './styled';
 
-const FuncKeypad = ({ handleEnterSymbol }) => (
+const FuncKeypad = React.memo(({ handleEnterSymbol }) => (
   <KeypadWrapper>
     {KeyPadTable.map((line) =>
       line.map((key) => {
@@ -19,7 +19,7 @@ const FuncKeypad = ({ handleEnterSymbol }) => (
       }),
     )}
   </KeypadWrapper>
-);
+));
 FuncKeypad.defaultProps = { handleEnterSymbol: () => {} };
 FuncKeypad.propTypes = { handleEnterSymbol: PropTypes.func };
 

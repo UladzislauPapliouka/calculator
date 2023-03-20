@@ -11,7 +11,7 @@ const displaySlice = createSlice({
   initialState,
   reducers: {
     enterSymbol: (state, action) => {
-      EnterSymbol(state, action.payload.payload.symbol);
+      EnterSymbol(state, action.payload.symbol);
     },
     clearHistory: (state) => {
       state.history = [];

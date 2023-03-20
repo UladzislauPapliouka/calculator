@@ -1,4 +1,4 @@
-import React, { PureComponent, useState } from 'react';
+import React, { Component, useMemo, useState } from 'react';
 import * as PropTypes from 'prop-types';
 
 import { HistoryOperation, HistoryWrapper, Title } from './styled';
@@ -6,10 +6,16 @@ import { HistoryOperation, HistoryWrapper, Title } from './styled';
 const FuncHistory = ({ history }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleHistory = () => setIsOpen(!isOpen);
-  const historyList = history.length ? (
-    history.map((his) => <HistoryOperation key={his}>{his}</HistoryOperation>)
-  ) : (
-    <HistoryOperation>No operation yet...</HistoryOperation>
+  const historyList = useMemo(
+    () =>
+      history.length ? (
+        history.map((his) => (
+          <HistoryOperation key={his}>{his}</HistoryOperation>
+        ))
+      ) : (
+        <HistoryOperation>No operation yet...</HistoryOperation>
+      ),
+    [history.length],
   );
   return (
     <HistoryWrapper>
@@ -23,7 +29,7 @@ const FuncHistory = ({ history }) => {
 FuncHistory.defaultProps = { history: [] };
 FuncHistory.propTypes = { history: PropTypes.arrayOf(PropTypes.string) };
 
-class ClassHistory extends PureComponent {
+class ClassHistory extends Component {
   constructor(props) {
     super(props);
     this.state = {

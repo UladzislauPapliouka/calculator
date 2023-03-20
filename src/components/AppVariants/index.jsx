@@ -1,20 +1,21 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { HeaderCC, HeaderFC } from '@components/Header';
 import { ClassCalculator, FuncCalculator } from '@pages/Calculator';
 import { ClassSettings, FuncSettings } from '@pages/Settings';
 import { clearHistory, enterSymbol } from '@store/reducers/displaySlice';
-import Calc from '@utils/calculator';
 
 const FuncApp = () => {
   const displayValue = useSelector((state) => state.display.expression);
   const history = useSelector((state) => state.display.history);
   const dispatch = useDispatch();
-  const handleEnterSymbol = (symbol) => {
-    dispatch(enterSymbol(enterSymbol({ symbol })));
-  };
-  const handleClearHistory = () => {};
+  const handleEnterSymbol = useCallback((symbol) => {
+    dispatch(enterSymbol({ symbol }));
+  }, []);
+  const handleClearHistory = useCallback(() => {
+    dispatch(clearHistory());
+  }, []);
 
   return (
     <>
@@ -81,7 +82,7 @@ const ClassApp = connect(
   (state) => ({ state }),
   (dispatch) => ({
     EnterSymbol(symbol) {
-      dispatch(enterSymbol(enterSymbol({ symbol })));
+      dispatch(enterSymbol({ symbol }));
     },
     ClearHistory() {
       dispatch(clearHistory());

@@ -3,23 +3,25 @@ import * as PropTypes from 'prop-types';
 
 import DisplayWrapper from './styled';
 
-const FuncDisplay = ({ value }) => (
-  <DisplayWrapper id="calculator-display">{value}</DisplayWrapper>
-);
+const FuncDisplay = React.memo(({ expression }) => (
+  <DisplayWrapper id="calculator-display">{expression}</DisplayWrapper>
+));
 FuncDisplay.defaultProps = {
-  value: '',
+  expression: '',
 };
 FuncDisplay.propTypes = {
-  value: PropTypes.string,
+  expression: PropTypes.string,
 };
 
 class ClassDisplay extends PureComponent {
   render() {
-    const { value } = this.props;
-    return <DisplayWrapper id="calculator-display">{value}</DisplayWrapper>;
+    const { expression } = this.props;
+    return (
+      <DisplayWrapper id="calculator-display">{expression}</DisplayWrapper>
+    );
   }
 }
-ClassDisplay.defaultProps = { value: '' };
-ClassDisplay.propTypes = { value: PropTypes.string };
+ClassDisplay.defaultProps = { expression: '' };
+ClassDisplay.propTypes = { expression: PropTypes.string };
 
 export { ClassDisplay, FuncDisplay };

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ErrorBoundary from '@components/ErrorBoudaries';
@@ -11,9 +11,9 @@ import GlobalStyles from '@/globalStyles';
 
 const App = () => {
   const [themeName, setThemeName] = useState('dark');
-  const handleThemeChange = (event) => {
+  const handleThemeChange = useCallback((event) => {
     setThemeName(event.target.value);
-  };
+  }, []);
   const themeContextValue = useMemo(
     () => ({ theme: themeName, toggleTheme: handleThemeChange }),
     [themeName, handleThemeChange],
@@ -27,7 +27,7 @@ const App = () => {
             <Provider store={store}>
               <Routes>
                 {mainRoutes.map(({ path, element }) => (
-                  <Route path={path} element={element} />
+                  <Route key={`route-${path}`} path={path} element={element} />
                 ))}
               </Routes>
             </Provider>

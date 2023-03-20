@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { BiMenu } from 'react-icons/bi';
 import { NavLink } from 'react-router-dom';
 import { FuncModal } from '@components/Modal';
@@ -13,8 +13,8 @@ import {
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const handleClose = () => setIsModalOpen(false);
-  const handleOpen = () => setIsModalOpen(true);
+  const handleClose = useCallback(() => setIsModalOpen(false), []);
+  const handleOpen = useCallback(() => setIsModalOpen(true), []);
   return (
     <HeaderWrapper>
       <span>Calculator App</span>

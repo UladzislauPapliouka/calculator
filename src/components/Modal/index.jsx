@@ -4,7 +4,7 @@ import * as PropTypes from 'prop-types';
 
 import ModalWrapper from './styled';
 
-const FuncModal = ({ children, handleClose }) => {
+const FuncModal = React.memo(({ children, handleClose }) => {
   const backRef = useRef();
   const onBackgroundClickHandler = (e) => {
     if (backRef.current === e.target) {
@@ -24,6 +24,10 @@ const FuncModal = ({ children, handleClose }) => {
     modalContainer,
     document.getElementById('modalRoot'),
   );
+});
+FuncModal.defaultProps = {
+  children: () => {},
+  handleClose: () => {},
 };
 FuncModal.propTypes = {
   children: PropTypes.func,

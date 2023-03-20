@@ -8,7 +8,7 @@ import CalculatorWrapper from './styled';
 
 const FuncCalculator = ({ displayValue, handleEnterSymbol, history }) => (
   <CalculatorWrapper>
-    <FuncDisplay value={displayValue} />
+    <FuncDisplay expression={displayValue} />
     <FuncKeypad handleEnterSymbol={handleEnterSymbol} />
     <FuncHistory history={history} />
   </CalculatorWrapper>
@@ -29,7 +29,7 @@ class ClassCalculator extends PureComponent {
     const { displayValue, handleEnterSymbol, history } = this.props;
     return (
       <CalculatorWrapper>
-        <ClassDisplay value={displayValue} />
+        <ClassDisplay expression={displayValue} />
         <ClassKeypad handleEnterSymbol={handleEnterSymbol} />
         <ClassHistory history={history} />
       </CalculatorWrapper>
