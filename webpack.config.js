@@ -31,7 +31,6 @@ const target = 'web'; // в режиме разработки browserslist не 
 module.exports = {
   entry: './src/index.jsx', // Указываем точку входа - главный модуль приложения,
   // в который импортируются все остальные
-  mode,
   plugins,
   target,
   output: {
@@ -45,11 +44,6 @@ module.exports = {
     publicPath: '/',
   },
   devtool: 'source-map',
-  devServer: {
-    port: 4200,
-    hot: true,
-    historyApiFallback: true,
-  },
   module: {
     rules: [
       {

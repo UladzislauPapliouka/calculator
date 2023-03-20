@@ -195,7 +195,9 @@ const EnterSymbol = (state, symbol) => {
       state.expression = 'Incorrect state.expression';
       break;
     default:
-      if (lastNumber && lastNumber[lastNumber.length - 4] !== '.') {
+      if (lastNumber && lastNumber[lastNumber.length - 4] === '.') {
+        break;
+      } else {
         state.expression = `${state.expression}${symbol}`;
       }
   }

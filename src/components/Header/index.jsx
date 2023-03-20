@@ -8,7 +8,7 @@ import {
   MobileNavigationWrapper,
   NavigationWrapper,
 } from '@components/Header/styled';
-import { ClassModal, FuncModal } from '@components/Modal';
+import { ModalCC, ModalFC } from '@components/Modal';
 import routesLink from '@constants/links';
 
 const HeaderFC = () => {
@@ -39,9 +39,9 @@ const HeaderFC = () => {
         <BiMenu />
       </MobileNavigation>
       {isModalOpen && (
-        <FuncModal handleClose={handleClose}>
+        <ModalFC handleClose={handleClose}>
           <MobileNavigationWrapper>{links}</MobileNavigationWrapper>
-        </FuncModal>
+        </ModalFC>
       )}
     </HeaderWrapper>
   );
@@ -83,9 +83,9 @@ class HeaderCC extends React.Component {
           <BiMenu />
         </MobileNavigation>
         {state.isModalOpen && (
-          <ClassModal handleClose={handleClose}>
+          <ModalCC handleClose={handleClose}>
             <MobileNavigationWrapper>{links}</MobileNavigationWrapper>
-          </ClassModal>
+          </ModalCC>
         )}
       </HeaderWrapper>
     );
