@@ -129,7 +129,6 @@ const EnterSymbol = (state, symbol) => {
     case Operation.ChangeSign:
       state.calculated = false;
       if (expressionLength === 0) break;
-      console.log(state.expression[expressionLength - lastNumberLength - 1]);
       if (
         state.expression[expressionLength - lastNumberLength - 1] ===
         Operation.Devide

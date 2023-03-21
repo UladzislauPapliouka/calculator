@@ -31,6 +31,11 @@ module.exports = {
     'operator-assignment': 0,
     'no-continue': 0,
     'max-classes-per-file': 0,
+    'react/prop-types': 0,
+    'no-unused-vars': 0,
+    'react/destructuring-assignment': 0,
+    'react/no-access-state-in-setstate': 0,
+    'react/no-unused-state': 0,
   },
   settings: {
     'import/resolver': {
