@@ -1,6 +1,5 @@
 import React, { PureComponent, useMemo } from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
-import { toggleIsHistoryOpen } from '@store/reducers/calculatorSlice';
+import { connect, useSelector } from 'react-redux';
 import * as PropTypes from 'prop-types';
 
 import { HistoryOperation, HistoryWrapper, Title } from './styled';

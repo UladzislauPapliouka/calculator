@@ -1,5 +1,5 @@
-import React, { useCallback, useMemo, useState } from 'react';
-import { Provider, useDispatch, useSelector } from 'react-redux';
+import React, { useCallback, useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import ErrorBoundary from '@components/ErrorBoudaries';
 import mainRoutes from '@constants/routes';
@@ -8,7 +8,6 @@ import opacity from '@constants/styles/opacity';
 import * as sizes from '@constants/styles/sizes';
 import themes from '@constants/theme';
 import ThemeContext from '@constants/themeContext';
-import store from '@store';
 import { chooseTheme } from '@store/reducers/themeSlice';
 import { ThemeProvider } from 'styled-components';
 
@@ -16,7 +15,6 @@ import GlobalStyles from '@/globalStyles';
 
 const App = () => {
   const currentTheme = useSelector(({ theme }) => theme.themeName);
-  console.log(currentTheme);
   const dispatch = useDispatch();
   const setCurrentTheme = (theme) => {
     dispatch(chooseTheme({ theme }));
