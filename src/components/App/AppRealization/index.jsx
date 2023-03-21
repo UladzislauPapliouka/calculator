@@ -14,10 +14,13 @@ import { SettingsCC, SettingsFC } from '@pages/Settings';
 import { clearHistory, enterSymbol } from '@store/reducers/calculatorSlice';
 
 const AppFC = () => {
-  const { displayValue, lastExpression } = useSelector((state) => ({
-    displayValue: state.calculator.expression,
-    lastExpression: state.calculator.lastExpression,
-  }));
+  const { displayValue, lastExpression, isHistoryOpen } = useSelector(
+    (state) => ({
+      displayValue: state.calculator.expression,
+      lastExpression: state.calculator.lastExpression,
+      isHistoryOpen: state.calculator.isHistoryOpen,
+    }),
+  );
   const dispatch = useDispatch();
   const handleEnterSymbol = useCallback((symbol) => {
     dispatch(enterSymbol({ symbol }));
@@ -37,6 +40,7 @@ const AppFC = () => {
           handleEnterSymbol={handleEnterSymbol}
           displayValue={displayValue}
           lastExpression={lastExpression}
+          isHistoryOpen={isHistoryOpen}
         />
       ),
     },
@@ -81,6 +85,7 @@ class ClassAppWithoutStore extends React.Component {
             handleEnterSymbol={this.handleEnterSymbol}
             displayValue={this.props.displayValue}
             lastExpression={this.props.lastExpression}
+            isHistoryOpen={this.props.isHistoryOpen}
           />
         ),
       },
@@ -105,6 +110,7 @@ const AppCC = connect(
   (state) => ({
     displayValue: state.calculator.expression,
     lastExpression: state.calculator.lastExpression,
+    isHistoryOpen: state.calculator.isHistoryOpen,
   }),
   (dispatch) => ({
     EnterSymbol(symbol) {

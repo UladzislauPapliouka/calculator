@@ -6,11 +6,16 @@ import * as PropTypes from 'prop-types';
 
 import CalculatorWrapper from './styled';
 
-const CalculatorFC = ({ displayValue, handleEnterSymbol, lastExpression }) => (
-  <CalculatorWrapper>
+const CalculatorFC = ({
+  displayValue,
+  handleEnterSymbol,
+  lastExpression,
+  isHistoryOpen,
+}) => (
+  <CalculatorWrapper isHistoryOpen={isHistoryOpen}>
     <DisplayFC expression={displayValue} lastExpression={lastExpression} />
     <KeypadFC handleEnterSymbol={handleEnterSymbol} />
-    <HistoryFC />
+    {isHistoryOpen && <HistoryFC />}
   </CalculatorWrapper>
 );
 CalculatorFC.defaultProps = {
@@ -26,12 +31,13 @@ CalculatorFC.propTypes = {
 
 class CalculatorCC extends PureComponent {
   render() {
-    const { displayValue, handleEnterSymbol, lastExpression } = this.props;
+    const { displayValue, handleEnterSymbol, lastExpression, isHistoryOpen } =
+      this.props;
     return (
-      <CalculatorWrapper>
+      <CalculatorWrapper isHistoryOpen={isHistoryOpen}>
         <DisplayCC expression={displayValue} lastExpression={lastExpression} />
         <KeypadCC handleEnterSymbol={handleEnterSymbol} />
-        <HistoryCC />
+        {isHistoryOpen && <HistoryCC />}
       </CalculatorWrapper>
     );
   }

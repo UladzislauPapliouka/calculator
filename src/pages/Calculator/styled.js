@@ -1,21 +1,33 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const CalculatorWrapper = styled.div`
   position: relative;
   display: grid;
-  grid-template-rows: ${({ theme: { sizes } }) => sizes.rowSizes.md}px 1fr;
-  grid-template-columns: 1fr ${({ theme: { sizes } }) => sizes.columnSizes.md}px;
-  grid-template-areas:
-    'disp  his'
-    'keyp  his';
+  ${({ theme: { sizes }, isHistoryOpen }) =>
+    !isHistoryOpen
+      ? css`
+          grid-template-rows: ${sizes.rowSizes.md}px 1fr;
+          grid-template-columns: 1fr;
+          grid-template-areas:
+            'disp '
+            'keyp ';
+        `
+      : css`
+          grid-template-rows: ${sizes.rowSizes.md}px 1fr;
+          grid-template-columns: 1fr ${sizes.columnSizes.md}px;
+          grid-template-areas:
+            'disp  his'
+            'keyp  his';
+        `}
   height: 89vh;
   box-sizing: border-box;
   padding: ${({ theme: { sizes } }) => sizes.paddingSizes.xs}px;
   overflow: hidden;
   background-color: ${({ theme: { mainBackground } }) => mainBackground};
+
   @media screen and (max-width: ${({ theme: { sizes } }) =>
       sizes.displayBreakpoints.lg}px) {
-    grid-template-rows: auto;
+    grid-template-rows: ${({ theme: { sizes } }) => sizes.rowSizes.md}px 1fr 1fr;
     grid-template-columns: 100%;
     grid-template-areas:
       'disp'

@@ -6,12 +6,9 @@ import * as PropTypes from 'prop-types';
 import { HistoryOperation, HistoryWrapper, Title } from './styled';
 
 const HistoryFC = () => {
-  const { isOpen, history } = useSelector(({ calculator }) => ({
-    isOpen: calculator.isHistoryOpen,
+  const { history } = useSelector(({ calculator }) => ({
     history: calculator.history,
   }));
-  const dispatch = useDispatch();
-  const toggleHistory = () => dispatch(toggleIsHistoryOpen());
   const historyList = useMemo(
     () =>
       history.length ? (
@@ -27,17 +24,15 @@ const HistoryFC = () => {
   );
   return (
     <HistoryWrapper>
-      <Title onClick={toggleHistory}>
-        {isOpen ? 'Hide history' : 'Show history'}
-      </Title>
-      {isOpen && historyList}
+      <Title>History</Title>
+      {historyList}
     </HistoryWrapper>
   );
 };
 
 class ClassHistoryWithoutStore extends PureComponent {
   render() {
-    const { history, isOpen, toggleIsOpen } = this.props;
+    const { history } = this.props;
     const historyList = history.length ? (
       history.map((historyExpression) => (
         <HistoryOperation key={historyExpression}>
@@ -49,31 +44,19 @@ class ClassHistoryWithoutStore extends PureComponent {
     );
     return (
       <HistoryWrapper>
-        <Title onClick={toggleIsOpen}>
-          {isOpen ? 'Hide history' : 'Show history'}
-        </Title>
-        {isOpen && historyList}
+        <Title>History</Title>
+        {historyList}
       </HistoryWrapper>
     );
   }
 }
 ClassHistoryWithoutStore.defaultProps = {
   history: [],
-  isOpen: false,
-  toggleIsOpen: () => {},
 };
 ClassHistoryWithoutStore.propTypes = {
   history: PropTypes.arrayOf(PropTypes.string),
-  isOpen: PropTypes.bool,
-  toggleIsOpen: PropTypes.func,
 };
-const HistoryCC = connect(
-  ({ calculator }) => ({
-    history: calculator.history,
-    isOpen: calculator.isHistoryOpen,
-  }),
-  (dispatch) => ({
-    toggleIsOpen: () => dispatch(toggleIsHistoryOpen()),
-  }),
-)(ClassHistoryWithoutStore);
+const HistoryCC = connect(({ calculator }) => ({
+  history: calculator.history,
+}))(ClassHistoryWithoutStore);
 export { HistoryCC, HistoryFC };

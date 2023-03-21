@@ -1,18 +1,30 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const ExpressionSpan = styled.span`
-  text-align: right;
+const spanMixin = css`
   font-size: ${({ theme: { sizes } }) => sizes.fontSizes.xxxxl}px;
+  min-height: ${({ theme: { sizes } }) => sizes.fontSizes.xxxxl}px;
   color: ${({ theme: { mainColor } }) => mainColor};
+  text-align: right;
+`;
+const ExpressionSpan = styled.span`
+  display: inline-block;
+  ${spanMixin}
 `;
 const LastExpressionSpan = styled.span`
-  text-align: right;
-  font-size: ${({ theme: { sizes } }) => sizes.fontSizes.xxxl}px;
-  color: ${({ theme: { mainColor } }) => mainColor};
   opacity: ${({ theme: { opacity } }) => opacity['70']};
+  ${spanMixin}
+`;
+const ToggleHistoryIcon = styled.div`
+  position: absolute;
+  top: ${({ theme: { sizes } }) => sizes.paddingSizes.xs}px;
+  left: ${({ theme: { sizes } }) => sizes.paddingSizes.xs}px;
+  font-size: ${({ theme: { sizes } }) => sizes.fontSizes.xl}px;
+  opacity: ${({ theme: { opacity } }) => opacity['70']};
+  color: ${({ theme: { mainColor } }) => mainColor};
 `;
 const DisplayWrapper = styled.div`
   display: inline-flex;
+  position: relative;
   align-items: flex-end;
   box-sizing: border-box;
   flex-direction: column;
@@ -33,4 +45,9 @@ const DisplayWrapper = styled.div`
   }
 `;
 
-export { DisplayWrapper, ExpressionSpan, LastExpressionSpan };
+export {
+  DisplayWrapper,
+  ExpressionSpan,
+  LastExpressionSpan,
+  ToggleHistoryIcon,
+};

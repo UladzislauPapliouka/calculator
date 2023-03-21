@@ -1,14 +1,29 @@
 import React, { PureComponent } from 'react';
+import { BiHistory } from 'react-icons/bi';
+import { connect, useDispatch } from 'react-redux';
+import { toggleIsHistoryOpen } from '@store/reducers/calculatorSlice';
 import * as PropTypes from 'prop-types';
 
-import { DisplayWrapper, ExpressionSpan, LastExpressionSpan } from './styled';
+import {
+  DisplayWrapper,
+  ExpressionSpan,
+  LastExpressionSpan,
+  ToggleHistoryIcon,
+} from './styled';
 
-const DisplayFC = React.memo(({ expression, lastExpression }) => (
-  <DisplayWrapper data-cy="calculator-display">
-    <LastExpressionSpan>{lastExpression}</LastExpressionSpan>
-    <ExpressionSpan>{expression}</ExpressionSpan>
-  </DisplayWrapper>
-));
+const DisplayFC = React.memo(({ expression, lastExpression }) => {
+  const dispatch = useDispatch();
+  const toggleHistory = () => dispatch(toggleIsHistoryOpen());
+  return (
+    <DisplayWrapper data-cy="calculator-display">
+      <ToggleHistoryIcon onClick={toggleHistory}>
+        <BiHistory />
+      </ToggleHistoryIcon>
+      <LastExpressionSpan>{lastExpression}</LastExpressionSpan>
+      <ExpressionSpan>{expression}</ExpressionSpan>
+    </DisplayWrapper>
+  );
+});
 DisplayFC.defaultProps = {
   expression: '',
   lastExpression: '',
@@ -18,24 +33,34 @@ DisplayFC.propTypes = {
   lastExpression: PropTypes.string,
 };
 
-class DisplayCC extends PureComponent {
+class DisplayCCWithoutStore extends PureComponent {
   render() {
-    const { expression, lastExpression } = this.props;
+    const { expression, lastExpression, toggleHistory } = this.props;
     return (
       <DisplayWrapper data-cy="calculator-display">
+        <ToggleHistoryIcon onClick={toggleHistory}>
+          <BiHistory />
+        </ToggleHistoryIcon>
         <LastExpressionSpan>{lastExpression}</LastExpressionSpan>
         <ExpressionSpan>{expression}</ExpressionSpan>
       </DisplayWrapper>
     );
   }
 }
-DisplayCC.defaultProps = {
+DisplayCCWithoutStore.defaultProps = {
   expression: '',
   lastExpression: '',
 };
-DisplayCC.propTypes = {
+DisplayCCWithoutStore.propTypes = {
   expression: PropTypes.string,
   lastExpression: PropTypes.string,
 };
-
+const DisplayCC = connect(
+  () => {},
+  (dispatch) => ({
+    toggleHistory() {
+      dispatch(toggleIsHistoryOpen());
+    },
+  }),
+)(DisplayCCWithoutStore);
 export { DisplayCC, DisplayFC };
