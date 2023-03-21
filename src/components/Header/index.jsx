@@ -13,15 +13,11 @@ import routesLink from '@constants/links';
 
 const HeaderFC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const toggleIsOpen = () => setIsModalOpen(!isModalOpen);
+  const toggleIsOpen = () => setIsModalOpen((prevState) => !prevState);
   const links = (
     <>
       {routesLink.map(({ path, title }) => (
-        <NavLink
-          to={path}
-          data-cy={title}
-          onClick={isModalOpen && toggleIsOpen}
-        >
+        <NavLink to={path} data-cy={title} onClick={toggleIsOpen}>
           {title}
         </NavLink>
       ))}
@@ -35,7 +31,7 @@ const HeaderFC = () => {
         <BiMenu />
       </MobileNavigation>
       {isModalOpen && (
-        <ModalFC handleClose={isModalOpen && toggleIsOpen}>
+        <ModalFC handleClose={toggleIsOpen}>
           <MobileNavigationWrapper>{links}</MobileNavigationWrapper>
         </ModalFC>
       )}
@@ -43,24 +39,21 @@ const HeaderFC = () => {
   );
 };
 class HeaderCC extends React.Component {
+  links = (
+    <>
+      {routesLink.map(({ path, title }) => (
+        <NavLink to={path} data-cy={title} onClick={this.toggleIsOpen}>
+          {title}
+        </NavLink>
+      ))}
+    </>
+  );
+
   constructor(props) {
     super(props);
     this.state = {
       isModalOpen: false,
     };
-    this.links = (
-      <>
-        {routesLink.map(({ path, title }) => (
-          <NavLink
-            to={path}
-            data-cy={title}
-            onClick={this.state.isModalOpen && this.toggleIsOpen}
-          >
-            {title}
-          </NavLink>
-        ))}
-      </>
-    );
   }
 
   toggleIsOpen = () => this.setState({ isModalOpen: !this.state.isModalOpen });

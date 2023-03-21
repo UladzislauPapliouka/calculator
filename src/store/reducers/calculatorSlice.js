@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { EnterSymbol } from '@utils/utilities';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 const initialState = {
   expression: '',
@@ -24,7 +26,6 @@ const calculatorSlice = createSlice({
     },
   },
 });
-
 export default calculatorSlice.reducer;
 export const { enterSymbol, clearHistory, toggleIsHistoryOpen } =
   calculatorSlice.actions;
