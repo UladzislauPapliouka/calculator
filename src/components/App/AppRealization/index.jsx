@@ -2,6 +2,13 @@ import React, { useCallback } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { HeaderCC, HeaderFC } from '@components/Header';
+import {
+  HOME_CC_ROUTE,
+  HOME_FC_ROUTE,
+  HOME_ROUTE,
+  SETTINGS,
+  UNMATCHED_ROUTE,
+} from '@constants/links';
 import { CalculatorCC, CalculatorFC } from '@pages/Calculator';
 import { SettingsCC, SettingsFC } from '@pages/Settings';
 import { clearHistory, enterSymbol } from '@store/reducers/calculatorSlice';
@@ -23,9 +30,12 @@ const AppFC = () => {
     <>
       <HeaderFC />
       <Routes>
-        <Route path={'/*'} element={<Navigate to="/func/home" replace />} />
         <Route
-          path="/home"
+          path={UNMATCHED_ROUTE}
+          element={<Navigate to={HOME_FC_ROUTE} replace />}
+        />
+        <Route
+          path={HOME_ROUTE}
           element={
             <CalculatorFC
               handleEnterSymbol={handleEnterSymbol}
@@ -35,7 +45,7 @@ const AppFC = () => {
           }
         />
         <Route
-          path="/settings"
+          path={SETTINGS}
           element={<SettingsFC handleClearHistory={handleClearHistory} />}
         />
       </Routes>
@@ -64,9 +74,12 @@ class ClassAppWithoutStore extends React.Component {
       <>
         <HeaderCC />
         <Routes>
-          <Route path={'/*'} element={<Navigate to="/class/home" replace />} />
           <Route
-            path="/home"
+            path={UNMATCHED_ROUTE}
+            element={<Navigate to={HOME_CC_ROUTE} replace />}
+          />
+          <Route
+            path={HOME_ROUTE}
             element={
               <CalculatorCC
                 handleEnterSymbol={handleEnterSymbol}
@@ -76,7 +89,7 @@ class ClassAppWithoutStore extends React.Component {
             }
           />
           <Route
-            path="/settings"
+            path={SETTINGS}
             element={<SettingsCC handleClearHistory={handleClearHistory} />}
           />
         </Routes>
