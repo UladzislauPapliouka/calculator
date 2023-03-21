@@ -13,11 +13,12 @@ import routesLink from '@constants/links';
 
 const HeaderFC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const toggleIsOpen = () => setIsModalOpen((prevState) => !prevState);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
   const links = (
     <>
       {routesLink.map(({ path, title }) => (
-        <NavLink to={path} data-cy={title} onClick={toggleIsOpen}>
+        <NavLink to={path} data-cy={title} onClick={closeModal}>
           {title}
         </NavLink>
       ))}
@@ -27,11 +28,11 @@ const HeaderFC = () => {
     <HeaderWrapper>
       <Title>Calculator App</Title>
       <NavigationWrapper>{links}</NavigationWrapper>
-      <MobileNavigation onClick={toggleIsOpen}>
+      <MobileNavigation onClick={openModal}>
         <BiMenu />
       </MobileNavigation>
       {isModalOpen && (
-        <ModalFC handleClose={toggleIsOpen}>
+        <ModalFC handleClose={closeModal}>
           <MobileNavigationWrapper>{links}</MobileNavigationWrapper>
         </ModalFC>
       )}
@@ -39,36 +40,37 @@ const HeaderFC = () => {
   );
 };
 class HeaderCC extends React.Component {
-  links = (
-    <>
-      {routesLink.map(({ path, title }) => (
-        <NavLink to={path} data-cy={title} onClick={this.toggleIsOpen}>
-          {title}
-        </NavLink>
-      ))}
-    </>
-  );
-
   constructor(props) {
     super(props);
     this.state = {
       isModalOpen: false,
     };
+    this.links = (
+      <>
+        {routesLink.map(({ path, title }) => (
+          <NavLink to={path} data-cy={title} onClick={this.closeModal}>
+            {title}
+          </NavLink>
+        ))}
+      </>
+    );
   }
 
-  toggleIsOpen = () => this.setState({ isModalOpen: !this.state.isModalOpen });
+  closeModal = () => this.setState({ isModalOpen: false });
+
+  openModal = () => this.setState({ isModalOpen: true });
 
   render() {
-    const { state, toggleIsOpen, links } = this;
+    const { state, openModal, closeModal, links } = this;
     return (
       <HeaderWrapper>
         <Title>Calculator App</Title>
         <NavigationWrapper>{links}</NavigationWrapper>
-        <MobileNavigation onClick={toggleIsOpen}>
+        <MobileNavigation onClick={openModal}>
           <BiMenu />
         </MobileNavigation>
         {state.isModalOpen && (
-          <ModalCC handleClose={state.isModalOpen && toggleIsOpen}>
+          <ModalCC handleClose={closeModal}>
             <MobileNavigationWrapper>{links}</MobileNavigationWrapper>
           </ModalCC>
         )}
