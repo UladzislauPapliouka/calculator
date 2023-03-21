@@ -29,11 +29,36 @@ const isOperandLast = (value) => {
     symbol === Operation.Devide
   );
 };
-
+const isOperation = (symbol) =>
+  symbol === Operation.Add ||
+  symbol === Operation.Subtract ||
+  symbol === Operation.Myltiply ||
+  symbol === Operation.Devide ||
+  symbol === Operation.LeftBracket ||
+  symbol === Operation.RightBracket ||
+  symbol === Operation.Equal ||
+  symbol === Operation.Clear ||
+  symbol === Operation.CleanEntry ||
+  symbol === Operation.ChangeSign;
+const isErrorMessage = (expression) =>
+  expression === 'NaN' ||
+  expression === 'Infinity' ||
+  expression === 'Incorrect state.expression';
 const EnterSymbol = (state, symbol) => {
-  if (state.expression === 'Incorrect state.expression') {
+  if (state.lastExpression && !isOperation(symbol) && state.calculated) {
+    state.lastExpression = '';
+    state.calculated = false;
     state.expression = symbol;
     return;
+  }
+  if (isErrorMessage(state.expression)) {
+    state.lastExpression = '';
+    state.calculated = false;
+    if (!isOperation(symbol)) {
+      state.expression = symbol;
+      return;
+    }
+    state.expression = '';
   }
   const lastNumber = getLastNumber(state.expression);
   const lastNumberLength = lastNumber ? lastNumber.length : 0;
@@ -42,6 +67,7 @@ const EnterSymbol = (state, symbol) => {
     case Operation.Clear:
       state.expression = '';
       state.history = [];
+      state.calculated = false;
       break;
     case Operation.Dot:
       if (!state.expression || isOperandLast(state.expression)) {
@@ -53,6 +79,7 @@ const EnterSymbol = (state, symbol) => {
       break;
 
     case Operation.Add:
+      state.calculated = false;
       if (isOperandLast(state.expression)) {
         state.expression =
           state.expression.slice(0, state.expression.length - 1) + symbol;
@@ -61,6 +88,7 @@ const EnterSymbol = (state, symbol) => {
       state.expression = `${state.expression}${symbol}`;
       break;
     case Operation.Subtract:
+      state.calculated = false;
       if (isOperandLast(state.expression)) {
         state.expression =
           state.expression.slice(0, state.expression.length - 1) + symbol;
@@ -69,6 +97,7 @@ const EnterSymbol = (state, symbol) => {
       state.expression = `${state.expression}${symbol}`;
       break;
     case Operation.Myltiply:
+      state.calculated = false;
       if (isOperandLast(state.expression)) {
         state.expression =
           state.expression.slice(0, state.expression.length - 1) + symbol;
@@ -77,6 +106,7 @@ const EnterSymbol = (state, symbol) => {
       state.expression = `${state.expression}${symbol}`;
       break;
     case Operation.Devide:
+      state.calculated = false;
       if (isOperandLast(state.expression)) {
         state.expression =
           state.expression.slice(0, state.expression.length - 1) + symbol;
@@ -85,6 +115,7 @@ const EnterSymbol = (state, symbol) => {
       state.expression = `${state.expression}${symbol}`;
       break;
     case Operation.LeftBracket:
+      state.calculated = false;
       if (!state.expression) {
         state.expression = '(';
         break;
@@ -96,6 +127,7 @@ const EnterSymbol = (state, symbol) => {
       state.expression = `${state.expression}*${symbol}`;
       break;
     case Operation.ChangeSign:
+      state.calculated = false;
       if (expressionLength === 0) break;
       console.log(state.expression[expressionLength - lastNumberLength - 1]);
       if (
@@ -194,15 +226,20 @@ const EnterSymbol = (state, symbol) => {
       state.expression = `-(${state.expression})`;
       break;
     case Operation.CleanEntry:
+      state.calculated = false;
       state.expression = state.expression.slice(0, -1);
       break;
     case Operation.Equal:
       if (isBracketCorrect(state.expression)) {
-        state.history.push(state.expression);
-        state.lastExpression = `${state.expression}=`;
-        state.expression = calculatePolishString(
-          convertToPolishString(state.expression),
-        );
+        if (state.expression.length) {
+          state.history.push(state.expression);
+          state.lastExpression = `${state.expression}=`;
+          state.expression = calculatePolishString(
+            convertToPolishString(state.expression),
+          ).toString();
+          state.calculated = true;
+          break;
+        }
         break;
       }
       state.expression = 'Incorrect state.expression';
@@ -211,6 +248,7 @@ const EnterSymbol = (state, symbol) => {
       if (lastNumber && lastNumber[lastNumber.length - 4] === '.') {
         break;
       } else {
+        state.calculated = false;
         state.expression = `${state.expression}${symbol}`;
       }
   }

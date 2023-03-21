@@ -5,6 +5,7 @@ const initialState = {
   expression: '',
   history: [],
   isHistoryOpen: false,
+  calculated: false,
   lastExpression: '',
 };
 

@@ -4,7 +4,16 @@ const spanMixin = css`
   font-size: ${({ theme: { sizes } }) => sizes.fontSizes.xxxxl}px;
   min-height: ${({ theme: { sizes } }) => sizes.fontSizes.xxxxl}px;
   color: ${({ theme: { mainColor } }) => mainColor};
+  white-space: nowrap;
+  max-width: 100%;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
   text-align: right;
+  box-sizing: border-box;
+  padding: 0;
+  ::-webkit-scrollbar {
+    width: 0;
+  }
 `;
 const ExpressionSpan = styled.span`
   display: inline-block;
