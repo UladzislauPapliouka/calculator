@@ -1,17 +1,8 @@
 const path = require('path');
-// eslint-disable-next-line import/no-extraneous-dependencies
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // Импортируем плагин
-// eslint-disable-next-line import/no-extraneous-dependencies
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-// eslint-disable-next-line import/no-extraneous-dependencies
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-let mode = 'development'; // По умолчанию режим development
-if (process.env.NODE_ENV === 'production') {
-  // Режим production, если
-  // при запуске вебпака было указано --mode=production
-  mode = 'production';
-}
 const plugins = [
   new HtmlWebpackPlugin({
     template: './public/index.html', // Данный html будет использован как шаблон
@@ -31,7 +22,6 @@ const target = 'web'; // в режиме разработки browserslist не 
 module.exports = {
   entry: './src/index.jsx', // Указываем точку входа - главный модуль приложения,
   // в который импортируются все остальные
-  mode,
   plugins,
   target,
   output: {
@@ -44,11 +34,6 @@ module.exports = {
     // CleanWebpackPlugin
   },
   devtool: 'source-map',
-  devServer: {
-    port: 4200,
-    hot: true,
-    historyApiFallback: true,
-  },
   module: {
     rules: [
       {
@@ -66,7 +51,7 @@ module.exports = {
       }, // Добавляем загрузчики стилей
       {
         test: /\.(png|jpe?g|gif|svg|webp|ico)$/i,
-        type: mode === 'production' ? 'asset' : 'asset/resource', // В продакшен режиме
+        type: this.mode === 'production' ? 'asset' : 'asset/resource', // В продакшен режиме
         // изображения размером до 8кб будут инлайнится в код
         // В режиме разработки все изображения будут помещаться в dist/assets
       },

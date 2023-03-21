@@ -19,8 +19,8 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "cross-env SERVE=true webpack serve",
-    "build": "webpack",
+    "start": "cross-env SERVE=true webpack serve --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
     "build-prod": "webpack --mode=production",
     "lint": "eslint src --fix",
     "clean": "rd /s /q dist",

@@ -31,7 +31,7 @@ const HeaderFC = () => {
     <HeaderWrapper>
       <Title>Calculator App</Title>
       <NavigationWrapper>{links}</NavigationWrapper>
-      <MobileNavigation onClick={isModalOpen && toggleIsOpen}>
+      <MobileNavigation onClick={toggleIsOpen}>
         <BiMenu />
       </MobileNavigation>
       {isModalOpen && (
@@ -71,7 +71,7 @@ class HeaderCC extends React.Component {
       <HeaderWrapper>
         <Title>Calculator App</Title>
         <NavigationWrapper>{links}</NavigationWrapper>
-        <MobileNavigation onClick={state.isModalOpen && toggleIsOpen}>
+        <MobileNavigation onClick={toggleIsOpen}>
           <BiMenu />
         </MobileNavigation>
         {state.isModalOpen && (
