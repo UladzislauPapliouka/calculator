@@ -68,29 +68,27 @@ class ClassAppWithoutStore extends React.Component {
     ClearHistory();
   };
 
-  appRoutes = [
-    {
-      path: UNMATCHED_ROUTE,
-      element: <Navigate to={HOME_CC_ROUTE} replace />,
-    },
-    {
-      path: HOME_ROUTE,
-      element: (
-        <CalculatorCC
-          handleEnterSymbol={this.handleEnterSymbol}
-          displayValue={this.props.displayValue}
-          lastExpression={this.props.lastExpression}
-        />
-      ),
-    },
-    {
-      path: SETTINGS,
-      element: <SettingsCC handleClearHistory={this.handleClearHistory} />,
-    },
-  ];
-
   render() {
-    const { appRoutes } = this;
+    const appRoutes = [
+      {
+        path: UNMATCHED_ROUTE,
+        element: <Navigate to={HOME_CC_ROUTE} replace />,
+      },
+      {
+        path: HOME_ROUTE,
+        element: (
+          <CalculatorCC
+            handleEnterSymbol={this.handleEnterSymbol}
+            displayValue={this.props.displayValue}
+            lastExpression={this.props.lastExpression}
+          />
+        ),
+      },
+      {
+        path: SETTINGS,
+        element: <SettingsCC handleClearHistory={this.handleClearHistory} />,
+      },
+    ];
     return (
       <>
         <HeaderCC />
