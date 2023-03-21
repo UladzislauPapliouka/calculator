@@ -25,29 +25,33 @@ const AppFC = () => {
   const handleClearHistory = useCallback(() => {
     dispatch(clearHistory());
   }, []);
-
+  const appRoutes = [
+    {
+      path: UNMATCHED_ROUTE,
+      element: <Navigate to={HOME_FC_ROUTE} replace />,
+    },
+    {
+      path: HOME_ROUTE,
+      element: (
+        <CalculatorFC
+          handleEnterSymbol={handleEnterSymbol}
+          displayValue={displayValue}
+          lastExpression={lastExpression}
+        />
+      ),
+    },
+    {
+      path: SETTINGS,
+      element: <SettingsFC handleClearHistory={handleClearHistory} />,
+    },
+  ];
   return (
     <>
       <HeaderFC />
       <Routes>
-        <Route
-          path={UNMATCHED_ROUTE}
-          element={<Navigate to={HOME_FC_ROUTE} replace />}
-        />
-        <Route
-          path={HOME_ROUTE}
-          element={
-            <CalculatorFC
-              handleEnterSymbol={handleEnterSymbol}
-              displayValue={displayValue}
-              lastExpression={lastExpression}
-            />
-          }
-        />
-        <Route
-          path={SETTINGS}
-          element={<SettingsFC handleClearHistory={handleClearHistory} />}
-        />
+        {appRoutes.map(({ path, element }) => (
+          <Route path={path} element={element} />
+        ))}
       </Routes>
     </>
   );
@@ -64,34 +68,36 @@ class ClassAppWithoutStore extends React.Component {
     ClearHistory();
   };
 
+  appRoutes = [
+    {
+      path: UNMATCHED_ROUTE,
+      element: <Navigate to={HOME_CC_ROUTE} replace />,
+    },
+    {
+      path: HOME_ROUTE,
+      element: (
+        <CalculatorCC
+          handleEnterSymbol={this.handleEnterSymbol}
+          displayValue={this.props.displayValue}
+          lastExpression={this.props.lastExpression}
+        />
+      ),
+    },
+    {
+      path: SETTINGS,
+      element: <SettingsCC handleClearHistory={this.handleClearHistory} />,
+    },
+  ];
+
   render() {
-    const {
-      props: { displayValue, lastExpression },
-      handleEnterSymbol,
-      handleClearHistory,
-    } = this;
+    const { appRoutes } = this;
     return (
       <>
         <HeaderCC />
         <Routes>
-          <Route
-            path={UNMATCHED_ROUTE}
-            element={<Navigate to={HOME_CC_ROUTE} replace />}
-          />
-          <Route
-            path={HOME_ROUTE}
-            element={
-              <CalculatorCC
-                handleEnterSymbol={handleEnterSymbol}
-                displayValue={displayValue}
-                lastExpression={lastExpression}
-              />
-            }
-          />
-          <Route
-            path={SETTINGS}
-            element={<SettingsCC handleClearHistory={handleClearHistory} />}
-          />
+          {appRoutes.map(({ path, element }) => (
+            <Route path={path} element={element} />
+          ))}
         </Routes>
       </>
     );
