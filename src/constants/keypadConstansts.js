@@ -12,13 +12,13 @@ const Operation = {
   Clear: 'C',
 };
 const KeyPadTable = [
-  [Operation.Clear, 7, 8, 9, Operation.Myltiply],
-  [Operation.Subtract, 4, 5, 6, Operation.Devide],
-  [Operation.Add, 1, 2, 3, Operation.Equal],
+  [Operation.Clear, '7', '8', '9', Operation.Myltiply],
+  [Operation.Subtract, '4', '5', '6', Operation.Devide],
+  [Operation.Add, '1', '2', '3', Operation.Equal],
   [
     Operation.Dot,
     Operation.LeftBracket,
-    0,
+    '0',
     Operation.RightBracket,
     Operation.CleanEntry,
   ],

@@ -230,6 +230,9 @@ const EnterSymbol = (state, symbol) => {
       break;
     case Operation.Equal:
       if (isBracketCorrect(state.expression)) {
+        if (state.expression === state.history[state.history.length - 1]) {
+          break;
+        }
         if (state.expression.length) {
           state.history.push(state.expression);
           state.lastExpression = `${state.expression}=`;
@@ -239,6 +242,7 @@ const EnterSymbol = (state, symbol) => {
           state.calculated = true;
           break;
         }
+
         break;
       }
       state.expression = 'Incorrect state.expression';
