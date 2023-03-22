@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
+import * as PropTypes from 'prop-types';
 import { BiHistory } from 'react-icons/bi';
 import { connect, useDispatch } from 'react-redux';
+
 import { toggleIsHistoryOpen } from '@store/reducers/calculatorSlice';
-import * as PropTypes from 'prop-types';
 
 import {
   DisplayWrapper,

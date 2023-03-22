@@ -1,6 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   themeName: 'dark',

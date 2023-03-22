@@ -1,5 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit';
 import { persistStore } from 'redux-persist';
+
+import { configureStore } from '@reduxjs/toolkit';
 
 import calculatorReducer from './reducers/calculatorSlice';
 import themeReducer from './reducers/themeSlice';

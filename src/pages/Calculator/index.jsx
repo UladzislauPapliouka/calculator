@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
+import * as PropTypes from 'prop-types';
+
 import { DisplayCC, DisplayFC } from '@components/Display';
 import { HistoryCC, HistoryFC } from '@components/History';
 import { KeypadCC, KeypadFC } from '@components/Keypad';
-import * as PropTypes from 'prop-types';
 
 import CalculatorWrapper from './styled';
 

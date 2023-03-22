@@ -1,6 +1,6 @@
 import React, { PureComponent, useMemo } from 'react';
-import { connect, useSelector } from 'react-redux';
 import * as PropTypes from 'prop-types';
+import { connect, useSelector } from 'react-redux';
 
 import { HistoryOperation, HistoryWrapper, Title } from './styled';
 

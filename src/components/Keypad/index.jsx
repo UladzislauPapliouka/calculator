@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
-import { KeyPadTable } from '@constants/keypadConstansts';
 import * as PropTypes from 'prop-types';
+
+import { KeyPadTable } from '@constants/keypadConstansts';
 
 import { Key, KeypadWrapper } from './styled';
 

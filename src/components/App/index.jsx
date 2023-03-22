@@ -1,6 +1,9 @@
 import React, { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { HashRouter, Route, Routes } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+
+import GlobalStyles from '@/globalStyles';
 import ErrorBoundary from '@components/ErrorBoudaries';
 import mainRoutes from '@constants/routes';
 import fontWeight from '@constants/styles/fontWeight';
@@ -9,9 +12,6 @@ import * as sizes from '@constants/styles/sizes';
 import themes from '@constants/theme';
 import ThemeContext from '@constants/themeContext';
 import { chooseTheme } from '@store/reducers/themeSlice';
-import { ThemeProvider } from 'styled-components';
-
-import GlobalStyles from '@/globalStyles';
 
 const App = () => {
   const currentTheme = useSelector(({ theme }) => theme.themeName);

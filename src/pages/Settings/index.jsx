@@ -1,8 +1,9 @@
 import React, { PureComponent, useContext } from 'react';
+import PropTypes from 'prop-types';
+
 import Button from '@components/Button';
 import themes from '@constants/theme';
 import ThemeContext from '@constants/themeContext';
-import PropTypes from 'prop-types';
 
 import { Option, Select, SettingsWrapper, Title } from './styles';
 

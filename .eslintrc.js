@@ -23,7 +23,19 @@ module.exports = {
       },
     ],
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
-    'simple-import-sort/imports': 'error',
+    'simple-import-sort/imports': [
+      'error',
+      {
+        groups: [
+          ['^react$', '^[a-z]'],
+          ['^@'],
+          ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
+          ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
+          ['^.+\\.s?css$'],
+          ['^\\u0000'],
+        ],
+      },
+    ],
     'simple-import-sort/exports': 'error',
     'no-param-reassign': 0,
     'no-plusplus': 0,
@@ -53,31 +65,4 @@ module.exports = {
       },
     },
   },
-  overrides: [
-    // override "simple-import-sort" config
-    {
-      files: ['*.js', '*.jsx'],
-      rules: {
-        'simple-import-sort/imports': [
-          'error',
-          {
-            groups: [
-              // Packages `react` related packages come first.
-              ['^react', '^@?\\w'],
-              // Internal packages.
-              ['^(@|components)(/.*|$)'],
-              // Side effect imports.
-              ['^\\u0000'],
-              // Parent imports. Put `..` last.
-              ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
-              // Other relative imports. Put same-folder imports and `.` last.
-              ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
-              // Style imports.
-              ['^.+\\.?(css)$'],
-            ],
-          },
-        ],
-      },
-    },
-  ],
 };

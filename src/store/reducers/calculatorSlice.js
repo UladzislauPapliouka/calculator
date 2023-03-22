@@ -1,7 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { EnterSymbol } from '@utils/utilities';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+
+import { createSlice } from '@reduxjs/toolkit';
+import { EnterSymbol } from '@utils/utilities';
 
 const initialState = {
   expression: '',

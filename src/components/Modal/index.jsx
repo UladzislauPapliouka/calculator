@@ -1,7 +1,8 @@
 import React, { useLayoutEffect, useRef } from 'react';
-import ReactDOM from 'react-dom';
-import { displayBreakpoints } from '@constants/styles/sizes';
 import * as PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';
+
+import { displayBreakpoints } from '@constants/styles/sizes';
 
 import ModalWrapper from './styled';
 
