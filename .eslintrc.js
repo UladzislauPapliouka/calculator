@@ -39,6 +39,7 @@ module.exports = {
     'simple-import-sort/exports': 'error',
     'no-param-reassign': 0,
     'no-plusplus': 0,
+    'no-case-declarations': 0,
     eqeqeq: 0,
     'operator-assignment': 0,
     'no-continue': 0,

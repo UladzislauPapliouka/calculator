@@ -67,8 +67,13 @@ const EnterSymbol = (state, symbol) => {
   switch (symbol) {
     case Operation.Clear:
       state.expression = '';
-      state.history = [];
+      state.lastExpression = '';
       state.calculated = false;
+      break;
+    case Operation.CleanEntry:
+      state.calculated = false;
+      state.lastExpression = '';
+      state.expression = state.expression.slice(0, -1);
       break;
     case Operation.Dot:
       if (!state.expression || isOperandLast(state.expression)) {
@@ -225,20 +230,17 @@ const EnterSymbol = (state, symbol) => {
       }
       state.expression = `-(${state.expression})`;
       break;
-    case Operation.CleanEntry:
-      state.calculated = false;
-      state.expression = state.expression.slice(0, -1);
-      break;
     case Operation.Equal:
+      const rememberedExpression = state.expression;
       if (isBracketCorrect(state.expression)) {
         if (state.expression === state.history[state.history.length - 1]) {
           break;
         }
         if (state.expression.length) {
-          state.lastExpression = `${state.expression}=`;
-          state.expression = calculateState(state.expression);
+          state.lastExpression = `${rememberedExpression}=`;
+          state.expression = calculateState(state.expression).toString();
           if (!isErrorMessage(state.expression)) {
-            state.history.push(state.expression);
+            state.history.push(rememberedExpression);
             state.calculated = true;
           }
           break;
