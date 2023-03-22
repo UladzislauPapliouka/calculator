@@ -11,6 +11,7 @@ const Operation = {
   CleanEntry: 'CE',
   Clear: 'C',
 };
+
 const KeyPadTable = [
   [Operation.Clear, '7', '8', '9', Operation.Myltiply],
   [Operation.Subtract, '4', '5', '6', Operation.Devide],

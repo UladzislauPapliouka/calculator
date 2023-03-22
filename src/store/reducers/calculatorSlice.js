@@ -27,6 +27,7 @@ const calculatorSlice = createSlice({
     },
   },
 });
+
 export default calculatorSlice.reducer;
 export const { enterSymbol, clearHistory, toggleIsHistoryOpen } =
   calculatorSlice.actions;

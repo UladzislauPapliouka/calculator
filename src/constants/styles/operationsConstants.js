@@ -7,4 +7,5 @@ const operationsPriority = {
   [Operation.Devide]: 2,
   [Operation.Myltiply]: 2,
 };
+
 export default operationsPriority;

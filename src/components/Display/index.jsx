@@ -15,6 +15,7 @@ import {
 const DisplayFC = React.memo(({ expression, lastExpression }) => {
   const dispatch = useDispatch();
   const toggleHistory = () => dispatch(toggleIsHistoryOpen());
+
   return (
     <DisplayWrapper data-cy="calculator-display">
       <ToggleHistoryIcon onClick={toggleHistory}>
@@ -25,6 +26,7 @@ const DisplayFC = React.memo(({ expression, lastExpression }) => {
     </DisplayWrapper>
   );
 });
+
 DisplayFC.defaultProps = {
   expression: '',
   lastExpression: '',
@@ -37,6 +39,7 @@ DisplayFC.propTypes = {
 class DisplayCCWithoutStore extends PureComponent {
   render() {
     const { expression, lastExpression, toggleHistory } = this.props;
+
     return (
       <DisplayWrapper data-cy="calculator-display">
         <ToggleHistoryIcon onClick={toggleHistory}>
@@ -64,4 +67,5 @@ const DisplayCC = connect(
     },
   }),
 )(DisplayCCWithoutStore);
+
 export { DisplayCC, DisplayFC };

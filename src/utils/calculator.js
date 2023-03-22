@@ -6,6 +6,7 @@ export default class Calculator {
 
   executeCommand(command) {
     const value = command.execute(this.values.pop(), this.values.pop());
+
     this.values.push(value);
     this.history.push(value);
   }

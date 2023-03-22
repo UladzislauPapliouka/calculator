@@ -14,8 +14,11 @@ import routesLink from '@constants/links';
 
 const HeaderFC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const openModal = () => setIsModalOpen(true);
+
   const closeModal = () => setIsModalOpen(false);
+
   const links = (
     <>
       {routesLink.map(({ path, title }) => (
@@ -25,6 +28,7 @@ const HeaderFC = () => {
       ))}
     </>
   );
+
   return (
     <HeaderWrapper>
       <Title>Calculator App</Title>
@@ -40,6 +44,7 @@ const HeaderFC = () => {
     </HeaderWrapper>
   );
 };
+
 class HeaderCC extends React.Component {
   constructor(props) {
     super(props);
@@ -63,6 +68,7 @@ class HeaderCC extends React.Component {
 
   render() {
     const { state, openModal, closeModal, links } = this;
+
     return (
       <HeaderWrapper>
         <Title>Calculator App</Title>

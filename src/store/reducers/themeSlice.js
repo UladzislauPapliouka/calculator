@@ -16,9 +16,11 @@ const themeSlice = createSlice({
     },
   },
 });
+
 const persistConfig = {
   key: 'theme',
   storage,
 };
+
 export default persistReducer(persistConfig, themeSlice.reducer);
 export const { chooseTheme } = themeSlice.actions;

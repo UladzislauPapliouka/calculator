@@ -19,6 +19,7 @@ const CalculatorFC = ({
     {isHistoryOpen && <HistoryFC />}
   </CalculatorWrapper>
 );
+
 CalculatorFC.defaultProps = {
   displayValue: '',
   handleEnterSymbol: () => {},
@@ -34,6 +35,7 @@ class CalculatorCC extends PureComponent {
   render() {
     const { displayValue, handleEnterSymbol, lastExpression, isHistoryOpen } =
       this.props;
+
     return (
       <CalculatorWrapper isHistoryOpen={isHistoryOpen}>
         <DisplayCC expression={displayValue} lastExpression={lastExpression} />

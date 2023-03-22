@@ -26,6 +26,7 @@ const App = () => {
     () => ({ theme: currentTheme, toggleTheme: handleThemeChange }),
     [currentTheme, handleThemeChange],
   );
+
   return (
     <HashRouter>
       <ThemeContext.Provider value={themeContextValue}>
@@ -45,4 +46,5 @@ const App = () => {
     </HashRouter>
   );
 };
+
 export default App;

@@ -10,4 +10,5 @@ const opacity = {
   90: 0.9,
   100: 1.0,
 };
+
 export default opacity;

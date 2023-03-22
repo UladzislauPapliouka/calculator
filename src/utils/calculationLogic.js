@@ -10,6 +10,7 @@ import {
 import { isNumber } from '@utils/validation';
 
 const numbersValue = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
+
 const calculateOperator = (operator, calculator) => {
   switch (operator) {
     case Operation.Add:
@@ -31,12 +32,16 @@ const calculateOperator = (operator, calculator) => {
 
 export default function calculateState(statement) {
   const operatorsStack = [];
+
   let numbersResult = '';
+
   let longOperator = '';
+
   const calculator = new Calculator();
 
   for (let i = 0; i < statement.length; i++) {
     const char = statement.charAt(i);
+
     if (numbersValue.indexOf(char) >= 0) {
       if (char === 'e') {
         numbersResult += 2.71;
@@ -62,6 +67,7 @@ export default function calculateState(statement) {
         calculator.pushValue(0);
       }
       let signInStack = operatorsStack.pop();
+
       while (operationsPriority[signInStack] >= operationsPriority[char]) {
         if (operationsPriority[signInStack] <= 3) {
           calculator.pushValue(calculateOperator(signInStack, calculator));
@@ -78,6 +84,7 @@ export default function calculateState(statement) {
         numbersResult = '';
       }
       let operatorFromStack = operatorsStack.pop();
+
       while (operatorFromStack !== Operation.LeftBracket) {
         if (operationsPriority[operatorFromStack] <= 3) {
           calculator.pushValue(
@@ -110,6 +117,7 @@ export default function calculateState(statement) {
   }
 
   let operatorFromStack = operatorsStack.pop();
+
   while (operatorFromStack) {
     if (operationsPriority[operatorFromStack] <= 3) {
       calculator.pushValue(calculateOperator(operatorFromStack, calculator));

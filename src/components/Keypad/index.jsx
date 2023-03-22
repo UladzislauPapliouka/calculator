@@ -12,6 +12,7 @@ const KeypadFC = React.memo(({ handleEnterSymbol }) => (
         const handleClick = () => {
           handleEnterSymbol(key);
         };
+
         return (
           <Key key={key} data-cy={`key(${key})`} onClick={handleClick}>
             {key}
@@ -21,12 +22,14 @@ const KeypadFC = React.memo(({ handleEnterSymbol }) => (
     )}
   </KeypadWrapper>
 ));
+
 KeypadFC.defaultProps = { handleEnterSymbol: () => {} };
 KeypadFC.propTypes = { handleEnterSymbol: PropTypes.func };
 
 class KeypadCC extends PureComponent {
   render() {
     const { handleEnterSymbol } = this.props;
+
     return (
       <KeypadWrapper>
         {KeyPadTable.map((line) =>
@@ -34,6 +37,7 @@ class KeypadCC extends PureComponent {
             const handleClick = () => {
               handleEnterSymbol(key);
             };
+
             return (
               <Key key={key} data-cy={`key-${key}`} onClick={handleClick}>
                 {key}

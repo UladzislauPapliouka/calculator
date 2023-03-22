@@ -11,5 +11,6 @@ const store = configureStore({
     theme: themeReducer,
   },
 });
+
 export const persistor = persistStore(store);
 export default store;

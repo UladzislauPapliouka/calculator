@@ -50,6 +50,7 @@ const AppFC = () => {
       element: <SettingsFC handleClearHistory={handleClearHistory} />,
     },
   ];
+
   return (
     <>
       <HeaderFC />
@@ -65,11 +66,13 @@ const AppFC = () => {
 class ClassAppWithoutStore extends React.Component {
   handleEnterSymbol = (symbol) => {
     const { EnterSymbol } = this.props;
+
     EnterSymbol(symbol);
   };
 
   handleClearHistory = () => {
     const { ClearHistory } = this.props;
+
     ClearHistory();
   };
 
@@ -95,6 +98,7 @@ class ClassAppWithoutStore extends React.Component {
         element: <SettingsCC handleClearHistory={this.handleClearHistory} />,
       },
     ];
+
     return (
       <>
         <HeaderCC />
@@ -122,4 +126,5 @@ const AppCC = connect(
     },
   }),
 )(ClassAppWithoutStore);
+
 export { AppCC, AppFC };

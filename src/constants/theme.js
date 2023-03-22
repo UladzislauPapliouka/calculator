@@ -12,6 +12,7 @@ const lightTheme = {
   scrollbarColor: colors.gray43,
   modalBackground: colors.gray1207,
 };
+
 const darkTheme = {
   headerColor: colors.white,
   headerBackground: colors.darkGray,
@@ -24,6 +25,7 @@ const darkTheme = {
   scrollbarColor: colors.white,
   modalBackground: colors.gray1207,
 };
+
 const themes = {
   light: lightTheme,
   dark: darkTheme,

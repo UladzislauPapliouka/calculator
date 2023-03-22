@@ -9,6 +9,7 @@ import { Option, Select, SettingsWrapper, Title } from './styles';
 
 const SettingsFC = ({ handleClearHistory }) => {
   const { theme: themeName, toggleTheme } = useContext(ThemeContext);
+
   return (
     <SettingsWrapper>
       <Title>Settings</Title>
@@ -23,6 +24,7 @@ const SettingsFC = ({ handleClearHistory }) => {
     </SettingsWrapper>
   );
 };
+
 SettingsFC.defaultProps = {
   handleClearHistory: () => {},
 };
@@ -34,6 +36,7 @@ class SettingsCC extends PureComponent {
   render() {
     const { theme: themeName, toggleTheme } = this.context;
     const { handleClearHistory } = this.props;
+
     return (
       <SettingsWrapper>
         <Title>Settings</Title>

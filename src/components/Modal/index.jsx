@@ -18,6 +18,7 @@ const ModalFC = React.memo(({ children, handleClose }) => {
       handleClose();
     }
   };
+
   useLayoutEffect(() => {
     window.onresize = closeModalWithResize;
     return () => {
@@ -33,11 +34,13 @@ const ModalFC = React.memo(({ children, handleClose }) => {
       {children}
     </ModalWrapper>
   );
+
   return ReactDOM.createPortal(
     modalContainer,
     document.getElementById('modalRoot'),
   );
 });
+
 ModalFC.defaultProps = {
   children: () => {},
   handleClose: () => {},
@@ -55,6 +58,7 @@ class ModalCC extends React.Component {
 
   onBackgroundClickHandler = ({ target }) => {
     const { handleClose } = this.props;
+
     if (this.backRef.current === target) {
       handleClose();
     }
@@ -72,6 +76,7 @@ class ModalCC extends React.Component {
         {children}
       </ModalWrapper>
     );
+
     return ReactDOM.createPortal(
       modalContainer,
       document.getElementById('modalRoot'),

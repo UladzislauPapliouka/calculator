@@ -40,6 +40,15 @@ module.exports = {
     'no-param-reassign': 0,
     'no-plusplus': 0,
     'no-case-declarations': 0,
+    'padding-line-between-statements': [
+      'error',
+      { blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },
+      {
+        blankLine: 'any',
+        prev: ['const', 'let', 'var'],
+        next: ['const', 'let', 'var'],
+      },
+    ],
     eqeqeq: 0,
     'operator-assignment': 0,
     'no-continue': 0,

@@ -15,14 +15,17 @@ const spanMixin = css`
     width: 0;
   }
 `;
+
 const ExpressionSpan = styled.span`
   display: inline-block;
   ${spanMixin}
 `;
+
 const LastExpressionSpan = styled.span`
   opacity: ${({ theme: { opacity } }) => opacity['70']};
   ${spanMixin}
 `;
+
 const ToggleHistoryIcon = styled.div`
   position: absolute;
   cursor: pointer;
@@ -46,6 +49,7 @@ const ToggleHistoryIcon = styled.div`
     background: ${({ theme: { keysActive } }) => keysActive};
   }
 `;
+
 const DisplayWrapper = styled.div`
   display: inline-flex;
   position: relative;

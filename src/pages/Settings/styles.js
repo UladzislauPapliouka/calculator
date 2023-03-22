@@ -9,6 +9,7 @@ const Select = styled.select`
   background-color: ${({ theme: { keysBackground } }) => keysBackground};
   color: ${({ theme: { mainColor } }) => mainColor};
 `;
+
 const Option = styled.option`
   option {
     padding: ${({ theme: { sizes } }) => sizes.paddingSizes.xs}px
@@ -17,6 +18,7 @@ const Option = styled.option`
       ${({ theme: { borderColor } }) => borderColor};
   }
 `;
+
 const SettingsWrapper = styled.div`
   box-sizing: border-box;
   height: 89vh;
@@ -29,7 +31,9 @@ const SettingsWrapper = styled.div`
   align-items: flex-start;
   padding: ${({ theme: { sizes } }) => sizes.paddingSizes.s}px;
 `;
+
 const Title = styled.h1`
   font-size: ${({ theme: { sizes } }) => sizes.fontSizes.xxxl}px;
 `;
+
 export { Option, Select, SettingsWrapper, Title };

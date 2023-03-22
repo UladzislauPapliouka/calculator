@@ -21,8 +21,10 @@ const getLastNumber = (value) => {
   }
   return value;
 };
+
 const isOperandLast = (value) => {
   const symbol = value[value.length - 1];
+
   return (
     symbol === Operation.Add ||
     symbol === Operation.Subtract ||
@@ -30,6 +32,7 @@ const isOperandLast = (value) => {
     symbol === Operation.Devide
   );
 };
+
 const isOperation = (symbol) =>
   symbol === Operation.Add ||
   symbol === Operation.Subtract ||
@@ -41,10 +44,12 @@ const isOperation = (symbol) =>
   symbol === Operation.Clear ||
   symbol === Operation.CleanEntry ||
   symbol === Operation.ChangeSign;
+
 const isErrorMessage = (expression) =>
   expression === 'Infinity' ||
   expression === 'Error' ||
   expression === 'Incorrect brackets';
+
 const EnterSymbol = (state, symbol) => {
   if (state.lastExpression && !isOperation(symbol) && state.calculated) {
     state.lastExpression = '';
@@ -62,8 +67,11 @@ const EnterSymbol = (state, symbol) => {
     state.expression = '';
   }
   const lastNumber = getLastNumber(state.expression);
+
   const lastNumberLength = lastNumber ? lastNumber.length : 0;
+
   const expressionLength = state.expression ? state.expression.length : 0;
+
   switch (symbol) {
     case Operation.Clear:
       state.expression = '';
@@ -232,6 +240,7 @@ const EnterSymbol = (state, symbol) => {
       break;
     case Operation.Equal:
       const rememberedExpression = state.expression;
+
       if (isBracketCorrect(state.expression)) {
         if (state.expression === state.history[state.history.length - 1]) {
           break;

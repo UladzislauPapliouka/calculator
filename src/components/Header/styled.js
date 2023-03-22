@@ -21,6 +21,7 @@ const linkStyles = css`
     }
   }
 `;
+
 export const Title = styled.span`
   font-size: ${({ theme: { sizes } }) => sizes.fontSizes.xl}px;
 `;

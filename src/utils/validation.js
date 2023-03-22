@@ -7,8 +7,10 @@ const isBracketCorrect = (expression) => {
     .filter(
       (symbol) => symbol === Operation.LeftBracket || Operation.RightBracket,
     );
+
   if (brackets[0] === Operation.RightBracket) return false;
   const openedBrackets = [];
+
   for (let i = 0; i < brackets.length; i += 1) {
     if (brackets[i] === Operation.LeftBracket) {
       openedBrackets.push(brackets[i]);

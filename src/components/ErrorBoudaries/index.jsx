@@ -23,6 +23,7 @@ class ErrorBoundary extends Component {
 
   render() {
     const { state, props } = this;
+
     return state.error ? (
       <ErrorWrapper>
         <ErrorMessage>{state.error.message}</ErrorMessage>

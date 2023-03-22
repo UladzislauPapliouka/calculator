@@ -21,6 +21,7 @@ const HistoryFC = () => {
       ),
     [history.length],
   );
+
   return (
     <HistoryWrapper>
       <Title>History</Title>
@@ -41,6 +42,7 @@ class ClassHistoryWithoutStore extends PureComponent {
     ) : (
       <HistoryOperation>No operation yet...</HistoryOperation>
     );
+
     return (
       <HistoryWrapper>
         <Title>History</Title>
@@ -58,4 +60,5 @@ ClassHistoryWithoutStore.propTypes = {
 const HistoryCC = connect(({ calculator }) => ({
   history: calculator.history,
 }))(ClassHistoryWithoutStore);
+
 export { HistoryCC, HistoryFC };

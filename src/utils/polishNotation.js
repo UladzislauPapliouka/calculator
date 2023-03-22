@@ -9,8 +9,10 @@ import {
 } from '@utils/commands';
 
 const SPLITTER = '&';
+
 const convertToPolishString = (expression) => {
   const stack = [];
+
   let result = '';
 
   for (let i = 0; i < expression.length; i++) {
@@ -70,7 +72,9 @@ const convertToPolishString = (expression) => {
 
 const calculatePolishString = (expression) => {
   let number = 0;
+
   let result = '';
+
   const calculator = new Calculator();
 
   for (let i = 0; i < expression.length; i++) {
@@ -103,4 +107,5 @@ const calculatePolishString = (expression) => {
   }
   return +calculator.getResult().toFixed(3);
 };
+
 export { calculatePolishString, convertToPolishString };
