@@ -9,8 +9,8 @@ const colors = {
   gray1207: '#121212B2',
   darkGray: '#121212',
   darkBlue: '#17151F',
-  darkBlue30: '#18151e',
-  darkBlue80: '#131118',
+  darkBlue33: '#231f33',
+  darkBlue92: '#1c192d',
 };
 
 export default colors;

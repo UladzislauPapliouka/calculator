@@ -16,6 +16,7 @@ const fontSizes = {
   xxxxl: 64,
 };
 const paddingSizes = {
+  xxs: 4,
   xs: 10,
   s: 30,
   lg: 50,

@@ -25,11 +25,26 @@ const LastExpressionSpan = styled.span`
 `;
 const ToggleHistoryIcon = styled.div`
   position: absolute;
+  cursor: pointer;
+  height: fit-content;
+  box-sizing: border-box;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: ${({ theme: { sizes } }) => sizes.paddingSizes.xxs}px;
+  border-radius: ${({ theme: { sizes } }) => sizes.borderRadiuses.md}px;
   top: ${({ theme: { sizes } }) => sizes.paddingSizes.xs}px;
   left: ${({ theme: { sizes } }) => sizes.paddingSizes.xs}px;
   font-size: ${({ theme: { sizes } }) => sizes.fontSizes.xl}px;
   opacity: ${({ theme: { opacity } }) => opacity['70']};
   color: ${({ theme: { mainColor } }) => mainColor};
+  &:hover {
+    background: ${({ theme: { keysHover } }) => keysHover};
+  }
+  &:active {
+    background: ${({ theme: { keysActive } }) => keysActive};
+  }
 `;
 const DisplayWrapper = styled.div`
   display: inline-flex;
