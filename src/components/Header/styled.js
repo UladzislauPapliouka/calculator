@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { headerSizes } from '@constants/styles/sizes';
+
 const linkStyles = css`
   a {
     font-size: ${({ theme: { sizes } }) => sizes.fontSizes.xl}px;
@@ -25,9 +27,8 @@ const linkStyles = css`
 export const Title = styled.span`
   font-size: ${({ theme: { sizes } }) => sizes.fontSizes.xl}px;
 `;
-// TODO: how set adaptive height in px
 export const HeaderWrapper = styled.header`
-  height: 11vh;
+  min-height: ${({ theme: { sizes } }) => sizes.headerSizes.md}px;
   background-color: ${({ theme: { headerBackground } }) => headerBackground};
   color: ${({ theme: { headerColor } }) => headerColor};
   padding: 0 ${({ theme: { sizes } }) => sizes.paddingSizes.s}px;

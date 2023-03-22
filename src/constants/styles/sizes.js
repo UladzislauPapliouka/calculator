@@ -65,6 +65,9 @@ const rowSizes = {
 const columnSizes = {
   md: 400,
 };
+const headerSizes = {
+  md: 100,
+};
 
 export {
   borderRadiuses,
@@ -73,6 +76,7 @@ export {
   displayBreakpoints,
   fontSizes,
   gapSizes,
+  headerSizes,
   keySizes,
   marginSizes,
   paddingSizes,
