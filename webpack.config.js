@@ -20,20 +20,15 @@ if (process.env.SERVE) {
 const target = 'web'; // в режиме разработки browserslist не используется
 
 module.exports = {
-  entry: './src/index.jsx', // Указываем точку входа - главный модуль приложения,
-  // в который импортируются все остальные
+  entry: './src/index.jsx',
   plugins,
   target,
   output: {
-    path: path.resolve(__dirname, 'build'), // Директория, в которой будет
-    // размещаться итоговый бандл, папка dist в корне приложения
-    assetModuleFilename: 'assets/[hash][ext][query]', // Все ассеты будут
-    // складываться в dist/assets
-    clean: true, // Очищает директорию dist перед обновлением бандла
-    // Свойство стало доступно с версии 5.20.0, до этого использовался
-    // CleanWebpackPlugin
+    path: path.resolve(__dirname, 'build'),
+    assetModuleFilename: 'assets/[hash][ext][query]',
+    filename: this.mode === 'production' ? 'bundle.js' : 'bundle.min.js',
+    clean: true,
   },
-  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -41,12 +36,10 @@ module.exports = {
         use: ['html-loader'],
       },
       {
-        test: /\.(s[ac]|c)ss$/i, // /\.(le|c)ss$/i если вы используете less
+        test: /\.css$/i,
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
-          'postcss-loader',
-          'sass-loader',
         ],
       }, // Добавляем загрузчики стилей
       {

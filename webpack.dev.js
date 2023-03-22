@@ -9,4 +9,5 @@ module.exports = merge(common, {
     historyApiFallback: true,
     open: true,
   },
+  devtool: 'source-map',
 });
