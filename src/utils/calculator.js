@@ -11,7 +11,7 @@ export default class Calculator {
   }
 
   getResult() {
-    return this.values.pop();
+    return this.values.length ? this.values[this.values.length - 1] : 0;
   }
 
   getHistory() {

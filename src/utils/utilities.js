@@ -1,4 +1,5 @@
 import { Operation } from '@constants/keypadConstansts';
+import calculateState from '@utils/calculationLogic';
 import {
   calculatePolishString,
   convertToPolishString,
@@ -41,9 +42,9 @@ const isOperation = (symbol) =>
   symbol === Operation.CleanEntry ||
   symbol === Operation.ChangeSign;
 const isErrorMessage = (expression) =>
-  expression === 'NaN' ||
   expression === 'Infinity' ||
-  expression === 'Incorrect state.expression';
+  expression === 'Error' ||
+  expression === 'Incorrect brackets';
 const EnterSymbol = (state, symbol) => {
   if (state.lastExpression && !isOperation(symbol) && state.calculated) {
     state.lastExpression = '';
@@ -51,7 +52,7 @@ const EnterSymbol = (state, symbol) => {
     state.expression = symbol;
     return;
   }
-  if (isErrorMessage(state.expression)) {
+  if (isErrorMessage(state.expression.toString())) {
     state.lastExpression = '';
     state.calculated = false;
     if (!isOperation(symbol)) {
@@ -234,18 +235,18 @@ const EnterSymbol = (state, symbol) => {
           break;
         }
         if (state.expression.length) {
-          state.history.push(state.expression);
           state.lastExpression = `${state.expression}=`;
-          state.expression = calculatePolishString(
-            convertToPolishString(state.expression),
-          ).toString();
-          state.calculated = true;
+          state.expression = calculateState(state.expression);
+          if (!isErrorMessage(state.expression)) {
+            state.history.push(state.expression);
+            state.calculated = true;
+          }
           break;
         }
 
         break;
       }
-      state.expression = 'Incorrect state.expression';
+      state.expression = 'Incorrect brackets';
       break;
     default:
       if (lastNumber && lastNumber[lastNumber.length - 4] === '.') {
