@@ -1,9 +1,10 @@
 import { Operation } from '@constants/keypadConstansts';
-import operationsPriority from '@constants/styles/operationsConstants';
+import operationsPriority from '@constants/operationsConstants';
 import Calculator from '@utils/calculator';
 import {
   AddCommand,
   DivCommand,
+  ModCommand,
   MulCommand,
   SubCommand,
 } from '@utils/commands';
@@ -24,6 +25,9 @@ const calculateOperator = (operator, calculator) => {
       break;
     case Operation.Devide:
       calculator.executeCommand(new DivCommand());
+      break;
+    case Operation.Mod:
+      calculator.executeCommand(new ModCommand());
       break;
     default:
   }

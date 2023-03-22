@@ -6,6 +6,7 @@ const operationsPriority = {
   [Operation.Subtract]: 1,
   [Operation.Devide]: 2,
   [Operation.Myltiply]: 2,
+  [Operation.Mod]: 2,
 };
 
 export default operationsPriority;

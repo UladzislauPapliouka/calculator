@@ -1,5 +1,5 @@
 import { Operation } from '@constants/keypadConstansts';
-import operationsPrioritets from '@constants/styles/operationsConstants';
+import operationsPrioritets from '@constants/operationsConstants';
 import Calculator from '@utils/calculator';
 import {
   AddCommand,

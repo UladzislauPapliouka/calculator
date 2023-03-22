@@ -10,6 +10,7 @@ const Operation = {
   RightBracket: ')',
   CleanEntry: 'CE',
   Clear: 'C',
+  Mod: '%',
 };
 
 const KeyPadTable = [
@@ -23,7 +24,7 @@ const KeyPadTable = [
     Operation.RightBracket,
     Operation.CleanEntry,
   ],
-  [Operation.ChangeSign],
+  [Operation.ChangeSign, Operation.Mod],
 ];
 
 export { KeyPadTable, Operation };

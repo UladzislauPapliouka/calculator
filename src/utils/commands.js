@@ -40,5 +40,15 @@ class DivCommand {
     return this.value;
   }
 }
+class ModCommand {
+  constructor() {
+    this.value = 0;
+  }
 
-export { AddCommand, DivCommand, MulCommand, SubCommand };
+  execute(currentValueOne, currentValueTwo) {
+    this.value = currentValueTwo % currentValueOne;
+    return this.value;
+  }
+}
+
+export { AddCommand, DivCommand, ModCommand, MulCommand, SubCommand };
