@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 
-const ErrorText = styled.span`
+const ErrorMessage = styled.span`
   font-size: ${({ theme: { sizes } }) => sizes.fontSizes.xxxxl}px;
 `;
+const ErrorComponentStack = styled.span`
+  font-size: ${({ theme: { sizes } }) => sizes.fontSizes.xl}px;
+`;
 const ErrorWrapper = styled.div`
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  padding: ${({ theme: { sizes } }) => sizes.paddingSizes.xs}px;
 `;
-export { ErrorText, ErrorWrapper };
+export { ErrorComponentStack, ErrorMessage, ErrorWrapper };
