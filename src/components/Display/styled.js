@@ -22,7 +22,7 @@ const ExpressionSpan = styled.span`
 `;
 
 const LastExpressionSpan = styled.span`
-  opacity: ${({ theme: { opacity } }) => opacity['70']};
+  opacity: ${({ theme: { opacity } }) => opacity.xl};
   ${spanMixin}
 `;
 
@@ -40,7 +40,7 @@ const ToggleHistoryIcon = styled.div`
   top: ${({ theme: { sizes } }) => sizes.paddingSizes.xs}px;
   left: ${({ theme: { sizes } }) => sizes.paddingSizes.xs}px;
   font-size: ${({ theme: { sizes } }) => sizes.fontSizes.xl}px;
-  opacity: ${({ theme: { opacity } }) => opacity['70']};
+  opacity: ${({ theme: { opacity } }) => opacity.xl};
   color: ${({ theme: { mainColor } }) => mainColor};
   &:hover {
     background: ${({ theme: { keysHover } }) => keysHover};

@@ -21,7 +21,8 @@ const CalculatorWrapper = styled.div`
         `}
   height: 89vh;
   box-sizing: border-box;
-  padding: ${({ theme: { sizes } }) => sizes.paddingSizes.xs}px;
+  padding: ${({ theme: { sizes } }) => sizes.paddingSizes.xs}px
+    ${({ theme: { sizes } }) => sizes.paddingSizes.s}px;
   overflow: hidden;
   background-color: ${({ theme: { mainBackground } }) => mainBackground};
 
