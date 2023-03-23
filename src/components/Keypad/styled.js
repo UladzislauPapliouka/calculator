@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const KeypadWrapper = styled.div`
   margin: auto;
   display: grid;
+  box-sizing: border-box;
+  padding: ${({ theme: { sizes } }) => sizes.paddingSizes.xs}px;
   grid-template-columns: repeat(
     5,
     minmax(

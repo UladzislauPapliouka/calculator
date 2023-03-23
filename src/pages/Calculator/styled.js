@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 const CalculatorWrapper = styled.div`
   position: relative;
   display: grid;
+  box-sizing: border-box;
   ${({ theme: { sizes }, isHistoryOpen }) =>
     !isHistoryOpen
       ? css`
@@ -19,7 +20,6 @@ const CalculatorWrapper = styled.div`
             'disp  his'
             'keyp  his';
         `}
-  height: 89vh;
   box-sizing: border-box;
   padding: ${({ theme: { sizes } }) => sizes.paddingSizes.xs}px
     ${({ theme: { sizes } }) => sizes.paddingSizes.s}px;
@@ -28,12 +28,23 @@ const CalculatorWrapper = styled.div`
 
   @media screen and (max-width: ${({ theme: { sizes } }) =>
       sizes.displayBreakpoints.lg}px) {
-    grid-template-rows: ${({ theme: { sizes } }) => sizes.rowSizes.md}px 1fr 1fr;
-    grid-template-columns: 100%;
-    grid-template-areas:
-      'disp'
-      'keyp'
-      'his';
+    ${({ theme: { sizes }, isHistoryOpen }) =>
+      !isHistoryOpen
+        ? css`
+            grid-template-columns: 100%;
+            grid-template-rows: ${sizes.rowSizes.md}px 1fr;
+            grid-template-areas:
+              'disp '
+              'keyp ';
+          `
+        : css`
+            grid-template-columns: 100%;
+            grid-template-rows: ${sizes.rowSizes.md}px 1fr 1fr;
+            grid-template-areas:
+              'disp '
+              'keyp '
+              'his ';
+          `}
   }
 `;
 

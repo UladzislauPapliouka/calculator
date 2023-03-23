@@ -21,7 +21,6 @@ const Option = styled.option`
 
 const SettingsWrapper = styled.div`
   box-sizing: border-box;
-  height: 89vh;
   background-color: ${({ theme: { mainBackground } }) => mainBackground};
   color: ${({ theme: { mainColor } }) => mainColor};
   font-size: ${({ theme: { sizes } }) => sizes.fontSizes.s}px;

@@ -59,6 +59,7 @@ const keySizes = {
 };
 
 const rowSizes = {
+  xs: 100,
   md: 150,
 };
 
@@ -66,7 +67,7 @@ const columnSizes = {
   md: 400,
 };
 const headerSizes = {
-  md: 100,
+  md: 70,
 };
 
 export {
