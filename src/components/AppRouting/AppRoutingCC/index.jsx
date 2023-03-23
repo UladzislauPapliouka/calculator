@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import appRoutes from '@components/App/AppRealization/AppCC/config';
+import appRoutes from '@components/AppRouting/AppRoutingCC/config';
 import { HeaderCC } from '@components/Header';
 
-class AppCC extends PureComponent {
+class AppRoutingCC extends PureComponent {
   render() {
     return (
       <>
@@ -18,4 +18,4 @@ class AppCC extends PureComponent {
     );
   }
 }
-export default AppCC;
+export default AppRoutingCC;

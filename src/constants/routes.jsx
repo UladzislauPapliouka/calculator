@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-import { AppCC, AppFC } from '@components/App/AppRealization';
+import { AppRoutingCC, AppRoutingFC } from '@components/AppRouting';
 import {
   APP_CC_ROUTE,
   APP_FC_ROUTE,
@@ -16,11 +16,11 @@ const mainRoutes = [
   },
   {
     path: APP_FC_ROUTE,
-    element: <AppFC />,
+    element: <AppRoutingFC />,
   },
   {
     path: APP_CC_ROUTE,
-    element: <AppCC />,
+    element: <AppRoutingCC />,
   },
 ];
 

@@ -2,11 +2,11 @@ import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 
-import appRoutes from '@components/App/AppRealization/AppFC/config';
+import appRoutes from '@components/AppRouting/AppRoutingFC/config';
 import { HeaderFC } from '@components/Header';
 import { clearHistory, enterSymbol } from '@store/reducers/calculatorSlice';
 
-const AppFC = () => {
+const AppRoutingFC = () => {
   const dispatch = useDispatch();
   const handleEnterSymbol = useCallback((symbol) => {
     dispatch(enterSymbol({ symbol }));
@@ -27,4 +27,4 @@ const AppFC = () => {
   );
 };
 
-export default AppFC;
+export default AppRoutingFC;
