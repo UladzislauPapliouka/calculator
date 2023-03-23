@@ -49,7 +49,6 @@ module.exports = {
         next: ['const', 'let', 'var'],
       },
     ],
-    eqeqeq: 0,
     'operator-assignment': 0,
     'no-continue': 0,
     'max-classes-per-file': 0,

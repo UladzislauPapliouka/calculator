@@ -1,9 +1,5 @@
 import { Operation } from '@constants/keypadConstansts';
-import calculateState from '@utils/calculationLogic';
-import {
-  calculatePolishString,
-  convertToPolishString,
-} from '@utils/polishNotation';
+import calculateExpression from '@utils/calculationLogic';
 import { isBracketCorrect } from '@utils/validation';
 
 const getLastNumber = (value) => {
@@ -247,7 +243,7 @@ const EnterSymbol = (state, symbol) => {
         }
         if (state.expression.length) {
           state.lastExpression = `${rememberedExpression}=`;
-          state.expression = calculateState(state.expression).toString();
+          state.expression = calculateExpression(state.expression).toString();
           if (!isErrorMessage(state.expression)) {
             state.history.push(rememberedExpression);
             state.calculated = true;

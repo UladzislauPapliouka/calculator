@@ -8,7 +8,6 @@ import {
   MulCommand,
   SubCommand,
 } from '@utils/commands';
-import { isNumber } from '@utils/validation';
 
 const numbersValue = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
 
@@ -34,7 +33,7 @@ const calculateOperator = (operator, calculator) => {
   return +calculator.getResult().toFixed(3);
 };
 
-export default function calculateState(statement) {
+export default function calculateExpression(expression) {
   const operatorsStack = [];
 
   let numbersResult = '';
@@ -43,21 +42,15 @@ export default function calculateState(statement) {
 
   const calculator = new Calculator();
 
-  for (let i = 0; i < statement.length; i++) {
-    const char = statement.charAt(i);
+  for (let i = 0; i < expression.length; i++) {
+    const symbol = expression.charAt(i);
 
-    if (numbersValue.indexOf(char) >= 0) {
-      if (char === 'e') {
-        numbersResult += 2.71;
-      } else if (char === 'π') {
-        numbersResult += 3.14;
-      } else {
-        numbersResult += char;
-      }
+    if (numbersValue.indexOf(symbol) >= 0) {
+      numbersResult += symbol;
     } else if (
-      operationsPriority[char] >= 0 &&
-      char !== Operation.LeftBracket &&
-      char !== Operation.RightBracket
+      operationsPriority[symbol] >= 0 &&
+      symbol !== Operation.LeftBracket &&
+      symbol !== Operation.RightBracket
     ) {
       if (numbersResult !== '') {
         calculator.pushValue(+numbersResult);
@@ -65,14 +58,14 @@ export default function calculateState(statement) {
       }
       if (
         i === 0 ||
-        (operationsPriority[statement.charAt(i - 1)] >= 0 &&
-          statement.charAt(i - 1) !== Operation.RightBracket)
+        (operationsPriority[expression.charAt(i - 1)] >= 0 &&
+          expression.charAt(i - 1) !== Operation.RightBracket)
       ) {
         calculator.pushValue(0);
       }
       let signInStack = operatorsStack.pop();
 
-      while (operationsPriority[signInStack] >= operationsPriority[char]) {
+      while (operationsPriority[signInStack] >= operationsPriority[symbol]) {
         if (operationsPriority[signInStack] <= 3) {
           calculator.pushValue(calculateOperator(signInStack, calculator));
         } else {
@@ -81,8 +74,8 @@ export default function calculateState(statement) {
         signInStack = operatorsStack.pop();
       }
       operatorsStack.push(signInStack);
-      operatorsStack.push(char);
-    } else if (char === Operation.RightBracket) {
+      operatorsStack.push(symbol);
+    } else if (symbol === Operation.RightBracket) {
       if (numbersResult !== '') {
         calculator.pushValue(+numbersResult);
         numbersResult = '';
@@ -105,14 +98,14 @@ export default function calculateState(statement) {
         operatorsStack.push(longOperator);
         longOperator = '';
       }
-    } else if (char === Operation.LeftBracket) {
+    } else if (symbol === Operation.LeftBracket) {
       if (longOperator !== '') {
         operatorsStack.push(longOperator);
         longOperator = '';
       }
-      operatorsStack.push(char);
+      operatorsStack.push(symbol);
     } else {
-      longOperator += char;
+      longOperator += symbol;
     }
   }
 
