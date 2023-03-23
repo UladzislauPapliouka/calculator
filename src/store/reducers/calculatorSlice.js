@@ -21,6 +21,9 @@ const calculatorSlice = createSlice({
     },
     clearHistory: (state) => {
       state.history = [];
+      state.expression = '';
+      state.lastExpression = '';
+      state.calculated = false;
     },
     toggleIsHistoryOpen: (state) => {
       state.isHistoryOpen = !state.isHistoryOpen;

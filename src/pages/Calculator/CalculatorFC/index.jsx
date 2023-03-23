@@ -1,31 +1,30 @@
-import CalculatorWrapper from '@pages/Calculator/styled';
-import { DisplayFC } from '@components/Display';
-import { KeypadFC } from '@components/Keypad';
-import { HistoryFC } from '@components/History';
-import * as PropTypes from 'prop-types';
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-const CalculatorFC = ({
-  displayValue,
-  handleEnterSymbol,
-  lastExpression,
-  isHistoryOpen,
-}) => (
-  <CalculatorWrapper isHistoryOpen={isHistoryOpen}>
-    <DisplayFC expression={displayValue} lastExpression={lastExpression} />
-    <KeypadFC handleEnterSymbol={handleEnterSymbol} />
-    {isHistoryOpen && <HistoryFC />}
-  </CalculatorWrapper>
-);
+import { DisplayFC } from '@components/Display';
+import { HistoryFC } from '@components/History';
+import { KeypadFC } from '@components/Keypad';
+import CalculatorWrapper from '@pages/Calculator/styled';
+import { enterSymbol } from '@store/reducers/calculatorSlice';
 
-CalculatorFC.defaultProps = {
-  displayValue: '',
-  handleEnterSymbol: () => {},
-  lastExpression: '',
+const CalculatorFC = () => {
+  const { displayValue, lastExpression, isHistoryOpen } = useSelector(
+    (state) => ({
+      displayValue: state.calculator.expression,
+      lastExpression: state.calculator.lastExpression,
+      isHistoryOpen: state.calculator.isHistoryOpen,
+    }),
+  );
+  const dispatch = useDispatch();
+  const handleEnterSymbol = (symbol) => dispatch(enterSymbol({ symbol }));
+
+  return (
+    <CalculatorWrapper isHistoryOpen={isHistoryOpen}>
+      <DisplayFC expression={displayValue} lastExpression={lastExpression} />
+      <KeypadFC handleEnterSymbol={handleEnterSymbol} />
+      {isHistoryOpen && <HistoryFC />}
+    </CalculatorWrapper>
+  );
 };
-CalculatorFC.propTypes = {
-  displayValue: PropTypes.string,
-  lastExpression: PropTypes.string,
-  handleEnterSymbol: PropTypes.func,
-};
+
 export default CalculatorFC;

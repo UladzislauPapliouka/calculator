@@ -1,12 +1,13 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import Button from '@components/Button';
 import themes from '@constants/theme';
 import ThemeContext from '@constants/themeContext';
 import { Option, Select, SettingsWrapper, Title } from '@pages/Settings/styles';
+import { clearHistory } from '@store/reducers/calculatorSlice';
 
-class SettingsCC extends PureComponent {
+class SettingsCCWithoutStore extends PureComponent {
   render() {
     const { theme: themeName, toggleTheme } = this.context;
     const { handleClearHistory } = this.props;
@@ -26,11 +27,13 @@ class SettingsCC extends PureComponent {
     );
   }
 }
+
+const SettingsCC = connect(
+  () => ({}),
+  (dispatch) => ({
+    handleClearHistory: () => dispatch(clearHistory()),
+  }),
+)(SettingsCCWithoutStore);
+
 SettingsCC.contextType = ThemeContext;
-SettingsCC.defaultProps = {
-  handleClearHistory: () => {},
-};
-SettingsCC.propTypes = {
-  handleClearHistory: PropTypes.func,
-};
 export default SettingsCC;

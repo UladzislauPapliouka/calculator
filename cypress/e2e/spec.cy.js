@@ -1,4 +1,4 @@
-describe('Calculator tests', () => {
+describe('CalculatorCC tests', () => {
   it('Application is available', () => {
     cy.visit('/')
   })
