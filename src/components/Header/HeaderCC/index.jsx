@@ -13,38 +13,36 @@ import { ModalCC } from '@components/Modal';
 import routesLink from '@constants/links';
 
 class HeaderCC extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
       isModalOpen: false,
     };
-    this.links = (
+  }
+
+  toggleIsModalOpen = () => this.setState((prevState)=>({...prevState, isModalOpen: !prevState.isModalOpen }));
+
+  render() {
+    const { state, toggleIsModalOpen } = this;
+    const links =
       <>
         {routesLink.map(({ path, title }) => (
-          <NavLink to={path} data-cy={title} onClick={this.closeModal}>
+          <NavLink to={path} data-cy={title}  onClick={this.state.isModalOpen && toggleIsModalOpen}>
             {title}
           </NavLink>
         ))}
       </>
-    );
-  }
-
-  closeModal = () => this.setState({ isModalOpen: false });
-
-  openModal = () => this.setState({ isModalOpen: true });
-
-  render() {
-    const { state, openModal, closeModal, links } = this;
 
     return (
       <HeaderWrapper>
         <Title>Calculator App</Title>
         <NavigationWrapper>{links}</NavigationWrapper>
-        <MobileNavigation onClick={openModal}>
+        <MobileNavigation onClick={toggleIsModalOpen}>
           <BiMenu />
         </MobileNavigation>
         {state.isModalOpen && (
-          <ModalCC handleClose={closeModal}>
+          <ModalCC handleClose={toggleIsModalOpen}>
             <MobileNavigationWrapper>{links}</MobileNavigationWrapper>
           </ModalCC>
         )}

@@ -15,14 +15,12 @@ import routesLink from '@constants/links';
 const HeaderFC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = () => setIsModalOpen(true);
-
-  const closeModal = () => setIsModalOpen(false);
+  const toggleIsModalOpen = () => setIsModalOpen((prevState)=>!prevState);
 
   const links = (
     <>
       {routesLink.map(({ path, title }) => (
-        <NavLink to={path} data-cy={title} onClick={closeModal}>
+        <NavLink to={path} data-cy={title} onClick={isModalOpen && toggleIsModalOpen}>
           {title}
         </NavLink>
       ))}
@@ -33,11 +31,11 @@ const HeaderFC = () => {
     <HeaderWrapper>
       <Title>Calculator App</Title>
       <NavigationWrapper>{links}</NavigationWrapper>
-      <MobileNavigation onClick={openModal}>
+      <MobileNavigation onClick={toggleIsModalOpen}>
         <BiMenu />
       </MobileNavigation>
       {isModalOpen && (
-        <ModalFC handleClose={closeModal}>
+        <ModalFC handleClose={toggleIsModalOpen}>
           <MobileNavigationWrapper>{links}</MobileNavigationWrapper>
         </ModalFC>
       )}
