@@ -8,10 +8,10 @@ const linkStyles = css`
     text-decoration: none;
     cursor: pointer;
     position: relative;
-    opacity: ${({ theme: { opacity } }) => opacity['70']};
+    opacity: ${({ theme: { opacity } }) => opacity.xl};
     color: ${({ theme: { headerColor } }) => headerColor};
     &.active {
-      opacity: ${({ theme: { opacity } }) => opacity['100']};
+      opacity: ${({ theme: { opacity } }) => opacity.xxxxl};
       &:before {
         content: '';
         position: absolute;
@@ -36,7 +36,7 @@ export const HeaderWrapper = styled.header`
   justify-content: space-between;
   align-items: center;
   font-family: HelveticaNeueCyr, serif;
-  font-weight: ${({ theme: { fontWeight } }) => fontWeight['100']};
+  font-weight: ${({ theme: { fontWeight } }) => fontWeight.md};
   ${linkStyles}
 `;
 export const NavigationWrapper = styled.div`

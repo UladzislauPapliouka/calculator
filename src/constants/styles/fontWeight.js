@@ -1,5 +1,5 @@
 const fontWeight = {
-  100: 100,
+  md: 100,
 };
 
 export default fontWeight;
