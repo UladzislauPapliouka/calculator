@@ -1,40 +1,15 @@
 import React, { PureComponent } from 'react';
 import * as PropTypes from 'prop-types';
 import { BiHistory } from 'react-icons/bi';
-import { connect, useDispatch } from 'react-redux';
-
-import { toggleIsHistoryOpen } from '@store/reducers/calculatorSlice';
+import { connect } from 'react-redux';
 
 import {
   DisplayWrapper,
   ExpressionSpan,
   LastExpressionSpan,
   ToggleHistoryIcon,
-} from './styled';
-
-const DisplayFC = React.memo(({ expression, lastExpression }) => {
-  const dispatch = useDispatch();
-  const toggleHistory = () => dispatch(toggleIsHistoryOpen());
-
-  return (
-    <DisplayWrapper data-cy="calculator-display">
-      <ToggleHistoryIcon onClick={toggleHistory}>
-        <BiHistory />
-      </ToggleHistoryIcon>
-      <LastExpressionSpan>{lastExpression}</LastExpressionSpan>
-      <ExpressionSpan>{expression}</ExpressionSpan>
-    </DisplayWrapper>
-  );
-});
-
-DisplayFC.defaultProps = {
-  expression: '',
-  lastExpression: '',
-};
-DisplayFC.propTypes = {
-  expression: PropTypes.string,
-  lastExpression: PropTypes.string,
-};
+} from '@components/Display/styled';
+import { toggleIsHistoryOpen } from '@store/reducers/calculatorSlice';
 
 class DisplayCCWithoutStore extends PureComponent {
   render() {
@@ -68,4 +43,4 @@ const DisplayCC = connect(
   }),
 )(DisplayCCWithoutStore);
 
-export { DisplayCC, DisplayFC };
+export default DisplayCC;

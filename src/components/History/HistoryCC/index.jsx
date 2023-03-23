@@ -1,34 +1,12 @@
-import React, { PureComponent, useMemo } from 'react';
+import React, { PureComponent } from 'react';
 import * as PropTypes from 'prop-types';
-import { connect, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 
-import { HistoryOperation, HistoryWrapper, Title } from './styled';
-
-const HistoryFC = () => {
-  const { history } = useSelector(({ calculator }) => ({
-    history: calculator.history,
-  }));
-  const historyList = useMemo(
-    () =>
-      history.length ? (
-        history.map((historyExpression) => (
-          <HistoryOperation key={historyExpression}>
-            {historyExpression}
-          </HistoryOperation>
-        ))
-      ) : (
-        <HistoryOperation>No operation yet...</HistoryOperation>
-      ),
-    [history.length],
-  );
-
-  return (
-    <HistoryWrapper>
-      <Title>History</Title>
-      {historyList}
-    </HistoryWrapper>
-  );
-};
+import {
+  HistoryOperation,
+  HistoryWrapper,
+  Title,
+} from '@components/History/styled';
 
 class ClassHistoryWithoutStore extends PureComponent {
   render() {
@@ -61,4 +39,4 @@ const HistoryCC = connect(({ calculator }) => ({
   history: calculator.history,
 }))(ClassHistoryWithoutStore);
 
-export { HistoryCC, HistoryFC };
+export default HistoryCC;
