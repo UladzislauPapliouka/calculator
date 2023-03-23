@@ -30,4 +30,4 @@ CalculatorCC.propTypes = {
   lastExpression: PropTypes.string,
   handleEnterSymbol: PropTypes.func,
 };
-export default CalculatorCC
+export default CalculatorCC;

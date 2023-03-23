@@ -15,12 +15,16 @@ import routesLink from '@constants/links';
 const HeaderFC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const toggleIsModalOpen = () => setIsModalOpen((prevState)=>!prevState);
+  const toggleIsModalOpen = () => setIsModalOpen((prevState) => !prevState);
 
   const links = (
     <>
       {routesLink.map(({ path, title }) => (
-        <NavLink to={path} data-cy={title} onClick={isModalOpen && toggleIsModalOpen}>
+        <NavLink
+          to={path}
+          data-cy={title}
+          onClick={isModalOpen && toggleIsModalOpen}
+        >
           {title}
         </NavLink>
       ))}

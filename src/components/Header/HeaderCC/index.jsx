@@ -13,7 +13,6 @@ import { ModalCC } from '@components/Modal';
 import routesLink from '@constants/links';
 
 class HeaderCC extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -21,18 +20,27 @@ class HeaderCC extends React.Component {
     };
   }
 
-  toggleIsModalOpen = () => this.setState((prevState)=>({...prevState, isModalOpen: !prevState.isModalOpen }));
+  toggleIsModalOpen = () =>
+    this.setState((prevState) => ({
+      ...prevState,
+      isModalOpen: !prevState.isModalOpen,
+    }));
 
   render() {
     const { state, toggleIsModalOpen } = this;
-    const links =
+    const links = (
       <>
         {routesLink.map(({ path, title }) => (
-          <NavLink to={path} data-cy={title}  onClick={this.state.isModalOpen && toggleIsModalOpen}>
+          <NavLink
+            to={path}
+            data-cy={title}
+            onClick={this.state.isModalOpen && toggleIsModalOpen}
+          >
             {title}
           </NavLink>
         ))}
       </>
+    );
 
     return (
       <HeaderWrapper>

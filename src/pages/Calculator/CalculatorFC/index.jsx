@@ -6,11 +6,11 @@ import * as PropTypes from 'prop-types';
 import React from 'react';
 
 const CalculatorFC = ({
-                        displayValue,
-                        handleEnterSymbol,
-                        lastExpression,
-                        isHistoryOpen,
-                      }) => (
+  displayValue,
+  handleEnterSymbol,
+  lastExpression,
+  isHistoryOpen,
+}) => (
   <CalculatorWrapper isHistoryOpen={isHistoryOpen}>
     <DisplayFC expression={displayValue} lastExpression={lastExpression} />
     <KeypadFC handleEnterSymbol={handleEnterSymbol} />
@@ -28,4 +28,4 @@ CalculatorFC.propTypes = {
   lastExpression: PropTypes.string,
   handleEnterSymbol: PropTypes.func,
 };
-export default CalculatorFC
+export default CalculatorFC;
