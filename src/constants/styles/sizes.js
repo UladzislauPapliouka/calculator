@@ -60,7 +60,7 @@ const keySizes = {
 
 const rowSizes = {
   xs: 100,
-  md: 150,
+  md: 130,
 };
 
 const columnSizes = {
