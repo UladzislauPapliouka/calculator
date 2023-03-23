@@ -27,7 +27,7 @@ class SettingsCCWithoutStore extends PureComponent {
     );
   }
 }
-
+SettingsCCWithoutStore.contextType = ThemeContext;
 const SettingsCC = connect(
   () => ({}),
   (dispatch) => ({
@@ -35,5 +35,4 @@ const SettingsCC = connect(
   }),
 )(SettingsCCWithoutStore);
 
-SettingsCC.contextType = ThemeContext;
 export default SettingsCC;
