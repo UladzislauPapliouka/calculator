@@ -11,20 +11,20 @@ import {
 class ClassHistoryWithoutStore extends PureComponent {
   render() {
     const { history } = this.props;
-    const historyList = history.length ? (
-      history.map((historyExpression) => (
-        <HistoryOperation key={historyExpression}>
-          {historyExpression}
-        </HistoryOperation>
-      ))
-    ) : (
-      <HistoryOperation>No operation yet...</HistoryOperation>
-    );
+    const historyList = history.map((historyExpression) => (
+      <HistoryOperation key={historyExpression}>
+        {historyExpression}
+      </HistoryOperation>
+    ));
 
     return (
       <HistoryWrapper>
         <Title>History</Title>
-        {historyList}
+        {history.length ? (
+          historyList
+        ) : (
+          <HistoryOperation>No operation yet...</HistoryOperation>
+        )}
       </HistoryWrapper>
     );
   }

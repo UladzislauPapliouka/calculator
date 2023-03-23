@@ -13,22 +13,22 @@ const HistoryFC = () => {
   }));
   const historyList = useMemo(
     () =>
-      history.length ? (
-        history.map((historyExpression) => (
-          <HistoryOperation key={historyExpression}>
-            {historyExpression}
-          </HistoryOperation>
-        ))
-      ) : (
-        <HistoryOperation>No operation yet...</HistoryOperation>
-      ),
+      history.map((historyExpression) => (
+        <HistoryOperation key={historyExpression}>
+          {historyExpression}
+        </HistoryOperation>
+      )),
     [history.length],
   );
 
   return (
     <HistoryWrapper>
       <Title>History</Title>
-      {historyList}
+      {history.length ? (
+        historyList
+      ) : (
+        <HistoryOperation>No operation yet...</HistoryOperation>
+      )}
     </HistoryWrapper>
   );
 };
