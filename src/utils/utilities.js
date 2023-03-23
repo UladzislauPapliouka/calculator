@@ -25,7 +25,8 @@ const isOperandLast = (value) => {
     symbol === Operation.Add ||
     symbol === Operation.Subtract ||
     symbol === Operation.Myltiply ||
-    symbol === Operation.Devide
+    symbol === Operation.Devide ||
+    symbol === Operation.Mod
   );
 };
 
@@ -39,7 +40,8 @@ const isOperation = (symbol) =>
   symbol === Operation.Equal ||
   symbol === Operation.Clear ||
   symbol === Operation.CleanEntry ||
-  symbol === Operation.ChangeSign;
+  symbol === Operation.ChangeSign ||
+  symbol === Operation.Mod;
 
 const isErrorMessage = (expression) =>
   expression === 'Infinity' ||
@@ -89,6 +91,15 @@ const EnterSymbol = (state, symbol) => {
       break;
 
     case Operation.Add:
+      state.calculated = false;
+      if (isOperandLast(state.expression)) {
+        state.expression =
+          state.expression.slice(0, state.expression.length - 1) + symbol;
+        break;
+      }
+      state.expression = `${state.expression}${symbol}`;
+      break;
+    case Operation.Mod:
       state.calculated = false;
       if (isOperandLast(state.expression)) {
         state.expression =
