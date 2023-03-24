@@ -14,7 +14,7 @@ describe('CalculatorCC tests', () => {
     cy.get("[data-cy='key(+)']").click()
     cy.get("[data-cy='key(2)']").click()
     cy.get("[data-cy='key(=)']").contains("=").click()
-    cy.get("[data-cy='calculator-display']").contains("3")
+    cy.get("[data-cy='calculator-display']").contains("3.000")
   })
   it('Subtraction is correct', () => {
     cy.visit('/')
@@ -22,7 +22,7 @@ describe('CalculatorCC tests', () => {
     cy.get("[data-cy='key(-)']").click()
     cy.get("[data-cy='key(2)']").click()
     cy.get("[data-cy='key(=)']").contains("=").click()
-    cy.get("[data-cy='calculator-display']").contains("-1")
+    cy.get("[data-cy='calculator-display']").contains("-1.000")
   })
   it('Division is correct', () => {
     cy.visit('/')
@@ -30,7 +30,7 @@ describe('CalculatorCC tests', () => {
     cy.get("[data-cy='key(/)']").click()
     cy.get("[data-cy='key(2)']").click()
     cy.get("[data-cy='key(=)']").contains("=").click()
-    cy.get("[data-cy='calculator-display']").contains("0.5")
+    cy.get("[data-cy='calculator-display']").contains("0.500")
   })
   it('Multiplication is correct', () => {
     cy.visit('/')
@@ -38,7 +38,7 @@ describe('CalculatorCC tests', () => {
     cy.get("[data-cy='key(*)']").click()
     cy.get("[data-cy='key(2)']").click()
     cy.get("[data-cy='key(=)']").contains("=").click()
-    cy.get("[data-cy='calculator-display']").contains("2")
+    cy.get("[data-cy='calculator-display']").contains("2.000")
   })
 
   it('Revers sing with single number is correct', () => {
