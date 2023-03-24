@@ -5,14 +5,20 @@ export default class Calculator {
   }
 
   executeCommand(command) {
-    const value = command.execute(this.values.pop(), this.values.pop());
+    const v1 = this.values.pop();
+    const v2 = this.values.pop();
+
+    console.log(v1, v2);
+
+    const value = command.execute(v1, v2);
 
     this.values.push(value);
+    console.log(this.values);
     this.history.push(value);
   }
 
   getResult() {
-    return this.values.length ? this.values[this.values.length - 1] : 0;
+    return this.values.pop();
   }
 
   getHistory() {

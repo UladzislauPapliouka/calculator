@@ -123,12 +123,14 @@ export default function calculateExpression(expression) {
     }
     operatorFromStack = operatorsStack.pop();
   }
-  if (+calculator.getResult() === Infinity) {
+  const result = +calculator.getResult();
+
+  if (result === Infinity) {
     return 'Infinity';
   }
 
-  if (Number.isNaN(+calculator.getResult())) {
+  if (Number.isNaN(result)) {
     return 'Error';
   }
-  return +calculator.getResult().toFixed(3);
+  return result.toFixed(3);
 }
