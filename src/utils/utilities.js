@@ -253,9 +253,9 @@ const EnterSymbol = (state, symbol) => {
           break;
         }
         if (state.expression.length) {
-          state.lastExpression = `${rememberedExpression}=`;
           state.expression = calculateExpression(state.expression).toString();
-          if (!isErrorMessage(state.expression)) {
+          if (!isErrorMessage(state.expression) && !state.calculated) {
+            state.lastExpression = `${rememberedExpression}=`;
             state.history.push(rememberedExpression);
             state.calculated = true;
           }
