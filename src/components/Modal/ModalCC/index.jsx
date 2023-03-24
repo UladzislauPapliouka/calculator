@@ -3,6 +3,7 @@ import * as PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
 import ModalWrapper from '@components/Modal/styled';
+import { displayBreakpoints } from '@constants/styles/sizes';
 
 class ModalCC extends React.Component {
   constructor(props) {
@@ -10,10 +11,26 @@ class ModalCC extends React.Component {
     this.backRef = React.createRef(null);
   }
 
+  componentDidMount() {
+    window.onresize = this.closeModalWithResize;
+  }
+
+  componentWillUnmount() {
+    window.onresize = () => {};
+  }
+
   onBackgroundClickHandler = ({ target }) => {
     const { handleClose } = this.props;
 
     if (this.backRef.current === target) {
+      handleClose();
+    }
+  };
+
+  closeModalWithResize = () => {
+    const { handleClose } = this.props;
+
+    if (window.innerWidth >= displayBreakpoints.md) {
       handleClose();
     }
   };
