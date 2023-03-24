@@ -97,6 +97,7 @@ const EnterSymbol = (state, symbol) => {
           state.expression.slice(0, state.expression.length - 1) + symbol;
         break;
       }
+      if (!state.expression) break;
       state.expression = `${state.expression}${symbol}`;
       break;
     case Operation.Mod:
@@ -104,6 +105,12 @@ const EnterSymbol = (state, symbol) => {
       if (isOperandLast(state.expression)) {
         state.expression =
           state.expression.slice(0, state.expression.length - 1) + symbol;
+        break;
+      }
+      if (
+        !state.expression ||
+        state.expression[expressionLength - 1] === Operation.LeftBracket
+      ) {
         break;
       }
       state.expression = `${state.expression}${symbol}`;
@@ -115,6 +122,7 @@ const EnterSymbol = (state, symbol) => {
           state.expression.slice(0, state.expression.length - 1) + symbol;
         break;
       }
+      if (!state.expression) break;
       state.expression = `${state.expression}${symbol}`;
       break;
     case Operation.Myltiply:
@@ -124,6 +132,12 @@ const EnterSymbol = (state, symbol) => {
           state.expression.slice(0, state.expression.length - 1) + symbol;
         break;
       }
+      if (
+        !state.expression ||
+        state.expression[expressionLength - 1] === Operation.LeftBracket
+      ) {
+        break;
+      }
       state.expression = `${state.expression}${symbol}`;
       break;
     case Operation.Devide:
@@ -131,6 +145,12 @@ const EnterSymbol = (state, symbol) => {
       if (isOperandLast(state.expression)) {
         state.expression =
           state.expression.slice(0, state.expression.length - 1) + symbol;
+        break;
+      }
+      if (
+        !state.expression ||
+        state.expression[expressionLength - 1] === Operation.LeftBracket
+      ) {
         break;
       }
       state.expression = `${state.expression}${symbol}`;
