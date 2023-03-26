@@ -215,14 +215,15 @@ const EnterSymbol = (state, symbol) => {
         break;
       }
       if (
+        state.expression[0] === '(' &&
         state.expression[0] === '-' &&
         state.expression.slice(1) === lastNumber
       ) {
-        state.expression = state.expression.slice(1);
+        state.expression = state.expression.slice(2);
         break;
       }
       if (state.expression === lastNumber) {
-        state.expression = -state.expression;
+        state.expression = `(-${state.expression}`;
         break;
       }
       if (lastNumber && lastNumberLength < expressionLength) {

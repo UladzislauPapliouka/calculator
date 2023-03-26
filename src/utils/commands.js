@@ -46,7 +46,9 @@ class ModCommand {
   }
 
   execute(currentValueOne, currentValueTwo) {
-    this.value = currentValueTwo % currentValueOne;
+    this.value =
+      currentValueTwo -
+      Math.floor(currentValueTwo / currentValueOne) * currentValueOne;
     return this.value.toFixed(3);
   }
 }
