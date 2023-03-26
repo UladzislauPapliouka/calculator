@@ -69,6 +69,10 @@ const columnSizes = {
 const headerSizes = {
   md: 70,
 };
+const historySizes = {
+  sm: 300,
+  md: 500,
+};
 
 export {
   borderRadiuses,
@@ -78,6 +82,7 @@ export {
   fontSizes,
   gapSizes,
   headerSizes,
+  historySizes,
   keySizes,
   marginSizes,
   paddingSizes,
