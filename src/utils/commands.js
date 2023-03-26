@@ -5,7 +5,7 @@ class AddCommand {
 
   execute(currentValueOne, currentValueTwo) {
     this.value = currentValueTwo + currentValueOne;
-    return this.value;
+    return this.value.toString();
   }
 }
 
@@ -16,7 +16,7 @@ class SubCommand {
 
   execute(currentValueOne, currentValueTwo) {
     this.value = currentValueTwo - currentValueOne;
-    return this.value;
+    return this.value.toString();
   }
 }
 
@@ -27,7 +27,7 @@ class MulCommand {
 
   execute(currentValueOne, currentValueTwo) {
     this.value = currentValueTwo * currentValueOne;
-    return this.value;
+    return this.value.toFixed(3);
   }
 }
 class DivCommand {
@@ -37,7 +37,7 @@ class DivCommand {
 
   execute(currentValueOne, currentValueTwo) {
     this.value = currentValueTwo / currentValueOne;
-    return this.value;
+    return this.value.toFixed(3);
   }
 }
 class ModCommand {
@@ -47,7 +47,7 @@ class ModCommand {
 
   execute(currentValueOne, currentValueTwo) {
     this.value = currentValueTwo % currentValueOne;
-    return this.value;
+    return this.value.toFixed(3);
   }
 }
 

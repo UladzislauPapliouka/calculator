@@ -30,7 +30,7 @@ const calculateOperator = (operator, calculator) => {
       break;
     default:
   }
-  return +calculator.getResult().toFixed(3);
+  return +calculator.getResult();
 };
 
 export default function calculateExpression(expression) {
@@ -132,5 +132,5 @@ export default function calculateExpression(expression) {
   if (Number.isNaN(result)) {
     return 'Error';
   }
-  return result.toFixed(3);
+  return result;
 }
