@@ -83,9 +83,11 @@ const EnterSymbol = (state, symbol) => {
       break;
     case Operation.Dot:
       if (!state.expression || isOperandLast(state.expression)) {
+        state.lastExpression = '';
         state.expression = `${state.expression}0.`;
       }
       if (lastNumber && lastNumber.indexOf(Operation.Dot) === -1) {
+        state.lastExpression = '';
         state.expression = `${state.expression}${symbol}`;
       }
       break;
@@ -95,16 +97,19 @@ const EnterSymbol = (state, symbol) => {
       if (isOperandLast(state.expression)) {
         state.expression =
           state.expression.slice(0, state.expression.length - 1) + symbol;
+        state.lastExpression = '';
         break;
       }
       if (!state.expression) break;
       state.expression = `${state.expression}${symbol}`;
+      state.lastExpression = '';
       break;
     case Operation.Mod:
       state.calculated = false;
       if (isOperandLast(state.expression)) {
         state.expression =
           state.expression.slice(0, state.expression.length - 1) + symbol;
+        state.lastExpression = '';
         break;
       }
       if (
@@ -114,22 +119,26 @@ const EnterSymbol = (state, symbol) => {
         break;
       }
       state.expression = `${state.expression}${symbol}`;
+      state.lastExpression = '';
       break;
     case Operation.Subtract:
       state.calculated = false;
       if (isOperandLast(state.expression)) {
         state.expression =
           state.expression.slice(0, state.expression.length - 1) + symbol;
+        state.lastExpression = '';
         break;
       }
       if (!state.expression) break;
       state.expression = `${state.expression}${symbol}`;
+      state.lastExpression = '';
       break;
     case Operation.Myltiply:
       state.calculated = false;
       if (isOperandLast(state.expression)) {
         state.expression =
           state.expression.slice(0, state.expression.length - 1) + symbol;
+        state.lastExpression = '';
         break;
       }
       if (
@@ -139,12 +148,14 @@ const EnterSymbol = (state, symbol) => {
         break;
       }
       state.expression = `${state.expression}${symbol}`;
+      state.lastExpression = '';
       break;
     case Operation.Devide:
       state.calculated = false;
       if (isOperandLast(state.expression)) {
         state.expression =
           state.expression.slice(0, state.expression.length - 1) + symbol;
+        state.lastExpression = '';
         break;
       }
       if (
@@ -154,18 +165,22 @@ const EnterSymbol = (state, symbol) => {
         break;
       }
       state.expression = `${state.expression}${symbol}`;
+      state.lastExpression = '';
       break;
     case Operation.LeftBracket:
       state.calculated = false;
       if (!state.expression) {
         state.expression = '(';
+        state.lastExpression = '';
         break;
       }
       if (isOperandLast(state.expression)) {
         state.expression = `${state.expression}${symbol}`;
+        state.lastExpression = '';
         break;
       }
       state.expression = `${state.expression}*${symbol}`;
+      state.lastExpression = '';
       break;
     case Operation.ChangeSign:
       state.calculated = false;
@@ -178,6 +193,7 @@ const EnterSymbol = (state, symbol) => {
           0,
           expressionLength - lastNumberLength,
         )}(-${lastNumber}`;
+        state.lastExpression = '';
         break;
       }
 
@@ -189,6 +205,7 @@ const EnterSymbol = (state, symbol) => {
           0,
           expressionLength - lastNumberLength,
         )}(-${lastNumber}`;
+        state.lastExpression = '';
         break;
       }
 
@@ -200,6 +217,7 @@ const EnterSymbol = (state, symbol) => {
           0,
           expressionLength - lastNumberLength,
         )}-${lastNumber}`;
+        state.lastExpression = '';
         break;
       }
       if (
@@ -212,6 +230,7 @@ const EnterSymbol = (state, symbol) => {
           0,
           expressionLength - lastNumberLength - 1,
         )}${lastNumber}`;
+        state.lastExpression = '';
         break;
       }
       if (
@@ -220,10 +239,12 @@ const EnterSymbol = (state, symbol) => {
         state.expression.slice(1) === lastNumber
       ) {
         state.expression = state.expression.slice(2);
+        state.lastExpression = '';
         break;
       }
       if (state.expression === lastNumber) {
         state.expression = `(-${state.expression}`;
+        state.lastExpression = '';
         break;
       }
       if (lastNumber && lastNumberLength < expressionLength) {
@@ -235,6 +256,7 @@ const EnterSymbol = (state, symbol) => {
             0,
             expressionLength - lastNumberLength - 1,
           )}+${lastNumber}`;
+          state.lastExpression = '';
           break;
         }
         if (
@@ -245,6 +267,7 @@ const EnterSymbol = (state, symbol) => {
             0,
             expressionLength - lastNumberLength - 1,
           )}-${lastNumber}`;
+          state.lastExpression = '';
           break;
         }
         break;
@@ -255,6 +278,7 @@ const EnterSymbol = (state, symbol) => {
         state.expression[state.expression.length - 1] === ')'
       ) {
         state.expression = state.expression.slice(1);
+        state.lastExpression = '';
         break;
       }
       if (
@@ -262,9 +286,11 @@ const EnterSymbol = (state, symbol) => {
         state.expression[state.expression.length - 1] === ')'
       ) {
         state.expression = `-${state.expression}`;
+        state.lastExpression = '';
         break;
       }
       state.expression = `-(${state.expression})`;
+      state.lastExpression = '';
       break;
     case Operation.Equal:
       const rememberedExpression = state.expression;
@@ -291,6 +317,7 @@ const EnterSymbol = (state, symbol) => {
       if (lastNumber && lastNumber[lastNumber.length - 4] === '.') {
         break;
       } else {
+        state.lastExpression = '';
         state.calculated = false;
         state.expression = `${state.expression}${symbol}`;
       }
