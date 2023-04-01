@@ -1,3 +1,5 @@
+import { Singleton } from 'toast-library-wil/dist/index.es';
+
 import { Operation } from '@constants/keypadConstansts';
 import calculateExpression from '@utils/calculationLogic';
 import { isBracketCorrect } from '@utils/validation';
@@ -305,6 +307,11 @@ const EnterSymbol = (state, symbol) => {
             state.lastExpression = `${rememberedExpression}=`;
             state.history.push(rememberedExpression);
             state.calculated = true;
+            Singleton.getInstance().createToast({
+              title: 'Ok',
+              type: 'success',
+              animationName: 'slide',
+            });
           }
           break;
         }

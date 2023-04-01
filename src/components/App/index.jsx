@@ -2,6 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import { ToastContainer } from 'toast-library-wil';
 
 import GlobalStyles from '@/globalStyles';
 import ErrorBoundary from '@components/ErrorBoudaries';
@@ -34,6 +35,7 @@ const App = () => {
           theme={{ ...themes[currentTheme], sizes, opacity, fontWeight }}
         >
           <GlobalStyles />
+          <ToastContainer />
           <ErrorBoundary>
             <Routes>
               {mainRoutes.map(({ path, element }) => (
