@@ -1,4 +1,4 @@
-import { Singleton } from 'toast-library-wil/dist/index.es';
+import { ToastWorker } from 'toast-library-wil/dist/index.es';
 
 import { Operation } from '@constants/keypadConstansts';
 import calculateExpression from '@utils/calculationLogic';
@@ -307,21 +307,40 @@ const EnterSymbol = (state, symbol) => {
             state.lastExpression = `${rememberedExpression}=`;
             state.history.push(rememberedExpression);
             state.calculated = true;
-            Singleton.getInstance().createToast({
+            ToastWorker.createToast({
               title: 'Ok',
+              description: state.expression,
               type: 'success',
               animationName: 'slide',
             });
+          } else {
+            ToastWorker.createToast({
+              title: 'Something went wrong',
+              type: 'error',
+              animationName: 'slide',
+            });
           }
+
           break;
         }
 
         break;
       }
-      state.expression = 'Incorrect brackets';
+      state.expression = '';
+      ToastWorker.createToast({
+        title: 'Incorrect brackets',
+        type: 'error',
+        animationName: 'slide',
+      });
       break;
     default:
       if (lastNumber && lastNumber[lastNumber.length - 4] === '.') {
+        ToastWorker.createToast({
+          title: 'Too accurately',
+          desciption: 'Max count of numbers after dot is 3',
+          type: 'error',
+          animationName: 'slide',
+        });
         break;
       } else {
         state.lastExpression = '';

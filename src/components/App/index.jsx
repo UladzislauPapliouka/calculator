@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import { ToastContainer } from 'toast-library-wil';
+import { ToastContainer } from 'toast-library-wil/dist/index.es';
 
 import GlobalStyles from '@/globalStyles';
 import ErrorBoundary from '@components/ErrorBoudaries';
