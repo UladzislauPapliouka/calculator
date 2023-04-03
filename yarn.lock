@@ -10655,10 +10655,10 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
-toast-library-wil@^1.0.30:
-  version "1.0.30"
-  resolved "https://registry.yarnpkg.com/toast-library-wil/-/toast-library-wil-1.0.30.tgz#da2de93e10571574f6986626ef47a4680eed9480"
-  integrity sha512-V9QhX6Yctua0e2+e20hIpbDsaj6spmOK9xTDyT0niCUm3uxI13+QRzBJ9XoFeZ1rfiUDGdkZcxEEu6gPupLNgw==
+toast-library-wil@^1.0.32:
+  version "1.0.32"
+  resolved "https://registry.yarnpkg.com/toast-library-wil/-/toast-library-wil-1.0.32.tgz#03257753e1bf6bbd2cb692f0d2c883614a8c3663"
+  integrity sha512-tObddp9hOEki5sui/Y38v3nMdXNXNQ15JlxV8RzfyxyiHbP6UH+meJzDQWAUBpGzK9rhYor39eJ9dKzS+6+SBA==
   dependencies:
     prop-types "^15.8.1"
     react "^18.2.0"
