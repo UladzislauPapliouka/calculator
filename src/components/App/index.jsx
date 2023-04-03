@@ -2,6 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import { ToastContainer, ToastWorker } from 'toast-library-wil/dist/index.es';
 
 import GlobalStyles from '@/globalStyles';
 import ErrorBoundary from '@components/ErrorBoudaries';
@@ -27,6 +28,17 @@ const App = () => {
     [currentTheme, handleThemeChange],
   );
 
+  ToastWorker.setToastTheme({
+    success: {
+      background: 'red',
+      color: 'white',
+    },
+    error: {
+      background: 'green',
+      color: 'white',
+    },
+  });
+
   return (
     <HashRouter>
       <ThemeContext.Provider value={themeContextValue}>
@@ -34,6 +46,7 @@ const App = () => {
           theme={{ ...themes[currentTheme], sizes, opacity, fontWeight }}
         >
           <GlobalStyles />
+          <ToastContainer />
           <ErrorBoundary>
             <Routes>
               {mainRoutes.map(({ path, element }) => (
